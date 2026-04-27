@@ -20,6 +20,15 @@ public class Vertex<E> {
         this.toChild = toChild;
     }
 
+    public Vertex(int distance, boolean closed) {
+        this.label = "unspecified";
+        this.edges = new HashMap<>();
+        this.distance = distance;
+        this.closed = closed;
+        this.toParent = null;
+        this.toChild = null;
+    }
+
     public Vertex(String label) {
         this.label = label;
         this.edges = new HashMap<>();

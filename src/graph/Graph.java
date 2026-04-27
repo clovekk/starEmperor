@@ -129,11 +129,17 @@ public class Graph<E> {
         }
 
         start.setClosed(true);
+        setAllDistances(getClosestUnclosedVertex());
+    }
 
-        for (Edge<E> e : currentEdges) {
-            Vertex<E> closestNeighbor = e.getOtherEndpoint(start);
-            setAllDistances(closestNeighbor);
+    public Vertex<E> getClosestUnclosedVertex() {
+        Vertex<E> closest = new Vertex<>(Integer.MAX_VALUE, true);
+        for (Vertex<E> v : vertices.values()) {
+            if (v.getDistance() < closest.getDistance() && !v.isClosed()) {
+                closest = v;
+            }
         }
+        return closest;
     }
 
     public E get(String key) {

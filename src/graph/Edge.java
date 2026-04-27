@@ -65,7 +65,7 @@ public class Edge<E> implements Comparable<Edge<E>> {
         return null;
     }
 
-    @Override
+    /*@Override
     public String toString() {
         return "Edge{" +
                 "label='" + label + '\'' +
@@ -74,13 +74,15 @@ public class Edge<E> implements Comparable<Edge<E>> {
                 ", directed=" + directed +
                 ", weight=" + weight +
                 '}';
+    }*/
+
+    @Override
+    public String toString() {
+        return "Edge{" + label + '-' + tail.getLabel() + '-' + head.getLabel() + '-' + weight + '}';
     }
 
     @Override
     public int compareTo(Edge e) {
-        if (this.label.equals(e.label)) {
-            return 0;
-        }
         return this.getWeight() - e.getWeight();
     }
 }
