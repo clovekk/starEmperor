@@ -42,7 +42,7 @@ public class Graph<E> {
 
     public void addVertex(Vertex<E> v) {
         if (this.vertices.containsKey(v.getLabel())) {
-            throw new KeyAlreadyExistsException("Key" + v.getLabel() + " is already taken");
+            throw new KeyAlreadyExistsException("Key" + v.getLabel() + " is already used by a different vertex in this graph");
         } else {
             this.vertices.put(v.getLabel(), v);
         }
@@ -52,27 +52,28 @@ public class Graph<E> {
         addVertex(new Vertex<>(v));
     }
 
-    public void connectVertices(Vertex<E> v1, Vertex<E> v2, String edgeLabel, int edgeWeight) {
-        if (this.vertices.containsValue(v1) && this.vertices.containsValue(v2)) {
-            if (!v1.isConnectedTo(v2)) {
-                v1.addEdge(new Edge<>(edgeLabel, v2, edgeWeight));
-                v2.addEdge(new Edge<>(edgeLabel, v1, edgeWeight));
+    public void connectVertices(String edgeLabel, Vertex<E> tail, Vertex<E> head, boolean directed, int edgeWeight) {
+        if (this.vertices.containsValue(tail) && this.vertices.containsValue(head)) {
+            if (!tail.isConnectedTo(head)) {
+                Edge<E> edge = new Edge<>(edgeLabel, tail, head, directed, edgeWeight);
+                tail.addEdge(edge);
+                head.addEdge(edge);
             } else {
-                throw new InvalidParameterException("Vertex " + v1.getLabel() + " and vertex " + v2.getLabel() + " are already connected by an edge");
+                throw new InvalidParameterException("Vertex " + tail.getLabel() + " and vertex " + head.getLabel() + " are already connected by an edge"); //TODO potentially change for a custom exception since idk if this is the correct usage of this exception type
             }
         } else {
-            if (!this.vertices.containsValue(v1)) {
-                throw new NoSuchElementException("Vertex " + v1.getLabel() + " is not a part of the graph");
+            if (!this.vertices.containsValue(tail)) {
+                throw new NoSuchElementException("Vertex " + tail.getLabel() + " is not a part of the graph");
             }
-            if (!this.vertices.containsValue(v2)) {
-                throw new NoSuchElementException("Vertex " + v2.getLabel() + " is not a part of the graph");
+            if (!this.vertices.containsValue(head)) {
+                throw new NoSuchElementException("Vertex " + head.getLabel() + " is not a part of the graph");
             }
         }
     }
 
-    public void connectVertices(String v1, String v2, String edgeLabel, int edgeWeight) {
+    public void connectVertices(String edgeLabel, String v1, String v2, boolean directed, int edgeWeight) {
         if (this.vertices.containsKey(v1) && this.vertices.containsKey(v2)) {
-            this.connectVertices(this.vertices.get(v1), this.vertices.get(v2), edgeLabel, edgeWeight);
+            this.connectVertices(edgeLabel, this.vertices.get(v1), this.vertices.get(v2), directed, edgeWeight);
         } else {
             if (!this.vertices.containsKey(v1)) {
                 throw new NoSuchElementException("Vertex " + v1 + " is not a part of the graph");
@@ -101,36 +102,38 @@ public class Graph<E> {
 
         Vertex<E> current = end;
         while (current.getToParent() != null) {
-            current.getToParent().getEnd().setToChild(current.getToParent().getEnd().getEdges().get(current.getToParent().getLabel()));
-            shortestPath.add(current.getToParent().getEnd().getToChild());
-            current = current.getToParent().getEnd();
+            current.getToParent().getOtherEndpoint(current).setToChild(current.getToParent());
+            shortestPath.add(current.getToParent());
+            current = current.getToParent().getOtherEndpoint(current);
         }
         Collections.reverse(shortestPath);
         return shortestPath;
     }
 
     public void setAllDistances(Vertex<E> start) {
-        ArrayList<Edge<E>> currentEdges = new ArrayList<>(start.getEdges().values());
-        Collections.sort(currentEdges);
-
         if (start.isClosed()) {
             return;
         }
 
+        ArrayList<Edge<E>> currentEdges = new ArrayList<>(start.getEdges().values());
+        Collections.sort(currentEdges);
+
         //neighbors set distance based on the distance from original start
         for (Edge<E> e : currentEdges) {
-            if (!e.getEnd().isClosed()) {
-                if (e.getEnd().getDistance() > start.getDistance() + e.getWeight()) {
-                    e.getEnd().setDistance(start.getDistance() + e.getWeight());
-                    e.getEnd().setToParent(e.getEnd().getEdges().get(e.getLabel()));
+            if (!e.getOtherEndpoint(start).isClosed()) {
+                if (e.getOtherEndpoint(start).getDistance() > start.getDistance() + e.getWeight()) {
+                    e.getOtherEndpoint(start).setDistance(start.getDistance() + e.getWeight());
+                    e.getOtherEndpoint(start).setToParent(e);
                 }
             }
         }
 
-        Vertex<E> closestNeighbor = currentEdges.getFirst().getEnd();
         start.setClosed(true);
-        currentEdges.removeFirst();
-        setAllDistances(closestNeighbor);
+
+        for (Edge<E> e : currentEdges) {
+            Vertex<E> closestNeighbor = e.getOtherEndpoint(start);
+            setAllDistances(closestNeighbor);
+        }
     }
 
     public E get(String key) {
@@ -148,6 +151,10 @@ public class Graph<E> {
     public void add(String key, E data) {
         this.addVertex(key);
         this.vertices.get(key).setData(data);
+    }
+
+    public int getDistance(String key) {
+        return this.vertices.get(key).getDistance();
     }
 
     @Override

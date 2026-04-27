@@ -9,27 +9,15 @@ public class Vertex<E> {
     private boolean closed;
     private Edge<E> toParent;
     private Edge<E> toChild;
-    private Position position;
     private E data;
 
-    public Vertex(String label, HashMap<String, Edge<E>> edges, int distance, boolean closed, Edge<E> toParent, Edge<E> toChild, Position position) {
+    public Vertex(String label, HashMap<String, Edge<E>> edges, int distance, boolean closed, Edge<E> toParent, Edge<E> toChild) {
         this.label = label;
         this.edges = edges;
         this.distance = distance;
         this.closed = closed;
         this.toParent = toParent;
         this.toChild = toChild;
-        this.position = position;
-    }
-
-    public Vertex(String label, HashMap<String, Edge<E>> edges, int distance, boolean closed, Edge<E> toParent, Edge<E> toChild, int x, int y) {
-        this.label = label;
-        this.edges = edges;
-        this.distance = distance;
-        this.closed = closed;
-        this.toParent = toParent;
-        this.toChild = toChild;
-        this.position = new Position(x, y);
     }
 
     public Vertex(String label) {
@@ -39,7 +27,6 @@ public class Vertex<E> {
         this.closed = false;
         this.toParent = null;
         this.toChild = null;
-        this.position = new Position();
     }
 
     public Vertex(int distance) {
@@ -49,7 +36,6 @@ public class Vertex<E> {
         this.closed = false;
         this.toParent = null;
         this.toChild = null;
-        this.position = new Position();
     }
 
     public Vertex() {
@@ -59,7 +45,6 @@ public class Vertex<E> {
         this.closed = false;
         this.toParent = null;
         this.toChild = null;
-        this.position = new Position();
     }
 
     public String getLabel() {
@@ -79,15 +64,6 @@ public class Vertex<E> {
     }
     public Edge<E> getToChild() {
         return toChild;
-    }
-    public Position getPosition() {
-        return position;
-    }
-    public int getX() {
-        return position.getX();
-    }
-    public int getY() {
-        return position.getY();
     }
     public E getData() {
         return data;
@@ -111,15 +87,6 @@ public class Vertex<E> {
     public void setToChild(Edge<E> toChild) {
         this.toChild = toChild;
     }
-    public void setPosition(Position position) {
-        this.position = position;
-    }
-    public void setX(int x) {
-        this.position.setX(x);
-    }
-    public void setY(int y) {
-        this.position.setY(y);
-    }
     public void setData(E data) {
         this.data = data;
     }
@@ -127,7 +94,7 @@ public class Vertex<E> {
     public HashMap<String, Vertex<E>> getAdjacentVertices() {
         HashMap<String, Vertex<E>> adjacentVertices = new HashMap<>();
         for (Edge<E> e : this.edges.values()) {
-            adjacentVertices.put(e.getEnd().getLabel(), e.getEnd());
+            adjacentVertices.put(e.getOtherEndpoint(this).getLabel(), e.getOtherEndpoint(this));
         }
         return adjacentVertices;
     }
@@ -148,7 +115,7 @@ public class Vertex<E> {
 
     public boolean isConnectedTo(Vertex<E> v) {
         for (Edge<E> e : this.edges.values()) {
-            if (e.getEnd().equals(v)) {
+            if (e.getOtherEndpoint(this).equals(v)) {
                 return true;
             }
         }
@@ -159,22 +126,22 @@ public class Vertex<E> {
     public String toString() {
         StringBuilder connections = new StringBuilder();
         for (Edge<E> e : this.edges.values()) {
-            connections.append(e.getEnd().getLabel()).append(" ");
+            connections.append(e.getOtherEndpoint(this).getLabel()).append(" ");
         }
 
         String parentLabel;
         if (toParent == null) {
             parentLabel = "null";
         } else {
-            parentLabel = this.toParent.getLabel() + "-" + this.toParent.getEnd().getLabel();
+            parentLabel = this.toParent.getLabel() + "-" + this.toParent.getOtherEndpoint(this).getLabel();
         }
 
         String childLabel;
         if (toChild == null) {
             childLabel = "null";
         } else {
-            childLabel = this.toChild.getLabel() + "-" + this.toChild.getEnd().getLabel();
+            childLabel = this.toChild.getLabel() + "-" + this.toChild.getOtherEndpoint(this).getLabel();
         }
-        return "Vertex{ label='" + label + '\'' + ", edges=" + edges + ", distance=" + distance + ", closed=" + closed + ", position=" + position + ", toParent=" + parentLabel + ", toChild=" + childLabel + ", connections="+  connections + " }";
+        return "Vertex{ label='" + label + '\'' + ", edges=" + edges + ", distance=" + distance + ", closed=" + closed + ", toParent=" + parentLabel + ", toChild=" + childLabel + ", connections="+  connections + " }";
     }
 }
