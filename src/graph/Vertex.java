@@ -1,17 +1,17 @@
 package graph;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 
 public class Vertex<E> {
     private String label;
-    private HashMap<String, Edge<E>> edges;
+    private ArrayList<String> edges;
     private int distance;
     private boolean closed;
-    private Edge<E> toParent;
-    private Edge<E> toChild;
+    private String toParent;
+    private String toChild;
     private E data;
 
-    public Vertex(String label, HashMap<String, Edge<E>> edges, int distance, boolean closed, Edge<E> toParent, Edge<E> toChild) {
+    public Vertex(String label, ArrayList<String> edges, int distance, boolean closed, String toParent, String toChild) {
         this.label = label;
         this.edges = edges;
         this.distance = distance;
@@ -22,7 +22,7 @@ public class Vertex<E> {
 
     public Vertex(int distance, boolean closed) {
         this.label = "unspecified";
-        this.edges = new HashMap<>();
+        this.edges = new ArrayList<>();
         this.distance = distance;
         this.closed = closed;
         this.toParent = null;
@@ -31,7 +31,7 @@ public class Vertex<E> {
 
     public Vertex(String label) {
         this.label = label;
-        this.edges = new HashMap<>();
+        this.edges = new ArrayList<>();
         this.distance = 0;
         this.closed = false;
         this.toParent = null;
@@ -40,7 +40,7 @@ public class Vertex<E> {
 
     public Vertex(int distance) {
         this.label = "unspecified";
-        this.edges = new HashMap<>();
+        this.edges = new ArrayList<>();
         this.distance = distance;
         this.closed = false;
         this.toParent = null;
@@ -49,7 +49,7 @@ public class Vertex<E> {
 
     public Vertex() {
         this.label = "unspecified";
-        this.edges = new HashMap<>();
+        this.edges = new ArrayList<>();
         this.distance = 0;
         this.closed = false;
         this.toParent = null;
@@ -59,8 +59,8 @@ public class Vertex<E> {
     public String getLabel() {
         return label;
     }
-    public HashMap<String,Edge<E>> getEdges() {
-        return edges;
+    public ArrayList<String> getEdges() {
+        return this.edges;
     }
     public int getDistance() {
         return distance;
@@ -68,10 +68,10 @@ public class Vertex<E> {
     public boolean isClosed() {
         return closed;
     }
-    public Edge<E> getToParent() {
+    public String getToParent() {
         return toParent;
     }
-    public Edge<E> getToChild() {
+    public String getToChild() {
         return toChild;
     }
     public E getData() {
@@ -81,7 +81,7 @@ public class Vertex<E> {
     public void setLabel(String label) {
         this.label = label;
     }
-    public void setEdges(HashMap<String, Edge<E>> edges) {
+    public void setEdges(ArrayList<String> edges) {
         this.edges = edges;
     }
     public void setDistance(int distance) {
@@ -90,67 +90,30 @@ public class Vertex<E> {
     public void setClosed(boolean closed) {
         this.closed = closed;
     }
-    public void setToParent(Edge<E> toParent) {
+    public void setToParent(String toParent) {
         this.toParent = toParent;
     }
-    public void setToChild(Edge<E> toChild) {
+    public void setToChild(String toChild) {
         this.toChild = toChild;
     }
     public void setData(E data) {
         this.data = data;
     }
 
-    public HashMap<String, Vertex<E>> getAdjacentVertices() {
-        HashMap<String, Vertex<E>> adjacentVertices = new HashMap<>();
-        for (Edge<E> e : this.edges.values()) {
-            adjacentVertices.put(e.getOtherEndpoint(this).getLabel(), e.getOtherEndpoint(this));
-        }
-        return adjacentVertices;
-    }
-
-    public Vertex<E> getClosestNeighbor() {
-        Vertex<E> closest = null;
-        for (Vertex<E> v : this.getAdjacentVertices().values()) {
-            if (closest == null || v.getDistance() < closest.getDistance()) {
-                closest = v;
-            }
-        }
-        return closest;
-    }
-
-    public void addEdge(Edge<E> e) {
-        this.edges.put(e.getLabel(), e);
-    }
-
-    public boolean isConnectedTo(Vertex<E> v) {
-        for (Edge<E> e : this.edges.values()) {
-            if (e.getOtherEndpoint(this).equals(v)) {
-                return true;
-            }
-        }
-        return false;
+    public void addEdge(String edge) {
+        this.edges.add(edge);
     }
 
     @Override
     public String toString() {
-        StringBuilder connections = new StringBuilder();
-        for (Edge<E> e : this.edges.values()) {
-            connections.append(e.getOtherEndpoint(this).getLabel()).append(" ");
-        }
-
-        String parentLabel;
-        if (toParent == null) {
-            parentLabel = "null";
-        } else {
-            parentLabel = this.toParent.getLabel() + "-" + this.toParent.getOtherEndpoint(this).getLabel();
-        }
-
-        String childLabel;
-        if (toChild == null) {
-            childLabel = "null";
-        } else {
-            childLabel = this.toChild.getLabel() + "-" + this.toChild.getOtherEndpoint(this).getLabel();
-        }
-        return "Vertex{ label='" + label + '\'' + ", edges=" + edges + ", distance=" + distance + ", closed=" + closed + ", toParent=" + parentLabel + ", toChild=" + childLabel + ", connections="+  connections + " }";
+        return "Vertex{" +
+                "label='" + label + '\'' +
+                ", edges=" + edges +
+                ", distance=" + distance +
+                ", closed=" + closed +
+                ", toParent='" + toParent + '\'' +
+                ", toChild='" + toChild + '\'' +
+                ", data=" + data +
+                '}';
     }
 }

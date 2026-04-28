@@ -2,12 +2,12 @@ package graph;
 
 public class Edge<E> implements Comparable<Edge<E>> {
     private String label;
-    private Vertex<E> tail;
-    private Vertex<E> head;
+    private String tail;
+    private String head;
     private boolean directed;
     private int weight;
 
-    public Edge(String label, Vertex<E> tail, Vertex<E> head, boolean directed, int weight) {
+    public Edge(String label, String tail, String head, boolean directed, int weight) {
         this.label = label;
         this.tail = tail;
         this.head = head;
@@ -26,10 +26,10 @@ public class Edge<E> implements Comparable<Edge<E>> {
     public String getLabel() {
         return label;
     }
-    public Vertex<E> getTail() {
+    public String getTail() {
         return tail;
     }
-    public Vertex<E> getHead() {
+    public String getHead() {
         return head;
     }
     public boolean isDirected() {
@@ -42,10 +42,10 @@ public class Edge<E> implements Comparable<Edge<E>> {
     public void setLabel(String label) {
         this.label = label;
     }
-    public void setTail(Vertex<E> tail) {
+    public void setTail(String tail) {
         this.tail = tail;
     }
-    public void setHead(Vertex<E> head) {
+    public void setHead(String head) {
         this.head = head;
     }
     public void setDirected(boolean directed) {
@@ -55,11 +55,21 @@ public class Edge<E> implements Comparable<Edge<E>> {
         this.weight = weight;
     }
 
-    public Vertex<E> getOtherEndpoint(Vertex<E> vertex) {
-        if (vertex == tail) {
+    public String getOtherEndpoint(String vertex) {
+        if (vertex.equals(tail)) {
             return head;
         }
-        if (vertex == head) {
+        if (vertex.equals(head)) {
+            return tail;
+        }
+        return null;
+    }
+
+    public String getOtherEndpoint(Vertex<E> vertex) {
+        if (vertex.getLabel().equals(tail)) {
+            return head;
+        }
+        if (vertex.getLabel().equals(head)) {
             return tail;
         }
         return null;
@@ -69,8 +79,8 @@ public class Edge<E> implements Comparable<Edge<E>> {
     public String toString() {
         return "Edge{" +
                 "label='" + label + '\'' +
-                ", tail=" + tail.getLabel() +
-                ", head=" + head.getLabel() +
+                ", tail=" + tail +
+                ", head=" + head +
                 ", directed=" + directed +
                 ", weight=" + weight +
                 '}';
@@ -78,7 +88,7 @@ public class Edge<E> implements Comparable<Edge<E>> {
 
     @Override
     public String toString() {
-        return "Edge{" + label + '-' + tail.getLabel() + '-' + head.getLabel() + '-' + weight + '}';
+        return "Edge{" + label + '-' + tail + '-' + head + '-' + weight + '}';
     }
 
     @Override
