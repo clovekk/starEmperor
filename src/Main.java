@@ -1,4 +1,7 @@
+import game.StarSystem;
 import graph.Graph;
+
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
@@ -27,7 +30,7 @@ public class Main {
         System.out.println(g1);
         //temporary1 - end*/
 
-        //temporary2 - bigger test for the graph
+        /*//temporary2 - bigger test for the graph
         Graph<String> g1 = new Graph<>("g1");
 
         g1.add("A", "1");
@@ -101,6 +104,32 @@ public class Main {
         System.out.println("Shortest vertex path from Vertex " + start + " to Vertex " + end + ": " + g1.findShortestVertexPath(start, end));
         System.out.println("Length of the shortest path from Vertex " + start + " to Vertex " + end + " is: " + g1.getDistance(start, end));
         System.out.println(g1);
-        //temporary2 - end
+        //temporary2 - end*/
+
+        //temporary3 - test for a graph with star systems as data
+        Graph<StarSystem> g1 = new Graph<>("g1");
+
+        g1.add("one", new StarSystem("One"));
+        g1.get("one").addResource("metals", 7);
+        g1.add("two", new StarSystem("Two"));
+        g1.add("three", new StarSystem("Three"));
+        g1.add("four", new StarSystem("Four"));
+        g1.add("five", new StarSystem("Five"));
+
+        g1.connectVertices("a", "one", "five", false, 20);
+        g1.connectVertices("b", "one", "two", false, 10);
+        g1.connectVertices("c", "two", "three", false, 8);
+        g1.connectVertices("d", "three", "four", false, 10);
+        g1.connectVertices("e", "two", "four", false, 15);
+        g1.connectVertices("f", "one", "three", false, 20);
+
+        String start = "one";
+        String end = "four";
+        System.out.println("Shortest path from " + start + " to " + end + ": " + g1.getShortestPath(start, end));
+        System.out.println("Shortest edge path from Vertex " + start + " to Vertex " + end + ": " + g1.findShortestEdgePath(start, end));
+        System.out.println("Shortest vertex path from Vertex " + start + " to Vertex " + end + ": " + g1.findShortestVertexPath(start, end));
+        System.out.println("Length of the shortest path from Vertex " + start + " to Vertex " + end + " is: " + g1.getDistance(start, end));
+        System.out.println(g1);
+        //temporary3 - end
     }
 }

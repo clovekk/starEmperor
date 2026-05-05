@@ -45,20 +45,44 @@ public class Graph<E> {
         return this.vertices.get(key).getData();
     }
 
+    /**
+     * Performs the Dijkstra's algorithm on the graph to find the shortest path between the start vertex and the end vertex. The vertices have to be connected by at least one path and contained in the same graph.
+     * @param v1 Start
+     * @param v2 End
+     * @return integer value equivalent to the sum of the weights of all the edges contained in the shortest path between the start and the end
+     */
     public int getDistance(Vertex<E> v1, Vertex<E> v2) {
         findShortestEdgePath(v1, v2);
         return v2.getDistance();
     }
+
+    /**
+     * Finds the vertices that are assigned the specified labels and invokes the Graph.getDistance() method using them as the two parameters. Both of the labels have to be assigned to a vertex in this graph. Performs the Dijkstra's algorithm on the graph to find the shortest path between the start vertex and the end vertex. The vertices have to be connected by at least one path and contained in the same graph.
+     * @param v1 Start vertex label
+     * @param v2 End vertex label
+     * @return integer value equivalent to the sum of the weights of all the edges contained in the shortest path between the start and the end
+     */
     public int getDistance(String v1, String v2) {
         return getDistance(this.vertices.get(v1), this.vertices.get(v2));
     }
 
+    /**
+     * Searches for all the neighbors (vertices connected to this one by exactly one edge) of the specified vertex and returns an arraylist containing all of their data.
+     * @param key The label of the desired vertex
+     * @return an arraylist containing all the data of the neighboring vertices
+     */
     public ArrayList<E> getNeighbors(String key) {
         ArrayList<E> neighbors = new ArrayList<>();
         this.getAdjacentVertices(this.vertices.get(key)).values().stream().forEach(n -> neighbors.add(n.getData()));
         return neighbors;
     }
 
+    /**
+     * Searches for the vertices which are assigned the specified labels and finds the shortest path between the two specified vertices and returns an arraylist containing all their data.
+     * @param start Start vertex label
+     * @param end End vertex label
+     * @return an arraylist containing all the data of the vertices contained on the path
+     */
     public ArrayList<E> getShortestPath(String start, String end) {
         ArrayList<E> path = new ArrayList<>();
         this.findShortestVertexPath(start, end).stream().forEach(v -> path.add(v.getData()));
@@ -98,10 +122,23 @@ public class Graph<E> {
     }
 
     //general methods
+
+    /**
+     * Returns the amount of vertices in this graph.
+     * @return the amount of vertices in this graph
+     */
     public int size() {
         return vertices.size();
     }
 
+    /**
+     * Connects the two specified vertices by a path with the specified parameters, thus making them neighbors to each other.
+     * @param edgeLabel Label to be assigned to the connecting edge
+     * @param tail Starting vertex of the edge
+     * @param head Ending vertex of the edge
+     * @param directed <p>True - makes the edge directed, making it traversable only in the direction from its tail to its head<p>False - makes the edge not directed, making it traversable in both directions
+     * @param edgeWeight The weight to be assigned to the connecting edge
+     */
     public void connectVertices(String edgeLabel, Vertex<E> tail, Vertex<E> head, boolean directed, int edgeWeight) {
         if (this.vertices.containsValue(tail) && this.vertices.containsValue(head)) {
             if (!this.isConnectedTo(tail, head)) {
@@ -122,15 +159,23 @@ public class Graph<E> {
         }
     }
 
-    public void connectVertices(String edgeLabel, String v1, String v2, boolean directed, int edgeWeight) {
-        if (this.vertices.containsKey(v1) && this.vertices.containsKey(v2)) {
-            this.connectVertices(edgeLabel, this.vertices.get(v1), this.vertices.get(v2), directed, edgeWeight);
+    /**
+     * Connects the two specified vertices by a path with the specified parameters, thus making them neighbors to each other.
+     * @param edgeLabel Label to be assigned to the connecting edge
+     * @param tail Label of the starting vertex of the edge
+     * @param head Label of the ending vertex of the edge
+     * @param directed <p>True - makes the edge directed, making it traversable only in the direction from its tail to its head<p>False - makes the edge not directed, making it traversable in both directions
+     * @param edgeWeight The weight to be assigned to the connecting edge
+     */
+    public void connectVertices(String edgeLabel, String tail, String head, boolean directed, int edgeWeight) {
+        if (this.vertices.containsKey(tail) && this.vertices.containsKey(head)) {
+            this.connectVertices(edgeLabel, this.vertices.get(tail), this.vertices.get(head), directed, edgeWeight);
         } else {
-            if (!this.vertices.containsKey(v1)) {
-                throw new NoSuchElementException("Vertex " + v1 + " is not a part of the graph");
+            if (!this.vertices.containsKey(tail)) {
+                throw new NoSuchElementException("Vertex " + tail + " is not a part of the graph");
             }
-            if (!this.vertices.containsKey(v2)) {
-                throw new NoSuchElementException("Vertex " + v2 + " is not a part of the graph");
+            if (!this.vertices.containsKey(head)) {
+                throw new NoSuchElementException("Vertex " + head + " is not a part of the graph");
             }
         }
     }
