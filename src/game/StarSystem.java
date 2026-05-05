@@ -7,9 +7,9 @@ public class StarSystem {
     private String id;
     private ArrayList<Planet> planets;
     private String ownerID;
-    private ArrayList<ResourceIncome> resources;
+    private ArrayList<Resource> resources;
 
-    public StarSystem(String name, String id, ArrayList<Planet> planets, String ownerID, ArrayList<ResourceIncome> resources) {
+    public StarSystem(String name, String id, ArrayList<Planet> planets, String ownerID, ArrayList<Resource> resources) {
         this.name = name;
         this.id = id;
         this.planets = planets;
@@ -33,8 +33,20 @@ public class StarSystem {
         this.resources = new ArrayList<>();
     }
 
+    public String getOwnerID() {
+        return ownerID;
+    }
+
+    public ArrayList<Resource> getResources() {
+        return resources;
+    }
+
+    public void setOwnerID(String ownerID) {
+        this.ownerID = ownerID;
+    }
+
     public void addResource(String resourceID, int amount) {
-        this.resources.add(new ResourceIncome(resourceID, amount));
+        this.resources.add(new Resource(resourceID, amount));
     }
 
     @Override

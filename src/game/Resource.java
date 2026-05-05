@@ -1,10 +1,12 @@
 package game;
 
-public class ResourceIncome {
+import java.security.InvalidParameterException;
+
+public class Resource implements Comparable<Resource> {
     private String resourceID;
     private int amount;
 
-    public ResourceIncome(String resourceID, int amount) {
+    public Resource(String resourceID, int amount) {
         this.resourceID = resourceID;
         this.amount = amount;
     }
@@ -23,11 +25,25 @@ public class ResourceIncome {
         this.amount = amount;
     }
 
+    public void addResources(Resource resource) {
+        if (this.resourceID.equals(resource.resourceID)) {
+            this.amount += resource.amount;
+        } else {
+            throw new InvalidParameterException("You can not add resources that do not match each others type");
+        }
+
+    }
+
     @Override
     public String toString() {
-        return "ResourceIncome{" +
+        return "Resource{" +
                 "resourceID='" + resourceID + '\'' +
                 ", amount=" + amount +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Resource resource) {
+        return this.amount - resource.amount;
     }
 }

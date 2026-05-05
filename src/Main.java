@@ -1,5 +1,8 @@
-import game.StarSystem;
+import game.*;
 import graph.Graph;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Main {
     public static void main(String[] args) {
@@ -105,13 +108,25 @@ public class Main {
         //temporary2 - end*/
 
         //temporary3 - test for a graph with star systems as data
+        HashMap<String, Player> p = new HashMap<>();
+        p.put("1", new Player("1"));
+        ArrayList<Resource> res = new ArrayList<>();
+        res.add(new Resource("metals", 5));
+        p.get("1").addResources(res);
+
         Graph<StarSystem> g1 = new Graph<>("g1");
 
         g1.add("one", new StarSystem("One"));
         g1.get("one").addResource("metals", 7);
+        g1.get("one").addResource("energy", 4);
+        g1.get("one").setOwnerID("1");
         g1.add("two", new StarSystem("Two"));
         g1.add("three", new StarSystem("Three"));
+        g1.get("three").addResource("metals", 9);
+        g1.get("three").setOwnerID("1");
         g1.add("four", new StarSystem("Four"));
+        g1.get("four").addResource("energy", 6);
+        g1.get("four").setOwnerID("1");
         g1.add("five", new StarSystem("Five"));
 
         g1.connectVertices("a", "one", "five", false, 20);
@@ -128,6 +143,11 @@ public class Main {
         System.out.println("Shortest vertex path from Vertex " + start + " to Vertex " + end + ": " + g1.findShortestVertexPath(start, end));
         System.out.println("Length of the shortest path from Vertex " + start + " to Vertex " + end + " is: " + g1.getDistance(start, end));
         System.out.println(g1);
+
+        Game game = new Game(new World(g1, p), new GraphicsUserInterface(), false);
+        System.out.println(p);
+        game.updateWorld();
+        System.out.println(p);
         //temporary3 - end
     }
 }

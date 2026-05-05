@@ -45,6 +45,12 @@ public class Graph<E> {
         return this.vertices.get(key).getData();
     }
 
+    public ArrayList<E> getAll() {
+        ArrayList<E> data = new ArrayList<>();
+        this.vertices.values().stream().forEach(v -> data.add(v.getData()));
+        return data;
+    }
+
     /**
      * Performs the Dijkstra's algorithm on the graph to find the shortest path between the start vertex and the end vertex. The vertices have to be connected by at least one path and contained in the same graph.
      * @param v1 Start
