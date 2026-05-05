@@ -1,8 +1,6 @@
 import game.StarSystem;
 import graph.Graph;
 
-import java.util.ArrayList;
-
 public class Main {
     public static void main(String[] args) {
         /*//temporary1 - test to see if the reworked graph still works
