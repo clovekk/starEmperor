@@ -111,21 +111,21 @@ public class Main {
         HashMap<String, Player> p = new HashMap<>();
         p.put("1", new Player("1"));
         ArrayList<Resource> res = new ArrayList<>();
-        res.add(new Resource("metals", 5));
+        res.add(new Resource("Metals", 5));
         p.get("1").addResources(res);
 
         Graph<StarSystem> g1 = new Graph<>("g1");
 
         g1.add("one", new StarSystem("One"));
-        g1.get("one").addResource("metals", 7);
-        g1.get("one").addResource("energy", 4);
+        g1.get("one").addResource("Metals", 7);
+        g1.get("one").addResource("Energy", 4);
         g1.get("one").setOwnerID("1");
         g1.add("two", new StarSystem("Two"));
         g1.add("three", new StarSystem("Three"));
-        g1.get("three").addResource("metals", 9);
+        g1.get("three").addResource("Metals", 9);
         g1.get("three").setOwnerID("1");
         g1.add("four", new StarSystem("Four"));
-        g1.get("four").addResource("energy", 6);
+        g1.get("four").addResource("Energy", 6);
         g1.get("four").setOwnerID("1");
         g1.add("five", new StarSystem("Five"));
 
@@ -148,6 +148,10 @@ public class Main {
         System.out.println(p);
         game.updateWorld();
         System.out.println(p);
+        StarSystem testSystem = g1.get("four");
+        Resource testResource = new Resource("Energy");
+        System.out.println("Amount of " + testResource.getName().toLowerCase() + " in system " + testSystem.getName() + ": " + testSystem.getResourceAmount(testResource.getId()));
+
         //temporary3 - end
     }
 }

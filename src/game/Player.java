@@ -28,12 +28,12 @@ public class Player {
     public void addResources(Collection<Resource> newResources) {
         newResources.stream().forEach(resource -> {
             for (Resource r : resources) {
-                if (r.getResourceID().equals(resource.getResourceID())) {
+                if (r.getId().equals(resource.getId())) {
                     r.addResources(resource);
                 }
             }
-            if (resources.stream().noneMatch(resource1 -> resource1.getResourceID().equals(resource.getResourceID()))) {
-                resources.add(resource);
+            if (resources.stream().noneMatch(resource1 -> resource1.getId().equals(resource.getId()))) {
+                resources.add(new Resource(resource));
             }
         });
     }

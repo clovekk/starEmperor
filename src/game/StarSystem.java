@@ -33,6 +33,10 @@ public class StarSystem {
         this.resources = new ArrayList<>();
     }
 
+    public String getName() {
+        return name;
+    }
+
     public String getOwnerID() {
         return ownerID;
     }
@@ -41,12 +45,21 @@ public class StarSystem {
         return resources;
     }
 
+    public int getResourceAmount(String resourceID) {
+        for (Resource r : this.resources) {
+            if (r.getId().equals(resourceID)) {
+                return r.getAmount();
+            }
+        }
+        return 0;
+    }
+
     public void setOwnerID(String ownerID) {
         this.ownerID = ownerID;
     }
 
-    public void addResource(String resourceID, int amount) {
-        this.resources.add(new Resource(resourceID, amount));
+    public void addResource(String resourceName, int amount) {
+        this.resources.add(new Resource(resourceName, amount));
     }
 
     @Override
