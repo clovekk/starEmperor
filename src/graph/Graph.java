@@ -2,10 +2,7 @@ package graph;
 
 import javax.management.openmbean.KeyAlreadyExistsException;
 import java.security.InvalidParameterException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 public class Graph<E> {
     private String name;
@@ -45,8 +42,12 @@ public class Graph<E> {
         return this.vertices.get(key).getData();
     }
 
-    public ArrayList<E> getAll() {
-        ArrayList<E> data = new ArrayList<>();
+    /**
+     * This method returns a collection of all the vertices data values.
+     * @return a collection containing a data value of every vertex belonging to this graph
+     */
+    public Collection<E> getAll() {
+        Collection<E> data = new ArrayList<>();
         this.vertices.values().stream().forEach(v -> data.add(v.getData()));
         return data;
     }

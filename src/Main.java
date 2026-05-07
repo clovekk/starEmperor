@@ -111,7 +111,7 @@ public class Main {
         HashMap<String, Player> p = new HashMap<>();
         p.put("1", new Player("1"));
         ArrayList<Resource> res = new ArrayList<>();
-        res.add(new Resource("Metals", 5));
+        //res.add(new Resource("Metals", 5));
         p.get("1").addResources(res);
 
         Graph<StarSystem> g1 = new Graph<>("g1");
@@ -151,6 +151,10 @@ public class Main {
         StarSystem testSystem = g1.get("four");
         Resource testResource = new Resource("Energy");
         System.out.println("Amount of " + testResource.getName().toLowerCase() + " in system " + testSystem.getName() + ": " + testSystem.getResourceAmount(testResource.getId()));
+        for (int i = 0; i < 9; i++) {
+            game.updateWorld();
+            System.out.println(p);
+        }
 
         //temporary3 - end
     }
