@@ -116,7 +116,7 @@ public class Main {
         p.put("1", new Player("1"));
         ArrayList<Resource> res = new ArrayList<>();
         //res.add(new Resource("Metals", 5));
-        p.get("1").addResources(res);
+        //p.get("1").addResources(res);
 
         Graph<StarSystem> g1 = new Graph<>("g1");
 
@@ -149,21 +149,21 @@ public class Main {
         System.out.println(g1);
 
         World world = new World(g1, p);
-        Game game = new Game(world, new GraphicsUserInterface(), false);
+        Game game = new Game(world, new GraphicsUserInterface(), false, 10);
         System.out.println(p);
-        game.updateWorld();
+        //game.updateWorld();
         System.out.println(p);
         StarSystem testSystem = g1.get("four");
         Resource testResource = new Resource("Energy");
         System.out.println("Amount of " + testResource.getName().toLowerCase() + " in system " + testSystem.getName() + ": " + testSystem.getResourceAmount(testResource.getId()));
-        for (int i = 0; i < 9; i++) {
+        /*for (int i = 0; i < 9; i++) {
             game.updateWorld();
             System.out.println(p);
-        }
+        }*/
 
         //temporary3 - end
 
-        //temporary4 - thread test
+        /*//temporary4 - thread test
         UserInterface ui = new ConsoleUserInterface();
         AtomicBoolean endFlag = new AtomicBoolean(false);
         ui.startDisplaying(world, endFlag);
@@ -179,11 +179,13 @@ public class Main {
         endFlag.set(true);
         System.out.println("User interface endFlag updated to: " + endFlag.get());
 
-        //UserInterface ui = new ConsoleUserInterface();
-        //ui.startDisplaying(new World(), endFlag);
+        //temporary4 - end*/
+
+        //temporary5 - tick test
+        Game game2 = new Game(world, new ConsoleUserInterface(), false, 10);
+        game2.startGame(new ConsoleUserInterface());
 
 
-
-        //temporary4 - end
+        //temporary5 - end
     }
 }

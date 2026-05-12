@@ -2,13 +2,16 @@ package userinterface;
 
 import game.World;
 
-import java.io.IOException;
 import java.util.Scanner;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ConsoleUserInterface extends Thread implements UserInterface {
+    private static String DEFAULT = "\u001B[0m";
+    private static String REVERSE = "\u001B[7m";
+    private static String BLACK_FG = "\u001B[30m";
+    private static String DARK_RED_FG = "\u001B[31m";
+    private static String BRIGHT_YELLOW_BG = "\u001B[103m";
+
     private World world;
     private AtomicBoolean end;
 
@@ -22,18 +25,24 @@ public class ConsoleUserInterface extends Thread implements UserInterface {
     @Override
     public void run() {
         super.run();
-        System.out.println("IN ORDER FOR THE CONSOLE INTERFACE TO UPDATE YOU HAVE TO EXECUTE ANY COMMAND");
+        System.out.println(BRIGHT_YELLOW_BG + BLACK_FG + "IN ORDER FOR THE CONSOLE INTERFACE TO UPDATE AFTER A FLAG CHANGE YOU HAVE TO EXECUTE ANY COMMAND" + DEFAULT);
         while (!end.get()) {
             Scanner scn = new Scanner(System.in);
-            String input = scn.nextLine();
+            String input = scn.nextLine().toLowerCase();
 
-            if (input.equals("info")) {
-                world.getPlayers().values().stream().forEach(p -> System.out.println(p.getResources()));
-            }
-            try {
-                Thread.sleep(200);
-            } catch (InterruptedException e) {
-                this.interrupt();
+            switch (input) {
+                case "sinfo":
+                    System.out.println("StarSystem info: ");
+                    world.getStarSystems().getAll().stream().forEach(System.out::println);
+                    break;
+
+                case "pinfo":
+                    System.out.println("Player info: ");
+                    world.getPlayers().values().stream().forEach(System.out::println);
+                    break;
+
+                default:
+                    break;
             }
         }
     }
