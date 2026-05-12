@@ -1,9 +1,9 @@
 package userinterface;
 
-import game.World;
+import game.WorldManager;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public interface UserInterface {
-    public void startDisplaying(World world, AtomicBoolean end);
+    public void startDisplaying(WorldManager worldManager, AtomicBoolean end);
 }

@@ -2,7 +2,6 @@ import game.*;
 import graph.Graph;
 import userinterface.ConsoleUserInterface;
 import userinterface.GraphicsUserInterface;
-import userinterface.UserInterface;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -148,8 +147,8 @@ public class Main {
         System.out.println("Length of the shortest path from Vertex " + start + " to Vertex " + end + " is: " + g1.getDistance(start, end));
         System.out.println(g1);
 
-        World world = new World(g1, p);
-        Game game = new Game(world, new GraphicsUserInterface(), false, 10);
+        World world = new World(g1, p, 0);
+        WorldManager worldManager = new WorldManager(world, new GraphicsUserInterface(), false, 10);
         System.out.println(p);
         //game.updateWorld();
         System.out.println(p);
@@ -182,9 +181,10 @@ public class Main {
         //temporary4 - end*/
 
         //temporary5 - tick test
-        Game game2 = new Game(world, new ConsoleUserInterface(), false, 10);
-        game2.startGame(new ConsoleUserInterface());
-
+        WorldManager worldManager2 = new WorldManager(world, new ConsoleUserInterface(), false, 10);
+        Game game = new Game(worldManager2, new ConsoleUserInterface(), false);
+        game.startGame();
+        game.startDisplay(new ConsoleUserInterface());
 
         //temporary5 - end
     }

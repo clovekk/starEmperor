@@ -1,6 +1,7 @@
 package userinterface;
 
 import game.World;
+import game.WorldManager;
 
 import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -12,12 +13,12 @@ public class ConsoleUserInterface extends Thread implements UserInterface {
     private static String DARK_RED_FG = "\u001B[31m";
     private static String BRIGHT_YELLOW_BG = "\u001B[103m";
 
-    private World world;
+    private WorldManager worldManager;
     private AtomicBoolean end;
 
     @Override
-    public void startDisplaying(World world, AtomicBoolean end) {
-        this.world = world;
+    public void startDisplaying(WorldManager worldManager, AtomicBoolean end) {
+        this.worldManager = worldManager;
         this.end = end;
         this.start();
     }
@@ -33,12 +34,18 @@ public class ConsoleUserInterface extends Thread implements UserInterface {
             switch (input) {
                 case "sinfo":
                     System.out.println("StarSystem info: ");
-                    world.getStarSystems().getAll().stream().forEach(System.out::println);
+                    worldManager.getWorld().getStarSystems().getAll().stream().forEach(System.out::println);
                     break;
 
                 case "pinfo":
                     System.out.println("Player info: ");
-                    world.getPlayers().values().stream().forEach(System.out::println);
+                    worldManager.getWorld().getPlayers().values().stream().forEach(System.out::println);
+                    break;
+
+                case "stop":
+                    System.out.println("Stopping on tick " + worldManager.getWorld().getTick());
+                    worldManager.setEnd(true);
+                    this.end.set(true);
                     break;
 
                 default:

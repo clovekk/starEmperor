@@ -1,16 +1,17 @@
 package userinterface;
 
 import game.World;
+import game.WorldManager;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class GraphicsUserInterface extends Thread implements UserInterface {
-    private volatile World world;
+    private volatile WorldManager worldManager;
     private volatile boolean end;
 
     @Override
-    public void startDisplaying(World world, AtomicBoolean end) {
-        this.world = world;
+    public void startDisplaying(WorldManager worldManager, AtomicBoolean end) {
+        this.worldManager = worldManager;
         this.start();
     }
 
@@ -20,7 +21,7 @@ public class GraphicsUserInterface extends Thread implements UserInterface {
         int temp = 0;
         while(!Thread.interrupted()) {
             //System.out.println(world.getStarSystems());
-            world.getPlayers().values().stream().forEach(p -> System.out.println(p.getResources()));
+            worldManager.getWorld().getPlayers().values().stream().forEach(p -> System.out.println(p.getResources()));
 
             try {
                 Thread.sleep(500);
