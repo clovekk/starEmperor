@@ -1,5 +1,7 @@
 package game;
 
+import userinterface.GraphicsUserInterface;
+
 public class Game {
     private World world;
     private GraphicsUserInterface gui;

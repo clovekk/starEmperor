@@ -1,5 +1,6 @@
 import game.*;
 import graph.Graph;
+import userinterface.GraphicsUserInterface;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -157,5 +158,16 @@ public class Main {
         }
 
         //temporary3 - end
+
+        //temporary4 - thread test
+        /*GraphicsUserInterface gui = new GraphicsUserInterface();
+        gui.startDisplaying(new World());
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        gui.endDisplaying();*/
+        //temporary4 - end
     }
 }
