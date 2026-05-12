@@ -1,9 +1,12 @@
 import game.*;
 import graph.Graph;
+import userinterface.ConsoleUserInterface;
 import userinterface.GraphicsUserInterface;
+import userinterface.UserInterface;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Main {
     public static void main(String[] args) {
@@ -145,7 +148,8 @@ public class Main {
         System.out.println("Length of the shortest path from Vertex " + start + " to Vertex " + end + " is: " + g1.getDistance(start, end));
         System.out.println(g1);
 
-        Game game = new Game(new World(g1, p), new GraphicsUserInterface(), false);
+        World world = new World(g1, p);
+        Game game = new Game(world, new GraphicsUserInterface(), false);
         System.out.println(p);
         game.updateWorld();
         System.out.println(p);
@@ -160,14 +164,26 @@ public class Main {
         //temporary3 - end
 
         //temporary4 - thread test
-        /*GraphicsUserInterface gui = new GraphicsUserInterface();
-        gui.startDisplaying(new World());
+        UserInterface ui = new ConsoleUserInterface();
+        AtomicBoolean endFlag = new AtomicBoolean(false);
+        ui.startDisplaying(world, endFlag);
         try {
-            Thread.sleep(2000);
+            for (int i = 0; i < 5; i++) {
+                Thread.sleep(2000);
+                world.update();
+            }
+            Thread.sleep(4000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        gui.endDisplaying();*/
+        endFlag.set(true);
+        System.out.println("User interface endFlag updated to: " + endFlag.get());
+
+        //UserInterface ui = new ConsoleUserInterface();
+        //ui.startDisplaying(new World(), endFlag);
+
+
+
         //temporary4 - end
     }
 }

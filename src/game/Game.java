@@ -19,6 +19,12 @@ public class Game {
         this.end = false;
     }
 
+    public void start() {
+        this.world = new World(); //TODO world loader
+        this.gui = new GraphicsUserInterface();
+
+    }
+
     public void updateWorld() {
         world.update();
         //TODO finish the update method

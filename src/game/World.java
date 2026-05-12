@@ -19,6 +19,13 @@ public class World {
         this.players = new HashMap<>();
     }
 
+    public Graph<StarSystem> getStarSystems() {
+        return starSystems;
+    }
+    public HashMap<String, Player> getPlayers() {
+        return players;
+    }
+
     public void update() {
         starSystems.getAll().stream().forEach(s -> {
             if (s.getOwnerID() != null) {

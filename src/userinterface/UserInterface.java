@@ -2,8 +2,8 @@ package userinterface;
 
 import game.World;
 
-public interface UserInterface {
-    public void startDisplaying(World world);
-    public void endDisplaying();
+import java.util.concurrent.atomic.AtomicBoolean;
 
+public interface UserInterface {
+    public void startDisplaying(World world, AtomicBoolean end);
 }
