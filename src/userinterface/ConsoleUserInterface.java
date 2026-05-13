@@ -46,6 +46,17 @@ public class ConsoleUserInterface extends Thread implements UserInterface {
                     System.out.println("Stopping on tick " + worldManager.getWorld().getTick());
                     worldManager.setEnd(true);
                     this.end.set(true);
+                    System.out.println("User interface endFlag updated to: " + this.end.toString());
+                    break;
+
+                case "pause":
+                    System.out.println("Pausing game on tick: " + worldManager.getWorld().getTick());
+                    worldManager.pauseGame();
+                    break;
+
+                case "unpause":
+                    System.out.println("Unpausing the game on tick: " + worldManager.getWorld().getTick());
+                    worldManager.unpauseGame();
                     break;
 
                 default:

@@ -3,6 +3,7 @@ package game;
 import userinterface.UserInterface;
 
 public class WorldManager extends Thread {
+    private volatile boolean paused;
     private volatile World world;
     private boolean end;
     private int tickrate;
@@ -11,18 +12,21 @@ public class WorldManager extends Thread {
         this.world = world;
         this.end = end;
         this.tickrate = tickrate;
+        this.paused = false;
     }
 
     public WorldManager() {
         this.world = new World();
         this.end = false;
         this.tickrate = 10;
+        this.paused = false;
     }
 
     public void startGame() {
         //this.world = new World(); //TODO world loader
         this.end = false;
         this.tickrate = 10;
+        this.paused = false;
 
         this.start();
 
@@ -64,6 +68,16 @@ public class WorldManager extends Thread {
         while (!end) {
             long startTime = System.nanoTime();
 
+            synchronized (this) {
+                while(paused) {
+                    try {
+                        this.wait();
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }
+
             //start of game loop
 
             world.setTick(world.getTick() + 1);
@@ -79,10 +93,6 @@ public class WorldManager extends Thread {
 
             //end of game loop
 
-            if (totalTicks >= 400) {
-                end = true;
-            }
-
             long totalTime = System.nanoTime() - startTime;
             if (1000 / tickrate - totalTime / 1000000 > 0) {
                 try {
@@ -93,6 +103,15 @@ public class WorldManager extends Thread {
             }
         }
         long avgTicks = totalTicks / ((System.nanoTime() - loopStartTime) / 1000000000);
-        System.out.println("avg ticks: " + avgTicks);
+        System.out.println("avg ticks: " + avgTicks); //this calculation isn't precise, because it does not take into consideration the time when the thread was paused
+    }
+
+    public synchronized void pauseGame() {
+        this.paused = true;
+    }
+
+    public synchronized void unpauseGame() {
+        this.notify();
+        this.paused = false;
     }
 }
