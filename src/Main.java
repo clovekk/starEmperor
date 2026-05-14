@@ -185,7 +185,7 @@ public class Main {
         Game game = new Game(worldManager2, new ConsoleUserInterface(), false);
         game.startGame();
         game.startDisplay(new ConsoleUserInterface());
-        while(game.getWorldManager().getWorld().getTick() < 400) {
+        while(game.getWorldManager().getWorld().getTick() < 100) {
             //should make the program wait until the world has reached the specified amount of ticks
             //the commented out code is a test if pausing the game works
             /*if (game.getWorldManager().getWorld().getTick() == 100) {

@@ -2,6 +2,8 @@ package game;
 
 import userinterface.UserInterface;
 
+import java.util.ArrayList;
+
 public class WorldManager extends Thread {
     private volatile boolean paused;
     private volatile World world;
@@ -24,8 +26,12 @@ public class WorldManager extends Thread {
 
     public void startGame() {
         //this.world = new World(); //TODO world loader
+        if (this.tickrate < 0) {
+            System.out.println("ERROR - INVALID TICKRATE: " + this.tickrate);
+            return;
+        }
         this.end = false;
-        this.tickrate = 10;
+        //this.tickrate = 10;
         this.paused = false;
 
         this.start();
@@ -63,6 +69,7 @@ public class WorldManager extends Thread {
         super.run();
 
         int totalTicks = 0;
+        long totalTickTime = 0;
 
         long loopStartTime = System.nanoTime();
         while (!end) {
@@ -94,6 +101,7 @@ public class WorldManager extends Thread {
             //end of game loop
 
             long totalTime = System.nanoTime() - startTime;
+            totalTickTime += totalTime;
             if (1000 / tickrate - totalTime / 1000000 > 0) {
                 try {
                     Thread.sleep(1000 / tickrate - totalTime / 1000000);
@@ -103,7 +111,8 @@ public class WorldManager extends Thread {
             }
         }
         long avgTicks = totalTicks / ((System.nanoTime() - loopStartTime) / 1000000000);
-        System.out.println("avg ticks: " + avgTicks); //this calculation isn't precise, because it does not take into consideration the time when the thread was paused
+        System.out.println("avg tickrate: " + avgTicks); //this calculation isn't precise, because it does not take into consideration the time when the thread was paused
+        System.out.println("avg tick time: " + totalTickTime / totalTicks + " ns");
     }
 
     public synchronized void pauseGame() {

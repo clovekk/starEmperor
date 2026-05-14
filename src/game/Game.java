@@ -65,6 +65,6 @@ public class Game {
 
     public void stopDisplay() {
         this.displayEnd.set(true);
-        System.out.println("User interface endFlag updated to: " + this.getDisplayEnd().toString());
+        System.out.println("User interface end flag updated to: " + this.getDisplayEnd().toString());
     }
 }
