@@ -2,19 +2,21 @@ package game;
 
 import userinterface.UserInterface;
 
-import java.util.ArrayList;
+import java.time.Duration;
 
 public class WorldManager extends Thread {
     private volatile boolean paused;
     private volatile World world;
     private boolean end;
     private int tickrate;
+    private long targetTickTime;
 
     public WorldManager(World world, UserInterface gui, boolean end, int tickrate) {
         this.world = world;
         this.end = end;
-        this.tickrate = tickrate;
+        this.setTickrate(tickrate);
         this.paused = false;
+        this.targetTickTime = 1000000000 / this.tickrate;
     }
 
     public WorldManager() {
@@ -22,21 +24,15 @@ public class WorldManager extends Thread {
         this.end = false;
         this.tickrate = 10;
         this.paused = false;
+        this.targetTickTime = 1000000000 / this.tickrate;
     }
 
     public void startGame() {
         //this.world = new World(); //TODO world loader
-        if (this.tickrate < 0) {
-            System.out.println("ERROR - INVALID TICKRATE: " + this.tickrate);
-            return;
-        }
         this.end = false;
-        //this.tickrate = 10;
         this.paused = false;
 
         this.start();
-
-
     }
 
     public World getWorld() {
@@ -56,7 +52,13 @@ public class WorldManager extends Thread {
         this.end = end;
     }
     public void setTickrate(int tickrate) {
-        this.tickrate = tickrate;
+        if (tickrate <= 0) {
+            System.out.println("ERROR - INVALID TICKRATE: " + tickrate + "\n TICKRATE SET TO DEFAULT(10)");
+            this.setTickrate(10);
+        } else {
+            this.tickrate = tickrate;
+            this.targetTickTime = 1000000000 / this.tickrate;
+        }
     }
 
     public void updateWorld() {
@@ -68,13 +70,14 @@ public class WorldManager extends Thread {
     public void run() {
         super.run();
 
-        int totalTicks = 0;
-        long totalTickTime = 0;
-
+        long totalTicks = 0;
+        long totalTime = 0;
         long loopStartTime = System.nanoTime();
-        while (!end) {
-            long startTime = System.nanoTime();
 
+        while (!end) {
+            long tickStartTime = System.nanoTime();
+
+            //paused check
             synchronized (this) {
                 while(paused) {
                     try {
@@ -85,34 +88,38 @@ public class WorldManager extends Thread {
                 }
             }
 
-            //start of game loop
+            //start of game loop ---------------------------------------------------------------------------------------
 
             world.setTick(world.getTick() + 1);
             totalTicks += 1;
 
+            //monthly updates
             if (world.getTick() % 300 == 0) {
                 world.updatePlayerResources();
             }
+
+            //daily updates
             if (world.getTick() % 10 == 0) {
                 System.out.println("Day: " + world.getTick() / 10 + " Tick: " + world.getTick());
             }
+
             //TODO complete game loop
 
-            //end of game loop
+            //end of game loop -----------------------------------------------------------------------------------------
 
-            long totalTime = System.nanoTime() - startTime;
-            totalTickTime += totalTime;
-            if (1000 / tickrate - totalTime / 1000000 > 0) {
+            long tickTime = System.nanoTime() - tickStartTime;
+            totalTime += tickTime;
+            if (targetTickTime - tickTime > 0) {
                 try {
-                    Thread.sleep(1000 / tickrate - totalTime / 1000000);
+                    Thread.sleep((targetTickTime - tickTime) / 1000000);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
             }
         }
-        long avgTicks = totalTicks / ((System.nanoTime() - loopStartTime) / 1000000000);
-        System.out.println("avg tickrate: " + avgTicks); //this calculation isn't precise, because it does not take into consideration the time when the thread was paused
-        System.out.println("avg tick time: " + totalTickTime / totalTicks + " ns");
+        long avgTickrate = 1000000000 * totalTicks / (System.nanoTime() - loopStartTime);
+        System.out.println("avg tickrate: " + avgTickrate); //this calculation isn't precise, because it does not take into consideration the time when the thread was paused
+        System.out.println("avg tick time: " + totalTime / totalTicks + " ns");
     }
 
     public synchronized void pauseGame() {
