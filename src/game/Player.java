@@ -6,18 +6,18 @@ import java.util.Collection;
 
 public class Player {
     private String id;
-    private Color color;
+    //private Color color;
     private ArrayList<Resource> resources;
 
     public Player(String id, Color color, ArrayList<Resource> resources) {
         this.id = id;
-        this.color = color;
+        //this.color = color;
         this.resources = resources;
     }
 
     public Player(String id) {
         this.id = id;
-        this.color = new Color(0, 0, 0);
+        //this.color = new Color(0, 0, 0);
         this.resources = new ArrayList<>();
     }
 
@@ -42,7 +42,7 @@ public class Player {
     public String toString() {
         return "Player{" +
                 "id='" + id + '\'' +
-                ", color=" + color +
+                //", color=" + color +
                 ", resources=" + resources +
                 '}';
     }

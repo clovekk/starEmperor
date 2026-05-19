@@ -8,4 +8,5 @@ public class Fleet {
     private String ownerID;
     private ArrayList<Resource> upkeep;
     private int strength;
+    private FleetOrder order;
 }

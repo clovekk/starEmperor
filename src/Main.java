@@ -139,22 +139,30 @@ public class Main {
         g1.connectVertices("e", "two", "four", false, 15);
         g1.connectVertices("f", "one", "three", false, 20);
 
+        WorldLoader wl = new WorldLoader();
+
+        World world = wl.loadWorld();
+        //World world = new World(g1, p, 0);
+
         String start = "one";
         String end = "four";
-        System.out.println("Shortest path from " + start + " to " + end + ": " + g1.getShortestPath(start, end));
-        System.out.println("Shortest edge path from Vertex " + start + " to Vertex " + end + ": " + g1.findShortestEdgePath(start, end));
-        System.out.println("Shortest vertex path from Vertex " + start + " to Vertex " + end + ": " + g1.findShortestVertexPath(start, end));
-        System.out.println("Length of the shortest path from Vertex " + start + " to Vertex " + end + " is: " + g1.getDistance(start, end));
-        System.out.println(g1);
+        System.out.println("Shortest path from " + start + " to " + end + ": " + world.getStarSystems().getShortestPath(start, end));
+        System.out.println("Shortest edge path from Vertex " + start + " to Vertex " + end + ": " + world.getStarSystems().findShortestEdgePath(start, end));
+        System.out.println("Shortest vertex path from Vertex " + start + " to Vertex " + end + ": " + world.getStarSystems().findShortestVertexPath(start, end));
+        System.out.println("Length of the shortest path from Vertex " + start + " to Vertex " + end + " is: " + world.getStarSystems().getDistance(start, end));
+        System.out.println(world.getStarSystems());
 
-        World world = new World(g1, p, 0);
         WorldManager worldManager = new WorldManager(world, new GraphicsUserInterface(), false, 10);
-        System.out.println(p);
+        System.out.println(world.getPlayers().get("1"));
+        world.updatePlayerResources();
         //game.updateWorld();
-        System.out.println(p);
-        StarSystem testSystem = g1.get("four");
+        System.out.println(world.getPlayers().get("1"));
+        StarSystem testSystem = world.getStarSystems().get("four");
         Resource testResource = new Resource("Energy");
         System.out.println("Amount of " + testResource.getName().toLowerCase() + " in system " + testSystem.getName() + ": " + testSystem.getResourceAmount(testResource.getId()));
+
+        wl.saveWorld(world);
+
         /*for (int i = 0; i < 9; i++) {
             game.updateWorld();
             System.out.println(p);
@@ -181,11 +189,11 @@ public class Main {
         //temporary4 - end*/
 
         //temporary5 - tick test
-        WorldManager worldManager2 = new WorldManager(world, new ConsoleUserInterface(), false, 10);
+        /*WorldManager worldManager2 = new WorldManager(world, new ConsoleUserInterface(), false, 10);
         Game game = new Game(worldManager2, new ConsoleUserInterface(), false);
         game.startGame();
         game.startDisplay(new ConsoleUserInterface());
-        while(game.getWorldManager().getWorld().getTick() < 300 && !game.getWorldManager().isEnd()) {
+        while(game.getWorldManager().getWorld().getTick() < 300 && !game.getWorldManager().isEnd()) {*/
             //should make the program wait until the world has reached the specified amount of ticks
             //the commented out code is a test if pausing the game works
             /*if (game.getWorldManager().getWorld().getTick() == 100) {
@@ -204,9 +212,9 @@ public class Main {
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }*/
-        }
-        game.stopGame();
-        game.stopDisplay();
+        //}
+        //game.stopGame();
+        //game.stopDisplay();
 
         //temporary5 - end
     }

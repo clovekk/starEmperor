@@ -22,6 +22,12 @@ public class World {
         this.tick = 0;
     }
 
+    public World(GameData gameData) {
+        this.starSystems = gameData.getStarSystems();
+        this.players = gameData.getPlayers();
+        this.tick = gameData.getTick();
+    }
+
     public Graph<StarSystem> getStarSystems() {
         return starSystems;
     }
