@@ -21,8 +21,18 @@ public class Player {
         this.resources = new ArrayList<>();
     }
 
+    public String getId() {
+        return id;
+    }
     public ArrayList<Resource> getResources() {
         return resources;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+    public void setResources(ArrayList<Resource> resources) {
+        this.resources = resources;
     }
 
     public void addResources(Collection<Resource> newResources) {
@@ -36,6 +46,18 @@ public class Player {
                 resources.add(new Resource(resource));
             }
         });
+    }
+
+    public void addResource(Resource newResource) {
+        ArrayList<Resource> newResources = new ArrayList<>();
+        newResources.add(newResource);
+        this.addResources(newResources);
+    }
+
+    public void subtractResources(Collection<Resource> subtractedResources) {
+        ArrayList<Resource> negativeResources = new ArrayList<>();
+        subtractedResources.stream().forEach(r -> negativeResources.add(new Resource(r.getName(), -r.getAmount())));
+        this.addResources(negativeResources);
     }
 
     @Override

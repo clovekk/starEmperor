@@ -3,6 +3,7 @@ package game;
 import graph.Graph;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 
 public class World {
@@ -38,6 +39,16 @@ public class World {
         return tick;
     }
 
+    public Collection<Fleet> getPlayerFleets(String playerID) {
+        ArrayList<Fleet> fleets = new ArrayList<>();
+        starSystems.getAll().stream().forEach(s -> s.getFleets().stream().forEach(f -> {
+            if (f.getOwnerID().equals(playerID)) {
+                fleets.add(f);
+            }
+        }));
+        return fleets;
+    }
+
     public void setTick(int tick) {
         this.tick = tick;
     }
@@ -48,6 +59,10 @@ public class World {
                 players.get(s.getOwnerID()).addResources(s.getResources());
             }
         });
+    }
+
+    public void updatePlayerFleetUpkeep() {
+        this.players.values().stream().forEach(p -> this.getPlayerFleets(p.getId()).stream().forEach(f -> p.subtractResources(f.getUpkeep())));
     }
     //TODO finish other update methods
 }

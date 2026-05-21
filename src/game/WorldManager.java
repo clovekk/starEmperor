@@ -61,11 +61,6 @@ public class WorldManager extends Thread {
         }
     }
 
-    public void updateWorld() {
-        world.updatePlayerResources();
-        //TODO finish the update method
-    }
-
     @Override
     public void run() {
         super.run();
@@ -96,6 +91,7 @@ public class WorldManager extends Thread {
             //monthly updates
             if (world.getTick() % 300 == 0) {
                 world.updatePlayerResources();
+                world.updatePlayerFleetUpkeep();
             }
 
             //daily updates

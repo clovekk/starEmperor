@@ -8,13 +8,19 @@ public class StarSystem {
     private ArrayList<Planet> planets;
     private String ownerID;
     private ArrayList<Resource> resources;
+    private ArrayList<Fleet> fleets;
+    private int x;
+    private int y;
 
-    public StarSystem(String name, String id, ArrayList<Planet> planets, String ownerID, ArrayList<Resource> resources) {
+    public StarSystem(String name, String id, ArrayList<Planet> planets, String ownerID, ArrayList<Resource> resources, ArrayList<Fleet> fleets, int x, int y) {
         this.name = name;
         this.id = id;
         this.planets = planets;
         this.ownerID = ownerID; //null = no owner
         this.resources = resources;
+        this.fleets = fleets;
+        this.x = x;
+        this.y = y;
     }
 
     public StarSystem(String name, String id) {
@@ -23,26 +29,60 @@ public class StarSystem {
         this.planets = new ArrayList<>();
         this.ownerID = null;
         this.resources = new ArrayList<>();
+        this.fleets = new ArrayList<>();
+        this.x = 0;
+        this.y = 0;
     }
 
     public StarSystem(String name) {
         this.name = name;
-        this.id = name.toLowerCase();
+        this.id = this.name.toLowerCase();
         this.planets = new ArrayList<>();
         this.ownerID = null;
         this.resources = new ArrayList<>();
+        this.fleets = new ArrayList<>();
+        this.x = 0;
+        this.y = 0;
+    }
+
+    public StarSystem() {
+        this.name = "undef";
+        this.id = this.name.toLowerCase();
+        this.planets = new ArrayList<>();
+        this.ownerID = null;
+        this.resources = new ArrayList<>();
+        this.fleets = new ArrayList<>();
+        this.x = 0;
+        this.y = 0;
     }
 
     public String getName() {
         return name;
     }
-
+    public String getId() {
+        return id;
+    }
+    public ArrayList<Planet> getPlanets() {
+        return planets;
+    }
     public String getOwnerID() {
         return ownerID;
     }
-
     public ArrayList<Resource> getResources() {
         return resources;
+    }
+    public ArrayList<Fleet> getFleets() {
+        return fleets;
+    }
+    public int getX() {
+        return x;
+    }
+    public int getY() {
+        return y;
+    }
+
+    public int getResourceAmount(Resource resource) {
+        return getResourceAmount(resource.getId());
     }
 
     public int getResourceAmount(String resourceID) {
@@ -54,12 +94,42 @@ public class StarSystem {
         return 0;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+    public void setId(String id) {
+        this.id = id;
+    }
+    public void setPlanets(ArrayList<Planet> planets) {
+        this.planets = planets;
+    }
     public void setOwnerID(String ownerID) {
         this.ownerID = ownerID;
+    }
+    public void setResources(ArrayList<Resource> resources) {
+        this.resources = resources;
+    }
+    public void setFleets(ArrayList<Fleet> fleets) {
+        this.fleets = fleets;
+    }
+    public void setX(int x) {
+        this.x = x;
+    }
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public void setPosition(int x, int y) {
+        this.setX(x);
+        this.setY(y);
     }
 
     public void addResource(String resourceName, int amount) {
         this.resources.add(new Resource(resourceName, amount));
+    }
+
+    public void addFleet(Fleet fleet) {
+        this.getFleets().add(fleet);
     }
 
     @Override
@@ -70,6 +140,9 @@ public class StarSystem {
                 ", planets=" + planets +
                 ", ownerID='" + ownerID + '\'' +
                 ", resources=" + resources +
+                ", fleetIDs=" + fleets +
+                ", x=" + x +
+                ", y=" + y +
                 '}';
     }
 }

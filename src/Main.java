@@ -117,6 +117,11 @@ public class Main {
         //res.add(new Resource("Metals", 5));
         //p.get("1").addResources(res);
 
+        ArrayList<Resource> testUpk = new ArrayList<>();
+        testUpk.add(new Resource("Energy", 5));
+        testUpk.add(new Resource("Metals", 6));
+        Fleet testFleet = new Fleet("Alpha", "alpha", "1", testUpk, 5, null);
+
         Graph<StarSystem> g1 = new Graph<>("g1");
 
         g1.add("one", new StarSystem("One"));
@@ -141,8 +146,10 @@ public class Main {
 
         WorldLoader wl = new WorldLoader();
 
-        World world = wl.loadWorld();
-        //World world = new World(g1, p, 0);
+        //World world = wl.loadWorld();
+        World world = new World(g1, p, 0);
+
+        world.getStarSystems().get("five").addFleet(testFleet);
 
         String start = "one";
         String end = "four";
@@ -155,6 +162,7 @@ public class Main {
         WorldManager worldManager = new WorldManager(world, new GraphicsUserInterface(), false, 10);
         System.out.println(world.getPlayers().get("1"));
         world.updatePlayerResources();
+        world.updatePlayerFleetUpkeep();
         //game.updateWorld();
         System.out.println(world.getPlayers().get("1"));
         StarSystem testSystem = world.getStarSystems().get("four");
