@@ -1,6 +1,6 @@
 package game;
 
-import userinterface.ConsoleUserInterface;
+import userinterface.console.ConsoleUserInterface;
 import userinterface.UserInterface;
 
 import java.util.concurrent.atomic.AtomicBoolean;

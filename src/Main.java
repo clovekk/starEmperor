@@ -1,11 +1,9 @@
 import game.*;
 import graph.Graph;
-import userinterface.ConsoleUserInterface;
-import userinterface.GraphicsUserInterface;
+import userinterface.graphics.GraphicsUserInterface;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Main {
     public static void main(String[] args) {

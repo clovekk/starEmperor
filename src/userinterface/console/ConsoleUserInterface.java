@@ -1,7 +1,7 @@
-package userinterface;
+package userinterface.console;
 
-import game.World;
 import game.WorldManager;
+import userinterface.UserInterface;
 
 import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicBoolean;
