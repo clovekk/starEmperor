@@ -1,5 +1,6 @@
 import game.*;
 import graph.Graph;
+import launcher.GameLauncher;
 import userinterface.graphics.GraphicsUserInterface;
 
 import java.util.ArrayList;
@@ -223,5 +224,10 @@ public class Main {
         //game.stopDisplay();
 
         //temporary5 - end
+
+        //temporary6 - window testing
+        GameLauncher gl = new GameLauncher();
+        gl.launch();
+        //temporary6 - end
     }
 }
