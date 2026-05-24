@@ -158,7 +158,7 @@ public class Main {
         System.out.println("Length of the shortest path from Vertex " + start + " to Vertex " + end + " is: " + world.getStarSystems().getDistance(start, end));
         System.out.println(world.getStarSystems());
 
-        WorldManager worldManager = new WorldManager(world, new GraphicsUserInterface(), false, 10);
+        WorldManager worldManager = new WorldManager(world, false, 10);
         System.out.println(world.getPlayers().get("1"));
         world.updatePlayerResources();
         world.updatePlayerFleetUpkeep();

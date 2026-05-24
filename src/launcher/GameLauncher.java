@@ -1,10 +1,18 @@
 package launcher;
 
 import com.formdev.flatlaf.FlatLightLaf;
+import game.Game;
+import game.World;
+import game.WorldLoader;
+import game.WorldManager;
+import userinterface.console.ConsoleUserInterface;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Objects;
@@ -23,7 +31,7 @@ public class GameLauncher {
         frame.pack();
 
         frame.setLayout(null);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setBackground(Color.BLUE);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
@@ -35,10 +43,53 @@ public class GameLauncher {
             throw new RuntimeException(e);
         }
 
-        Menu menu = new Menu(menuTheme);
+        ImageIcon menuIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/menu_icon.png")));
+        menuIcon = new ImageIcon(menuIcon.getImage().getScaledInstance(32, 32, Image.SCALE_DEFAULT));
+        frame.setIconImage(menuIcon.getImage());
+
+        //menu setup
+        Menu menu = getMenu(menuTheme, frame);
+
         frame.add(menu);
 
         frame.setVisible(true);
     }
 
+    private static Menu getMenu(Image menuTheme, JFrame frame) {
+        Menu menu = new Menu(menuTheme);
+
+        //New Game button
+        JButton newGameButton = new JButton("New Game");
+        newGameButton.setBackground(Color.GRAY);
+        newGameButton.setForeground(Color.WHITE);
+        newGameButton.setSize(300,75);
+        newGameButton.setLocation(100, 100);
+
+        //Load Game button
+        JButton loadGameButton = new JButton("Load Game");
+        loadGameButton.setBackground(Color.GRAY);
+        loadGameButton.setForeground(Color.WHITE);
+        loadGameButton.setSize(300,75);
+        loadGameButton.setLocation(100, 225);
+
+        loadGameButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                WorldLoader worldLoader = new WorldLoader();
+                World world = worldLoader.loadWorld();
+
+                WorldManager worldManager = new WorldManager(world, false, 10);
+                Game game = new Game(worldManager, new ConsoleUserInterface(), false);
+                game.startGame();
+                game.startDisplay();
+
+                frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+            }
+        });
+
+        //add buttons to menu
+        menu.add(newGameButton);
+        menu.add(loadGameButton);
+        return menu;
+    }
 }

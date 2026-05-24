@@ -51,6 +51,10 @@ public class Game {
         this.ui.startDisplaying(worldManager, displayEnd);
     }
 
+    public void startDisplay() {
+        this.startDisplay(this.ui);
+    }
+
     public synchronized void pauseGame() {
         this.worldManager.pauseGame();
     }

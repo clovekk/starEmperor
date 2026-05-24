@@ -1,5 +1,6 @@
 package userinterface.console;
 
+import game.WorldLoader;
 import game.WorldManager;
 import userinterface.UserInterface;
 
@@ -58,6 +59,11 @@ public class ConsoleUserInterface extends Thread implements UserInterface {
                     System.out.println("Unpausing the game on tick: " + worldManager.getWorld().getTick());
                     worldManager.unpauseGame();
                     break;
+
+                case "save":
+                    System.out.println("Saving world to file on tick: " + worldManager.getWorld().getTick());
+                    WorldLoader wl = new WorldLoader();
+                    wl.saveWorld(worldManager.getWorld());
 
                 default:
                     break;

@@ -11,7 +11,7 @@ public class WorldManager extends Thread {
     private int tickrate;
     private long targetTickTime;
 
-    public WorldManager(World world, UserInterface gui, boolean end, int tickrate) {
+    public WorldManager(World world, boolean end, int tickrate) {
         this.world = world;
         this.end = end;
         this.setTickrate(tickrate);
