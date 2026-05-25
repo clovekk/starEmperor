@@ -110,7 +110,7 @@ public class Main {
         //temporary2 - end*/
 
         //temporary3 - test for a graph with star systems as data
-        HashMap<String, Player> p = new HashMap<>();
+        /*HashMap<String, Player> p = new HashMap<>();
         p.put("1", new Player("1"));
         ArrayList<Resource> res = new ArrayList<>();
         //res.add(new Resource("Metals", 5));
@@ -169,7 +169,7 @@ public class Main {
         System.out.println("Amount of " + testResource.getName().toLowerCase() + " in system " + testSystem.getName() + ": " + testSystem.getResourceAmount(testResource.getId()));
 
         wl.saveWorld(world);
-
+        */
         /*for (int i = 0; i < 9; i++) {
             game.updateWorld();
             System.out.println(p);
