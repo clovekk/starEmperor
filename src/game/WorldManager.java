@@ -65,6 +65,8 @@ public class WorldManager extends Thread {
     public void run() {
         super.run();
 
+        setName("StarEmperor_WorldManager");
+
         long totalTicks = 0;
         long totalTime = 0;
         long loopStartTime = System.nanoTime();

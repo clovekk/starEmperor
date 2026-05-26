@@ -5,7 +5,7 @@ import game.Game;
 import game.World;
 import game.WorldLoader;
 import game.WorldManager;
-import userinterface.console.ConsoleUserInterface;
+import userinterface.graphics.GraphicsUserInterface;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -13,7 +13,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Objects;
 
@@ -48,15 +47,16 @@ public class GameLauncher {
         frame.setIconImage(menuIcon.getImage());
 
         //menu setup
-        Menu menu = getMenu(menuTheme, frame);
+        MenuPanel menuPanel = getMenu(menuTheme, frame);
+        menuPanel.setLocation(0, 0);
 
-        frame.add(menu);
+        frame.add(menuPanel);
 
         frame.setVisible(true);
     }
 
-    private static Menu getMenu(Image menuTheme, JFrame frame) {
-        Menu menu = new Menu(menuTheme);
+    private static MenuPanel getMenu(Image menuTheme, JFrame frame) {
+        MenuPanel menuPanel = new MenuPanel(menuTheme);
 
         //New Game button
         JButton newGameButton = new JButton("New Game");
@@ -79,7 +79,7 @@ public class GameLauncher {
                 World world = worldLoader.loadWorld();
 
                 WorldManager worldManager = new WorldManager(world, false, 10);
-                Game game = new Game(worldManager, new ConsoleUserInterface(), false);
+                Game game = new Game(worldManager, new GraphicsUserInterface(worldManager, 60), false);
                 game.startGame();
                 game.startDisplay();
 
@@ -88,8 +88,8 @@ public class GameLauncher {
         });
 
         //add buttons to menu
-        menu.add(newGameButton);
-        menu.add(loadGameButton);
-        return menu;
+        menuPanel.add(newGameButton);
+        menuPanel.add(loadGameButton);
+        return menuPanel;
     }
 }

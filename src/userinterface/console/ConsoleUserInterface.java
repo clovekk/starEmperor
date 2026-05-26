@@ -14,8 +14,8 @@ public class ConsoleUserInterface extends Thread implements UserInterface {
     private static String DARK_RED_FG = "\u001B[31m";
     private static String BRIGHT_YELLOW_BG = "\u001B[103m";
 
-    private WorldManager worldManager;
-    private AtomicBoolean end;
+    private volatile WorldManager worldManager;
+    private volatile AtomicBoolean end;
 
     @Override
     public void startDisplaying(WorldManager worldManager, AtomicBoolean end) {
@@ -27,6 +27,9 @@ public class ConsoleUserInterface extends Thread implements UserInterface {
     @Override
     public void run() {
         super.run();
+
+        setName("StarEmperor_CUI");
+
         System.out.println(BRIGHT_YELLOW_BG + BLACK_FG + "IN ORDER FOR THE CONSOLE INTERFACE TO UPDATE AFTER A FLAG CHANGE YOU HAVE TO EXECUTE ANY COMMAND" + DEFAULT);
         while (!end.get()) {
             Scanner scn = new Scanner(System.in);
