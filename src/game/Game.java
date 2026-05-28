@@ -18,7 +18,7 @@ public class Game {
 
     public Game() {
         this.worldManager = new WorldManager();
-        this.ui = new ConsoleUserInterface();
+        this.ui = new ConsoleUserInterface(worldManager, new AtomicBoolean(false));
         this.displayEnd = new AtomicBoolean(false);
     }
 
@@ -48,7 +48,7 @@ public class Game {
 
     public void startDisplay(UserInterface ui) {
         this.ui = ui;
-        this.ui.startDisplaying(worldManager, displayEnd);
+        this.ui.startDisplaying();
     }
 
     public void startDisplay() {

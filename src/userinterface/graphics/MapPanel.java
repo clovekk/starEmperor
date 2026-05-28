@@ -92,10 +92,13 @@ public class MapPanel extends JPanel {
         graphics.setColor(Color.WHITE);
         for (StarSystem starSystem : starSystems.getAll()) {
             //graphics.fillOval((50 + starSystem.getX()) * zoomCoefficient - 15 / 2, (50 + starSystem.getY()) * zoomCoefficient - 15 / 2, 15, 15);
-            add(new StarSystemComponent(starSystem, (50 + starSystem.getX()) * zoomCoefficient - 15 / 2, (50 + starSystem.getY()) * zoomCoefficient - 15 / 2));
+            add(new StarSystemComponent(starSystem, (50 + starSystem.getX()) * zoomCoefficient + 45 / 2, (50 + starSystem.getY()) * zoomCoefficient + 45 / 2));
         }
 
         for (Edge<StarSystem> edge : starSystems.getEdges().values()) {
+            StarSystem tail = starSystems.get(edge.getTail());
+            StarSystem head = starSystems.get(edge.getHead());
+            //graphics.drawLine((50 + starSystems.get(edge.getTail()).getX()) * zoomCoefficient, (50 + starSystems.get(edge.getTail()).getY()) * zoomCoefficient, (50 + starSystems.get(edge.getHead()).getX()) * zoomCoefficient, (50 + starSystems.get(edge.getHead()).getY()) * zoomCoefficient);
             graphics.drawLine((50 + starSystems.get(edge.getTail()).getX()) * zoomCoefficient, (50 + starSystems.get(edge.getTail()).getY()) * zoomCoefficient, (50 + starSystems.get(edge.getHead()).getX()) * zoomCoefficient, (50 + starSystems.get(edge.getHead()).getY()) * zoomCoefficient);
         }
     }

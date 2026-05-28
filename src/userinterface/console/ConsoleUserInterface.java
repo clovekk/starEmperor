@@ -17,10 +17,13 @@ public class ConsoleUserInterface extends Thread implements UserInterface {
     private volatile WorldManager worldManager;
     private volatile AtomicBoolean end;
 
-    @Override
-    public void startDisplaying(WorldManager worldManager, AtomicBoolean end) {
+    public ConsoleUserInterface(WorldManager worldManager, AtomicBoolean end) {
         this.worldManager = worldManager;
         this.end = end;
+    }
+
+    @Override
+    public void startDisplaying() {
         this.start();
     }
 

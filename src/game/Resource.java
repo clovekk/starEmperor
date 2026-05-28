@@ -34,7 +34,6 @@ public class Resource implements Comparable<Resource> {
     public String getName() {
         return name;
     }
-
     public String getId() {
         return id;
     }

@@ -1,6 +1,7 @@
 package userinterface.graphics;
 
 import com.formdev.flatlaf.FlatLightLaf;
+import game.Player;
 import game.WorldManager;
 import userinterface.UserInterface;
 
@@ -11,12 +12,14 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class GraphicsUserInterface extends Thread implements UserInterface {
     private volatile WorldManager worldManager;
+    private volatile Player player;
     private volatile AtomicBoolean end;
     private int targetFps;
     private long targetFrameTime;
 
-    public GraphicsUserInterface(WorldManager worldManager, int targetFps) {
+    public GraphicsUserInterface(WorldManager worldManager, Player player, int targetFps) {
         this.worldManager = worldManager;
+        this.player = player;
         this.end = new AtomicBoolean(false);
         this.targetFps = targetFps;
         this.targetFrameTime = 1000000000 / targetFps;
@@ -24,15 +27,14 @@ public class GraphicsUserInterface extends Thread implements UserInterface {
 
     public GraphicsUserInterface() {
         this.worldManager = new WorldManager();
+        this.player = null;
         this.end = new AtomicBoolean(false);
         this.targetFps = 60;
         this.targetFrameTime = 1000000000 / targetFps;
     }
 
     @Override
-    public void startDisplaying(WorldManager worldManager, AtomicBoolean end) {
-        this.worldManager = worldManager;
-        this.end = end;
+    public void startDisplaying() {
         this.start();
     }
 
@@ -63,6 +65,10 @@ public class GraphicsUserInterface extends Thread implements UserInterface {
         MapPanel mapPanel = new MapPanel(worldManager, 3);
         mapPanel.setLocation(0, 0);
 
+        InfoBarPanel infoBarPanel = new InfoBarPanel(worldManager, player);
+        infoBarPanel.setLocation(0, 0);
+
+        frame.add(infoBarPanel);
         frame.add(mapPanel);
 
         frame.setVisible(true);
@@ -72,7 +78,7 @@ public class GraphicsUserInterface extends Thread implements UserInterface {
 
             //start of update loop -------------------------------------------------------------------------------------
 
-
+            infoBarPanel.repaint();
 
             //end of update loop ---------------------------------------------------------------------------------------
 

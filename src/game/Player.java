@@ -6,30 +6,53 @@ import java.util.Collection;
 
 public class Player {
     private String id;
-    //private Color color;
+    private PlayerColor color;
     private ArrayList<Resource> resources;
 
-    public Player(String id, Color color, ArrayList<Resource> resources) {
+    public Player(String id, PlayerColor color, ArrayList<Resource> resources) {
         this.id = id;
-        //this.color = color;
+        this.color = color;
         this.resources = resources;
     }
 
     public Player(String id) {
         this.id = id;
-        //this.color = new Color(0, 0, 0);
+        this.color = new PlayerColor(0, 0, 0);
         this.resources = new ArrayList<>();
     }
 
     public String getId() {
         return id;
     }
+    public PlayerColor getColor() {
+        return color;
+    }
     public ArrayList<Resource> getResources() {
         return resources;
     }
 
+    public int getResourceAmount(String resourceID) {
+        for (Resource r : resources) {
+            if (r.getId().equals(resourceID)) {
+                return r.getAmount();
+            }
+        }
+        return 0;
+    }
+
+    public String getResourceList() {
+        StringBuilder resourceList = new StringBuilder();
+        for (Resource r : resources) {
+            resourceList.append(" ").append(r.getName()).append(": ").append(r.getAmount());
+        }
+        return resourceList.toString();
+    }
+
     public void setId(String id) {
         this.id = id;
+    }
+    public void setColor(PlayerColor color) {
+        this.color = color;
     }
     public void setResources(ArrayList<Resource> resources) {
         this.resources = resources;

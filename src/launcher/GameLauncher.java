@@ -1,10 +1,8 @@
 package launcher;
 
 import com.formdev.flatlaf.FlatLightLaf;
-import game.Game;
-import game.World;
-import game.WorldLoader;
-import game.WorldManager;
+import game.*;
+import userinterface.console.ConsoleUserInterface;
 import userinterface.graphics.GraphicsUserInterface;
 
 import javax.imageio.ImageIO;
@@ -14,7 +12,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class GameLauncher {
     public GameLauncher() {
@@ -72,17 +72,39 @@ public class GameLauncher {
         loadGameButton.setSize(300,75);
         loadGameButton.setLocation(100, 225);
 
+        //Exit Game button
+        JButton exitGameButton = new JButton("Exit Game");
+        exitGameButton.setBackground(Color.GRAY);
+        exitGameButton.setForeground(Color.WHITE);
+        exitGameButton.setSize(300,75);
+        exitGameButton.setLocation(100, 350);
+
         loadGameButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 WorldLoader worldLoader = new WorldLoader();
                 World world = worldLoader.loadWorld();
 
-                WorldManager worldManager = new WorldManager(world, false, 10);
-                Game game = new Game(worldManager, new GraphicsUserInterface(worldManager, 60), false);
+                WorldManager worldManager = new WorldManager(world, false, 100);
+                Game game = new Game(worldManager, new GraphicsUserInterface(worldManager, worldManager.getWorld().getPlayers().get("1"), 100), false);
+                /*Game game = new Game(worldManager, new ConsoleUserInterface(worldManager, new AtomicBoolean(false)), false);
+                ArrayList<Resource> rs = new ArrayList<>();
+                rs.add(new Resource("Metals"));
+                rs.add(new Resource("Energy"));
+                worldManager.getWorld().getPlayers().put("1", new Player("1", new PlayerColor(0, 0, 0), rs));*/
+
                 game.startGame();
                 game.startDisplay();
 
+                worldManager.pauseGame();
+
+                frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+            }
+        });
+
+        exitGameButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
                 frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
             }
         });
@@ -90,6 +112,8 @@ public class GameLauncher {
         //add buttons to menu
         menuPanel.add(newGameButton);
         menuPanel.add(loadGameButton);
+        menuPanel.add(exitGameButton);
+
         return menuPanel;
     }
 }

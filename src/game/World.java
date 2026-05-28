@@ -4,6 +4,7 @@ import graph.Graph;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
 
 public class World {
@@ -63,6 +64,31 @@ public class World {
 
     public void updatePlayerFleetUpkeep() {
         this.players.values().stream().forEach(p -> this.getPlayerFleets(p.getId()).stream().forEach(f -> p.subtractResources(f.getUpkeep())));
+    }
+
+    public String getCurrentDate() {
+        int year = tick / 3600;
+        int month = (tick - year * 3600) / 300;
+        int day = (tick - year * 3600 - month * 300) / 10;
+        year += 2208;
+        month += 1;
+        day += 1;
+
+        StringBuilder date = new StringBuilder();
+
+        if (day < 10) {
+            date.append("0");
+        }
+        date.append(day).append(". ");
+
+        if (month < 10) {
+            date.append("0");
+        }
+        date.append(month).append(". ");
+
+        date.append(year);
+
+        return date.toString();
     }
     //TODO finish other update methods
 }

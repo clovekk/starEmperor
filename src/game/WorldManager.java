@@ -44,6 +44,9 @@ public class WorldManager extends Thread {
     public int getTickrate() {
         return tickrate;
     }
+    public boolean isPaused() {
+        return paused;
+    }
 
     public void setWorld(World world) {
         this.world = world;
@@ -98,7 +101,7 @@ public class WorldManager extends Thread {
 
             //daily updates
             if (world.getTick() % 10 == 0) {
-                System.out.println("Day: " + world.getTick() / 10 + " Tick: " + world.getTick());
+                //System.out.println("Day: " + world.getTick() / 10 + " Tick: " + world.getTick());
             }
 
             //TODO complete game loop
