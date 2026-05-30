@@ -79,6 +79,7 @@ public class GraphicsUserInterface extends Thread implements UserInterface {
             //start of update loop -------------------------------------------------------------------------------------
 
             infoBarPanel.repaint();
+            mapPanel.update();
 
             //end of update loop ---------------------------------------------------------------------------------------
 

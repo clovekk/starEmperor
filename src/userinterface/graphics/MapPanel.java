@@ -16,6 +16,7 @@ import java.util.Collection;
 public class MapPanel extends JPanel {
     private volatile WorldManager worldManager;
     private volatile int zoomCoefficient;
+    private volatile ArrayList<StarSystemComponent> starSystemComponents;
 
     private int relativeMouseX;
     private int relativeMouseY;
@@ -23,6 +24,9 @@ public class MapPanel extends JPanel {
     public MapPanel(WorldManager worldManager, int zoomCoefficient) {
         this.worldManager = worldManager;
         this.zoomCoefficient = zoomCoefficient;
+        this.starSystemComponents = new ArrayList<>();
+
+        createMap();
 
         this.setLayout(null);
         this.setSize(200 * zoomCoefficient, 200 * zoomCoefficient);
@@ -82,19 +86,29 @@ public class MapPanel extends JPanel {
         this.worldManager = worldManager;
     }
 
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        Graphics graphics = g.create();
+    public void update() {
+        for (Component c : this.getComponents()) {
+            if (c.getClass().equals(StarSystemComponent.class)) {
+                ((StarSystemComponent) c).update();
+            }
+        }
+        starSystemComponents.stream().forEach(Component::repaint);
+    }
 
-        Graph<StarSystem> starSystems = worldManager.getWorld().getStarSystems();
+    public void createMap() {
+        for (StarSystem starSystem : worldManager.getWorld().getStarSystems().getAll()) {
+            StarSystemComponent starSystemComponent = new StarSystemComponent(starSystem, worldManager, (50 + starSystem.getX()) * zoomCoefficient + 100 / 2, (50 + starSystem.getY()) * zoomCoefficient + 100 / 2);
+            this.starSystemComponents.add(starSystemComponent);
+            add(starSystemComponent);
+        }
+    }
+
+    public void paintConnections(Graphics g) {
+        Graphics2D graphics = (Graphics2D) g.create();
 
         graphics.setColor(Color.WHITE);
-        for (StarSystem starSystem : starSystems.getAll()) {
-            //graphics.fillOval((50 + starSystem.getX()) * zoomCoefficient - 15 / 2, (50 + starSystem.getY()) * zoomCoefficient - 15 / 2, 15, 15);
-            add(new StarSystemComponent(starSystem, (50 + starSystem.getX()) * zoomCoefficient + 45 / 2, (50 + starSystem.getY()) * zoomCoefficient + 45 / 2));
-        }
 
+        Graph<StarSystem> starSystems = worldManager.getWorld().getStarSystems();
         for (Edge<StarSystem> edge : starSystems.getEdges().values()) {
             StarSystem tail = starSystems.get(edge.getTail());
             StarSystem head = starSystems.get(edge.getHead());
@@ -102,4 +116,19 @@ public class MapPanel extends JPanel {
             graphics.drawLine((50 + starSystems.get(edge.getTail()).getX()) * zoomCoefficient, (50 + starSystems.get(edge.getTail()).getY()) * zoomCoefficient, (50 + starSystems.get(edge.getHead()).getX()) * zoomCoefficient, (50 + starSystems.get(edge.getHead()).getY()) * zoomCoefficient);
         }
     }
+
+    @Override
+    protected void paintChildren(Graphics g) {
+        super.paintChildren(g);
+        paintConnections(g);
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics graphics = g.create();
+
+    }
+
+
 }

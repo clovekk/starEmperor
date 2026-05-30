@@ -96,6 +96,22 @@ public class GameLauncher {
                 game.startGame();
                 game.startDisplay();
 
+                //test of gui with fleet movement
+                /*Thread t = new Thread() {
+                    @Override
+                    public void run() {
+                        super.run();
+                        try {
+                            Thread.sleep(5000);
+                        } catch (InterruptedException ex) {
+                            throw new RuntimeException(ex);
+                        }
+                        worldManager.getWorld().getStarSystems().get("one").getFleets().add(worldManager.getWorld().getStarSystems().get("five").getFleets().get(0));
+                        worldManager.getWorld().getStarSystems().get("five").getFleets().remove(worldManager.getWorld().getStarSystems().get("five").getFleets().get(0));
+                    }
+                };
+                t.start();*/
+
                 worldManager.pauseGame();
 
                 frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));

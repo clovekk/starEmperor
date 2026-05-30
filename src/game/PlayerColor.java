@@ -55,7 +55,7 @@ public class PlayerColor {
         this.alpha = alpha;
     }
 
-    public Color getColor() {
+    public Color toColor() {
         return new Color(this.red, this.green, this.blue, this.alpha);
     }
 
