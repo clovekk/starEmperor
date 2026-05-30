@@ -31,11 +31,13 @@ public class FleetComponent extends JComponent {
                     }
                     //getParent().getParent().repaint();
                 }
-                //TODO add fleet movement
             }
         });
     }
 
+    public static Fleet getSelectedFleet() {
+        return selectedFleet;
+    }
     public Fleet getFleet() {
         return fleet;
     }
@@ -50,10 +52,13 @@ public class FleetComponent extends JComponent {
         Graphics2D graphics = (Graphics2D) g.create();
 
         Polygon fleetSign = new Polygon(new int[]{0, 15, 30}, new int[]{35, 0, 35}, 3);
+        Polygon fleetSelectedSign = new Polygon(new int[]{-5, 15, 35}, new int[]{38, -5, 38}, 3);
 
-        graphics.setColor(new Color(41, 154, 15));
+        graphics.setColor(new Color(33, 124, 12));
         if (selectedFleet == fleet) {
-            graphics.setColor(new Color(73, 223, 39));
+            graphics.setColor(new Color(192, 198, 8));
+            graphics.fillPolygon(fleetSelectedSign);
+            graphics.setColor(new Color(76, 255, 35));
         }
         graphics.fillPolygon(fleetSign);
     }

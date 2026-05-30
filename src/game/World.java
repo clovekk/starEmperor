@@ -4,7 +4,6 @@ import graph.Graph;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
 import java.util.HashMap;
 
 public class World {
@@ -64,6 +63,60 @@ public class World {
 
     public void updatePlayerFleetUpkeep() {
         this.players.values().stream().forEach(p -> this.getPlayerFleets(p.getId()).stream().forEach(f -> p.subtractResources(f.getUpkeep())));
+    }
+
+    public StarSystem getSystemContainingFleet(Fleet fleet) {
+        for (StarSystem starSystem : this.getStarSystems().getAll()) {
+            if (starSystem.getFleets().contains(fleet)) {
+                return starSystem;
+            }
+        }
+        return null;
+    }
+
+    public void moveFleetToSystem(Fleet fleet, StarSystem starSystem) {
+        if (this.getSystemContainingFleet(fleet).getId().equals(starSystem.getId())) {
+            return;
+        }
+        ArrayList<StarSystem> pathSystems = this.getStarSystems().getShortestPath(this.getSystemContainingFleet(fleet).getId(), starSystem.getId());
+        pathSystems.removeFirst();
+        ArrayList<String> pathSystemsID = new ArrayList<>();
+        for (StarSystem system : pathSystems) {
+            pathSystemsID.add(system.getId());
+        }
+
+        fleet.setOrder(new FleetMoveOrder(fleet.getId(), 10 * this.getStarSystems().getDistance(this.getSystemContainingFleet(fleet).getId(), pathSystemsID.get(0)), pathSystemsID));
+    }
+
+    public void updateFleetMovement() {
+        for (StarSystem starSystem : this.getStarSystems().getAll()) {
+            if (!starSystem.getFleets().isEmpty()) {
+                ArrayList<Fleet> fleets = new ArrayList<>(starSystem.getFleets());
+                for (Fleet fleet : fleets) {
+                    if (fleet.getOrder() != null) {
+                        if (fleet.getOrder().getClass().equals(FleetMoveOrder.class)) {
+                            FleetMoveOrder fleetMoveOrder = (FleetMoveOrder) fleet.getOrder();
+                            fleetMoveOrder.setTicksLeftToNext(fleetMoveOrder.getTicksLeftToNext() - 1);
+
+                            if (fleetMoveOrder.getTicksLeftToNext() <= 0) {
+
+                                this.getSystemContainingFleet(fleet).getFleets().remove(fleet);
+                                this.getStarSystems().get(fleetMoveOrder.getPathSystemsID().getFirst()).addFleet(fleet);
+
+                                fleetMoveOrder.getPathSystemsID().removeFirst();
+                                if (!fleetMoveOrder.getPathSystemsID().isEmpty()) {
+                                    fleetMoveOrder.setTicksLeftToNext(10 * this.getStarSystems().getDistance(this.getSystemContainingFleet(fleet).getId(), fleetMoveOrder.getPathSystemsID().getFirst()));
+                                } else {
+                                    fleet.setOrder(null);
+                                }
+
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
     }
 
     public String getCurrentDate() {

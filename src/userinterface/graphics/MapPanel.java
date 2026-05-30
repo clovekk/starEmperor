@@ -1,5 +1,6 @@
 package userinterface.graphics;
 
+import game.Player;
 import game.StarSystem;
 import game.WorldManager;
 import graph.Edge;
@@ -15,14 +16,16 @@ import java.util.Collection;
 
 public class MapPanel extends JPanel {
     private volatile WorldManager worldManager;
+    private volatile Player player;
     private volatile int zoomCoefficient;
     private volatile ArrayList<StarSystemComponent> starSystemComponents;
 
     private int relativeMouseX;
     private int relativeMouseY;
 
-    public MapPanel(WorldManager worldManager, int zoomCoefficient) {
+    public MapPanel(WorldManager worldManager, Player player, int zoomCoefficient) {
         this.worldManager = worldManager;
+        this.player = player;
         this.zoomCoefficient = zoomCoefficient;
         this.starSystemComponents = new ArrayList<>();
 
@@ -92,12 +95,11 @@ public class MapPanel extends JPanel {
                 ((StarSystemComponent) c).update();
             }
         }
-        starSystemComponents.stream().forEach(Component::repaint);
     }
 
     public void createMap() {
         for (StarSystem starSystem : worldManager.getWorld().getStarSystems().getAll()) {
-            StarSystemComponent starSystemComponent = new StarSystemComponent(starSystem, worldManager, (50 + starSystem.getX()) * zoomCoefficient + 100 / 2, (50 + starSystem.getY()) * zoomCoefficient + 100 / 2);
+            StarSystemComponent starSystemComponent = new StarSystemComponent(starSystem, worldManager, this.player, (50 + starSystem.getX()) * zoomCoefficient + 100 / 2, (50 + starSystem.getY()) * zoomCoefficient + 100 / 2);
             this.starSystemComponents.add(starSystemComponent);
             add(starSystemComponent);
         }
@@ -128,6 +130,7 @@ public class MapPanel extends JPanel {
         super.paintComponent(g);
         Graphics graphics = g.create();
 
+        update();
     }
 
 

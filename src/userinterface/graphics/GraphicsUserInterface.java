@@ -62,14 +62,25 @@ public class GraphicsUserInterface extends Thread implements UserInterface {
         menuIcon = new ImageIcon(menuIcon.getImage().getScaledInstance(32, 32, Image.SCALE_DEFAULT));
         frame.setIconImage(menuIcon.getImage());
 
-        MapPanel mapPanel = new MapPanel(worldManager, 3);
+        JLayeredPane layeredPane = new JLayeredPane();
+        layeredPane.setLayout(null);
+        layeredPane.setSize(frame.getContentPane().getSize());
+        layeredPane.setBackground(new Color(5, 2, 38));
+        layeredPane.setLocation(0, 0);
+
+        frame.add(layeredPane);
+
+        MapPanel mapPanel = new MapPanel(worldManager, this.player, 3);
         mapPanel.setLocation(0, 0);
 
         InfoBarPanel infoBarPanel = new InfoBarPanel(worldManager, player);
         infoBarPanel.setLocation(0, 0);
 
-        frame.add(infoBarPanel);
-        frame.add(mapPanel);
+        //frame.add(infoBarPanel);
+        //frame.add(mapPanel);
+
+        layeredPane.add(infoBarPanel, 0);
+        layeredPane.add(mapPanel, 1);
 
         frame.setVisible(true);
 
@@ -78,8 +89,10 @@ public class GraphicsUserInterface extends Thread implements UserInterface {
 
             //start of update loop -------------------------------------------------------------------------------------
 
-            infoBarPanel.repaint();
-            mapPanel.update();
+            //mapPanel.update();
+            //infoBarPanel.repaint();
+
+            layeredPane.repaint();
 
             //end of update loop ---------------------------------------------------------------------------------------
 

@@ -1,5 +1,6 @@
 package userinterface.graphics;
 
+import game.Player;
 import game.StarSystem;
 import game.WorldManager;
 
@@ -7,16 +8,20 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowEvent;
 
 public class StarSystemComponent extends JComponent {
     private volatile StarSystem starSystem;
     private static volatile StarSystem selectedSystem = null;
     private volatile FleetComponent fleetComponent;
     private volatile WorldManager worldManager;
+    private volatile Player player;
+    private static volatile StarSystemFrame starSystemFrame;
 
-    public StarSystemComponent(StarSystem starSystem, WorldManager worldManager, int x, int y) {
+    public StarSystemComponent(StarSystem starSystem, WorldManager worldManager, Player player, int x, int y) {
         this.starSystem = starSystem;
         this.worldManager = worldManager;
+        this.player = player;
 
         this.setLayout(null);
         this.setSize(100, 100);
@@ -34,9 +39,20 @@ public class StarSystemComponent extends JComponent {
                     //current selected system is already this system
                     if (selectedSystem == getStarSystem()) {
                         selectedSystem = null;
+
+                        starSystemFrame.dispatchEvent(new WindowEvent(starSystemFrame, WindowEvent.WINDOW_CLOSING));
+                        starSystemFrame = null;
                     //current selected system is different that this one
                     } else {
+                        if (selectedSystem != null) {
+                            starSystemFrame.dispatchEvent(new WindowEvent(starSystemFrame, WindowEvent.WINDOW_CLOSING));
+                            starSystemFrame = null;
+                        }
+
                         selectedSystem = getStarSystem();
+
+                        starSystemFrame = new StarSystemFrame(selectedSystem.getName(), new StarSystemPanel(worldManager, selectedSystem, player));
+                        starSystemFrame.setVisible(true);
                     }
                     //getParent().repaint();
 
@@ -62,8 +78,8 @@ public class StarSystemComponent extends JComponent {
 
     public void update() {
         if (!starSystem.getFleets().isEmpty()) {
-            if (this.fleetComponent.getFleet() != starSystem.getFleets().get(0)) {
-                this.fleetComponent.setFleet(starSystem.getFleets().get(0));
+            if (this.fleetComponent.getFleet() != starSystem.getFleets().getFirst()) {
+                this.fleetComponent.setFleet(starSystem.getFleets().getFirst());
             }
             this.fleetComponent.setVisible(true);
         } else {
@@ -72,6 +88,10 @@ public class StarSystemComponent extends JComponent {
             }
             this.fleetComponent.setVisible(false);
         }
+        if (starSystemFrame != null) {
+            starSystemFrame.update();
+        }
+
     }
 
     @Override

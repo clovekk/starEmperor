@@ -89,6 +89,7 @@ public class WorldManager extends Thread {
             }
 
             //start of game loop ---------------------------------------------------------------------------------------
+            world.updateFleetMovement();
 
             world.setTick(world.getTick() + 1);
             totalTicks += 1;
@@ -103,6 +104,8 @@ public class WorldManager extends Thread {
             if (world.getTick() % 10 == 0) {
                 //System.out.println("Day: " + world.getTick() / 10 + " Tick: " + world.getTick());
             }
+
+
 
             //TODO complete game loop
 

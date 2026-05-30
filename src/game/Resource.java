@@ -1,6 +1,7 @@
 package game;
 
 import java.security.InvalidParameterException;
+import java.util.Collection;
 
 public class Resource implements Comparable<Resource> {
     private String name;
@@ -54,6 +55,23 @@ public class Resource implements Comparable<Resource> {
         } else {
             throw new InvalidParameterException("You can not add resources that do not match each others type");
         }
+    }
+
+    public static String toPrettyString(Collection<Resource> resources) {
+        StringBuilder resourceList = new StringBuilder();
+        for (Resource resource : resources) {
+            resourceList.append(resource.getName()).append(": ").append(resource.getAmount()).append(" ");
+        }
+        return resourceList.toString();
+    }
+
+    public static String toPrettyHTMLString(Collection<Resource> resources) {
+        StringBuilder resourceList = new StringBuilder("<html>");
+        for (Resource resource : resources) {
+            resourceList.append(resource.getName()).append(": ").append(resource.getAmount()).append("<br/>");
+        }
+        resourceList.append("<html>");
+        return resourceList.toString();
     }
 
     @Override
