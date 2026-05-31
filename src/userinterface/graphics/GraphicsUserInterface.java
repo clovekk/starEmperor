@@ -7,6 +7,7 @@ import userinterface.UserInterface;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowEvent;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -73,7 +74,7 @@ public class GraphicsUserInterface extends Thread implements UserInterface {
         MapPanel mapPanel = new MapPanel(worldManager, this.player, 3);
         mapPanel.setLocation(0, 0);
 
-        InfoBarPanel infoBarPanel = new InfoBarPanel(worldManager, player);
+        InfoBarPanel infoBarPanel = new InfoBarPanel(end, worldManager, player);
         infoBarPanel.setLocation(0, 0);
 
         //frame.add(infoBarPanel);
@@ -89,8 +90,8 @@ public class GraphicsUserInterface extends Thread implements UserInterface {
 
             //start of update loop -------------------------------------------------------------------------------------
 
-            //mapPanel.update();
-            //infoBarPanel.repaint();
+            mapPanel.update();
+            infoBarPanel.update();
 
             layeredPane.repaint();
 
@@ -105,5 +106,7 @@ public class GraphicsUserInterface extends Thread implements UserInterface {
                 }
             }
         }
+
+        frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
     }
 }

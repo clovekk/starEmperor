@@ -57,6 +57,10 @@ public class Resource implements Comparable<Resource> {
         }
     }
 
+    public String toPrettyString() {
+        return this.getName() + ": " + this.getAmount();
+    }
+
     public static String toPrettyString(Collection<Resource> resources) {
         StringBuilder resourceList = new StringBuilder();
         for (Resource resource : resources) {

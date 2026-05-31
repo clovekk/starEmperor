@@ -2,7 +2,9 @@ import game.*;
 import graph.Graph;
 import launcher.GameLauncher;
 import userinterface.graphics.GraphicsUserInterface;
+import userinterface.graphics.ResourcePanel;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 

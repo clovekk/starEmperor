@@ -87,7 +87,7 @@ public class StarSystem {
 
     public int getResourceAmount(String resourceID) {
         for (Resource r : this.resources) {
-            if (r.getId().equals(resourceID)) {
+            if (resourceID.equals(r.getId())) {
                 return r.getAmount();
             }
         }

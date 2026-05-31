@@ -1,6 +1,7 @@
 package game;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Fleet {
     private String name;
@@ -8,15 +9,26 @@ public class Fleet {
     private String ownerID;
     private ArrayList<Resource> upkeep;
     private int strength;
-    private FleetOrder order;
+    private FleetMoveOrder order;
 
-    public Fleet(String name, String id, String ownerID, ArrayList<Resource> upkeep, int strength, FleetOrder order) {
+    public Fleet(String name, String id, String ownerID, ArrayList<Resource> upkeep, int strength, FleetMoveOrder order) {
         this.name = name;
         this.id = id;
         this.ownerID = ownerID;
         this.upkeep = upkeep;
         this.strength = strength;
         this.order = order;
+    }
+
+    public Fleet(String name, String ownerID) {
+        ArrayList<Resource> upkeep = new ArrayList<>(Arrays.asList(new Resource("Metals", 2), new Resource("Energy", 3)));
+
+        this.name = name;
+        this.id = this.name.toLowerCase();
+        this.ownerID = ownerID;
+        this.upkeep = upkeep;
+        this.strength = 5;
+        this.order = null;
     }
 
     public Fleet() {
@@ -62,8 +74,21 @@ public class Fleet {
     public void setStrength(int strength) {
         this.strength = strength;
     }
-    public void setOrder(FleetOrder order) {
+    public void setOrder(FleetMoveOrder order) {
         this.order = order;
+    }
+
+    public int getUpkeepAmount(String resourceID) {
+        for (Resource resource : this.upkeep) {
+            if (resourceID.equals(resource.getId())) {
+                return resource.getAmount();
+            }
+        }
+        return 0;
+    }
+
+    public int getUpkeepAmount(Resource resource) {
+        return getUpkeepAmount(resource.getId());
     }
 
     @Override

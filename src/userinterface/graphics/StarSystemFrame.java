@@ -19,7 +19,6 @@ public class StarSystemFrame extends JFrame {
         this.pack();
 
         this.add(starSystemPanel);
-
     }
 
     public void update() {

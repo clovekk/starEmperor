@@ -12,22 +12,28 @@ import java.nio.file.Path;
 import java.util.HashMap;
 
 public class GameData {
+    private String gameVersion;
     private Graph<StarSystem> starSystems;
     private HashMap<String, Player> players;
     private int tick;
 
     public GameData() {
+        this.gameVersion = "1.0.0";
         this.starSystems = new Graph<>();
         this.players = new HashMap<>();
         this.tick = 0;
     }
 
     public GameData(World world) {
+        this.gameVersion = world.getGameVersion();
         this.starSystems = world.getStarSystems();
         this.players = world.getPlayers();
         this.tick = world.getTick();
     }
 
+    public String getGameVersion() {
+        return gameVersion;
+    }
     public Graph<StarSystem> getStarSystems() {
         return starSystems;
     }
@@ -38,6 +44,9 @@ public class GameData {
         return tick;
     }
 
+    public void setGameVersion(String gameVersion) {
+        this.gameVersion = gameVersion;
+    }
     public void setStarSystems(Graph<StarSystem> starSystems) {
         this.starSystems = starSystems;
     }

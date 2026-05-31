@@ -7,28 +7,35 @@ import java.util.Collection;
 import java.util.HashMap;
 
 public class World {
+    private String gameVersion;
     private Graph<StarSystem> starSystems;
     private HashMap<String, Player> players;
     private int tick;
 
-    public World(Graph<StarSystem> starSystems, HashMap<String, Player> players, int tick) {
+    public World(String gameVersion, Graph<StarSystem> starSystems, HashMap<String, Player> players, int tick) {
+        this.gameVersion = gameVersion;
         this.starSystems = starSystems;
         this.players = players;
         this.tick = tick;
     }
 
     public World() {
+        this.gameVersion = "1.0.0";
         this.starSystems = new Graph<>();
         this.players = new HashMap<>();
         this.tick = 0;
     }
 
     public World(GameData gameData) {
+        this.gameVersion = gameData.getGameVersion();
         this.starSystems = gameData.getStarSystems();
         this.players = gameData.getPlayers();
         this.tick = gameData.getTick();
     }
 
+    public String getGameVersion() {
+        return gameVersion;
+    }
     public Graph<StarSystem> getStarSystems() {
         return starSystems;
     }
@@ -143,5 +150,30 @@ public class World {
 
         return date.toString();
     }
-    //TODO finish other update methods
+
+    public ArrayList<StarSystem> getSystemsOwnedBy(Player player) {
+        ArrayList<StarSystem> playerOwnedStarSystems = new ArrayList<>();
+
+        this.starSystems.getAll().stream().forEach(starSystem -> {
+            if (player.getId().equals(starSystem.getOwnerID())) {
+                playerOwnedStarSystems.add(starSystem);
+            }
+        });
+
+        return playerOwnedStarSystems;
+    }
+
+    public ArrayList<Fleet> getFleetsOwnedBy(Player player) {
+        ArrayList<Fleet> playerOwnedFleets = new ArrayList<>();
+
+        this.starSystems.getAll().stream().forEach(starSystem -> {
+            starSystem.getFleets().stream().forEach(fleet -> {
+                if (player.getId().equals(fleet.getOwnerID())) {
+                    playerOwnedFleets.add(fleet);
+                }
+            });
+        });
+
+        return playerOwnedFleets;
+    }
 }

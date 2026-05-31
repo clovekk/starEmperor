@@ -44,6 +44,11 @@ public class FleetComponent extends JComponent {
 
     public void setFleet(Fleet fleet) {
         this.fleet = fleet;
+        if (fleet != null) {
+            this.setToolTipText(fleet.getName());
+        } else {
+            this.setToolTipText(null);
+        }
     }
 
     @Override

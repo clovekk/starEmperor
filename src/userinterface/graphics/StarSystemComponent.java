@@ -26,6 +26,7 @@ public class StarSystemComponent extends JComponent {
         this.setLayout(null);
         this.setSize(100, 100);
         this.setLocation(x - getWidth(), y - getHeight());
+        this.setToolTipText(starSystem.getName());
 
         this.fleetComponent = new FleetComponent(null, getWidth() / 2 + 10, getHeight() / 2 + 10);
 

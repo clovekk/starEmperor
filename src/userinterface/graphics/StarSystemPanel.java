@@ -10,6 +10,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class StarSystemPanel extends JPanel {
     private volatile StarSystem starSystem;
@@ -37,13 +38,14 @@ public class StarSystemPanel extends JPanel {
         travelButton.setSize(200,50);
         travelButton.setLocation(0, 0);
         travelButton.setEnabled(false);
+        travelButton.setToolTipText("You need to select a fleet to send to this system.");
 
         claimSystemButton.setBackground(Color.GRAY);
         claimSystemButton.setForeground(Color.WHITE);
         claimSystemButton.setSize(200, 50);
         claimSystemButton.setLocation(0, 50);
         claimSystemButton.setEnabled(false);
-        claimSystemButton.setToolTipText("You need 10 metals and 5 energy in-oder to take control over this system.");
+        claimSystemButton.setToolTipText("You need a fleet in this system and 10 metals and 5 energy in your stockpile in-oder to take control over this system.");
 
         resourcesLabel.setForeground(Color.WHITE);
         resourcesLabel.setSize(200, 50);
@@ -61,9 +63,7 @@ public class StarSystemPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (player.getResourceAmount("metals") >= 10 && player.getResourceAmount("energy") >= 5) {
-                    ArrayList<Resource> cost = new ArrayList<>();
-                    cost.add(new Resource("metals", 10));
-                    cost.add(new Resource("energy", 5));
+                    ArrayList<Resource> cost = new ArrayList<>(Arrays.asList(new Resource("metals", 10), new Resource("energy", 5)));
 
                     starSystem.setOwnerID(player.getId());
                     player.subtractResources(cost);
@@ -82,7 +82,7 @@ public class StarSystemPanel extends JPanel {
         } else {
             travelButton.setEnabled(false);
         }
-        if (!starSystem.getFleets().isEmpty() && !player.getId().equals(starSystem.getOwnerID())) {
+        if (!starSystem.getFleets().isEmpty() && !player.getId().equals(starSystem.getOwnerID()) && player.getResourceAmount("metals") >= 10 && player.getResourceAmount("energy") >= 5) {
             claimSystemButton.setEnabled(true);
         } else {
             claimSystemButton.setEnabled(false);
