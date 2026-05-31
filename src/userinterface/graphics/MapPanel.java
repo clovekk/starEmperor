@@ -32,7 +32,7 @@ public class MapPanel extends JPanel {
         createMap();
 
         this.setLayout(null);
-        this.setSize(200 * zoomCoefficient, 200 * zoomCoefficient);
+        this.setSize(2000 * zoomCoefficient, 2000 * zoomCoefficient);
         this.setBackground(new Color(5, 2, 38));
 
         //map movement mouse( motion) listeners

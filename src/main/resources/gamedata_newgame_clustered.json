@@ -1,0 +1,3203 @@
+{
+  "starSystems": {
+    "name": "g1",
+    "vertices": {
+  "sol": {
+    "label": "sol",
+    "edges": [
+      "e1",
+      "e5",
+      "e19",
+      "e91"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Sol",
+      "id": "sol",
+      "planets": [],
+      "ownerID": "1",
+      "resources": [
+        {
+          "name": "Energy",
+          "id": "energy",
+          "amount": 8
+        },
+		{
+          "name": "Metals",
+          "id": "metals",
+          "amount": 6
+        }
+      ],
+      "fleets": [
+		{
+              "name": "Alpha",
+              "id": "alpha",
+              "ownerID": "1",
+              "upkeep": [
+                {
+                  "name": "Energy",
+                  "id": "energy",
+                  "amount": 4
+                },
+                {
+                  "name": "Metals",
+                  "id": "metals",
+                  "amount": 2
+                }
+              ],
+              "strength": 5
+            }
+	  ],
+      "x": 290,
+      "y": 570
+    }
+  },
+  "sirius": {
+    "label": "sirius",
+    "edges": [
+      "e1",
+      "e2",
+      "e4",
+      "e8",
+      "e20",
+      "e63",
+      "e64"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Sirius",
+      "id": "sirius",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Metals",
+          "id": "metals",
+          "amount": 3
+        }
+      ],
+      "fleets": [],
+      "x": 570,
+      "y": 470
+    }
+  },
+  "vega": {
+    "label": "vega",
+    "edges": [
+      "e2",
+      "e3",
+      "e9"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Vega",
+      "id": "vega",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Energy",
+          "id": "energy",
+          "amount": 8
+        }
+      ],
+      "fleets": [],
+      "x": 730,
+      "y": 340
+    }
+  },
+  "altair": {
+    "label": "altair",
+    "edges": [
+      "e3",
+      "e10",
+      "e13",
+      "e62"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Altair",
+      "id": "altair",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Energy",
+          "id": "energy",
+          "amount": 1
+        },
+        {
+          "name": "Metals",
+          "id": "metals",
+          "amount": 6
+        }
+      ],
+      "fleets": [],
+      "x": 1060,
+      "y": 430
+    }
+  },
+  "rigel": {
+    "label": "rigel",
+    "edges": [
+      "e4",
+      "e6",
+      "e7",
+      "e15",
+      "e76",
+      "e95"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Rigel",
+      "id": "rigel",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Metals",
+          "id": "metals",
+          "amount": 7
+        }
+      ],
+      "fleets": [],
+      "x": 680,
+      "y": 960
+    }
+  },
+  "deneb": {
+    "label": "deneb",
+    "edges": [
+      "e5",
+      "e14",
+      "e89"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Deneb",
+      "id": "deneb",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Energy",
+          "id": "energy",
+          "amount": 1
+        }
+      ],
+      "fleets": [],
+      "x": 50,
+      "y": 1180
+    }
+  },
+  "arcturus": {
+    "label": "arcturus",
+    "edges": [
+      "e6"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Arcturus",
+      "id": "arcturus",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Energy",
+          "id": "energy",
+          "amount": 5
+        },
+        {
+          "name": "Metals",
+          "id": "metals",
+          "amount": 1
+        }
+      ],
+      "fleets": [],
+      "x": 570,
+      "y": 1160
+    }
+  },
+  "capella": {
+    "label": "capella",
+    "edges": [
+      "e7",
+      "e17",
+      "e21",
+      "e34",
+      "e39",
+      "e66",
+      "e79"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Capella",
+      "id": "capella",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Metals",
+          "id": "metals",
+          "amount": 3
+        }
+      ],
+      "fleets": [],
+      "x": 850,
+      "y": 790
+    }
+  },
+  "procyon": {
+    "label": "procyon",
+    "edges": [
+      "e8",
+      "e18",
+      "e44",
+      "e96"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Procyon",
+      "id": "procyon",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Metals",
+          "id": "metals",
+          "amount": 3
+        }
+      ],
+      "fleets": [],
+      "x": 700,
+      "y": 490
+    }
+  },
+  "spica": {
+    "label": "spica",
+    "edges": [
+      "e9",
+      "e32",
+      "e97"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Spica",
+      "id": "spica",
+      "planets": [],
+      
+      "resources": [],
+      "fleets": [],
+      "x": 760,
+      "y": 360
+    }
+  },
+  "antares": {
+    "label": "antares",
+    "edges": [
+      "e10",
+      "e11",
+      "e12",
+      "e22"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Antares",
+      "id": "antares",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Metals",
+          "id": "metals",
+          "amount": 5
+        }
+      ],
+      "fleets": [],
+      "x": 1120,
+      "y": 150
+    }
+  },
+  "aldebaran": {
+    "label": "aldebaran",
+    "edges": [
+      "e11",
+      "e16",
+      "e98"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Aldebaran",
+      "id": "aldebaran",
+      "planets": [],
+      
+      "resources": [],
+      "fleets": [],
+      "x": 1180,
+      "y": 140
+    }
+  },
+  "betelgeuse": {
+    "label": "betelgeuse",
+    "edges": [
+      "e12",
+      "e30",
+      "e43"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Betelgeuse",
+      "id": "betelgeuse",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Energy",
+          "id": "energy",
+          "amount": 4
+        }
+      ],
+      "fleets": [],
+      "x": 880,
+      "y": 90
+    }
+  },
+  "bellatrix": {
+    "label": "bellatrix",
+    "edges": [
+      "e13",
+      "e46"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Bellatrix",
+      "id": "bellatrix",
+      "planets": [],
+      
+      "resources": [],
+      "fleets": [],
+      "x": 1130,
+      "y": 420
+    }
+  },
+  "alnitak": {
+    "label": "alnitak",
+    "edges": [
+      "e14",
+      "e24",
+      "e92"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Alnitak",
+      "id": "alnitak",
+      "planets": [],
+      
+      "resources": [],
+      "fleets": [],
+      "x": 130,
+      "y": 1090
+    }
+  },
+  "alnilam": {
+    "label": "alnilam",
+    "edges": [
+      "e15",
+      "e25",
+      "e75"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Alnilam",
+      "id": "alnilam",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Energy",
+          "id": "energy",
+          "amount": 4
+        },
+        {
+          "name": "Metals",
+          "id": "metals",
+          "amount": 5
+        }
+      ],
+      "fleets": [],
+      "x": 940,
+      "y": 1190
+    }
+  },
+  "mintaka": {
+    "label": "mintaka",
+    "edges": [
+      "e16",
+      "e27",
+      "e99"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Mintaka",
+      "id": "mintaka",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Energy",
+          "id": "energy",
+          "amount": 8
+        }
+      ],
+      "fleets": [],
+      "x": 1160,
+      "y": 0
+    }
+  },
+  "polaris": {
+    "label": "polaris",
+    "edges": [
+      "e17",
+      "e45",
+      "e58"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Polaris",
+      "id": "polaris",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Metals",
+          "id": "metals",
+          "amount": 1
+        },
+        {
+          "name": "Energy",
+          "id": "energy",
+          "amount": 9
+        }
+      ],
+      "fleets": [],
+      "x": 1070,
+      "y": 820
+    }
+  },
+  "regulus": {
+    "label": "regulus",
+    "edges": [
+      "e18",
+      "e67"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Regulus",
+      "id": "regulus",
+      "planets": [],
+      
+      "resources": [],
+      "fleets": [],
+      "x": 730,
+      "y": 430
+    }
+  },
+  "fomalhaut": {
+    "label": "fomalhaut",
+    "edges": [
+      "e19",
+      "e23",
+      "e26",
+      "e28",
+      "e29"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Fomalhaut",
+      "id": "fomalhaut",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Energy",
+          "id": "energy",
+          "amount": 2
+        }
+      ],
+      "fleets": [],
+      "x": 360,
+      "y": 740
+    }
+  },
+  "castor": {
+    "label": "castor",
+    "edges": [
+      "e20",
+      "e38",
+      "e100",
+      "e107"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Castor",
+      "id": "castor",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Energy",
+          "id": "energy",
+          "amount": 4
+        }
+      ],
+      "fleets": [],
+      "x": 340,
+      "y": 130
+    }
+  },
+  "pollux": {
+    "label": "pollux",
+    "edges": [
+      "e21",
+      "e65",
+      "e101"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Pollux",
+      "id": "pollux",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Energy",
+          "id": "energy",
+          "amount": 9
+        }
+      ],
+      "fleets": [],
+      "x": 800,
+      "y": 850
+    }
+  },
+  "mimosa": {
+    "label": "mimosa",
+    "edges": [
+      "e22",
+      "e53",
+      "e98"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Mimosa",
+      "id": "mimosa",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Metals",
+          "id": "metals",
+          "amount": 9
+        }
+      ],
+      "fleets": [],
+      "x": 1110,
+      "y": 260
+    }
+  },
+  "canopus": {
+    "label": "canopus",
+    "edges": [
+      "e23",
+      "e119"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Canopus",
+      "id": "canopus",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Energy",
+          "id": "energy",
+          "amount": 5
+        }
+      ],
+      "fleets": [],
+      "x": 390,
+      "y": 640
+    }
+  },
+  "achernar": {
+    "label": "achernar",
+    "edges": [
+      "e24",
+      "e56",
+      "e57"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Achernar",
+      "id": "achernar",
+      "planets": [],
+      
+      "resources": [],
+      "fleets": [],
+      "x": 160,
+      "y": 1040
+    }
+  },
+  "hadar": {
+    "label": "hadar",
+    "edges": [
+      "e25",
+      "e33"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Hadar",
+      "id": "hadar",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Energy",
+          "id": "energy",
+          "amount": 3
+        }
+      ],
+      "fleets": [],
+      "x": 1030,
+      "y": 1050
+    }
+  },
+  "shaula": {
+    "label": "shaula",
+    "edges": [
+      "e26",
+      "e31",
+      "e52",
+      "e94"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Shaula",
+      "id": "shaula",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Energy",
+          "id": "energy",
+          "amount": 6
+        }
+      ],
+      "fleets": [],
+      "x": 530,
+      "y": 750
+    }
+  },
+  "rasalhague": {
+    "label": "rasalhague",
+    "edges": [
+      "e27",
+      "e55",
+      "e71"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Rasalhague",
+      "id": "rasalhague",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Energy",
+          "id": "energy",
+          "amount": 6
+        }
+      ],
+      "fleets": [],
+      "x": 1020,
+      "y": 40
+    }
+  },
+  "mirfak": {
+    "label": "mirfak",
+    "edges": [
+      "e28"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Mirfak",
+      "id": "mirfak",
+      "planets": [],
+      
+      "resources": [],
+      "fleets": [],
+      "x": 440,
+      "y": 780
+    }
+  },
+  "alphard": {
+    "label": "alphard",
+    "edges": [
+      "e29",
+      "e35",
+      "e102"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Alphard",
+      "id": "alphard",
+      "planets": [],
+      
+      "resources": [],
+      "fleets": [],
+      "x": 180,
+      "y": 730
+    }
+  },
+  "hamal": {
+    "label": "hamal",
+    "edges": [
+      "e30",
+      "e36"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Hamal",
+      "id": "hamal",
+      "planets": [],
+      
+      "resources": [],
+      "fleets": [],
+      "x": 670,
+      "y": 90
+    }
+  },
+  "menkar": {
+    "label": "menkar",
+    "edges": [
+      "e31",
+      "e93",
+      "e113"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Menkar",
+      "id": "menkar",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Energy",
+          "id": "energy",
+          "amount": 1
+        }
+      ],
+      "fleets": [],
+      "x": 690,
+      "y": 690
+    }
+  },
+  "diphda": {
+    "label": "diphda",
+    "edges": [
+      "e32",
+      "e54",
+      "e78"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Diphda",
+      "id": "diphda",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Metals",
+          "id": "metals",
+          "amount": 6
+        }
+      ],
+      "fleets": [],
+      "x": 840,
+      "y": 350
+    }
+  },
+  "algol": {
+    "label": "algol",
+    "edges": [
+      "e33",
+      "e72"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Algol",
+      "id": "algol",
+      "planets": [],
+      
+      "resources": [],
+      "fleets": [],
+      "x": 1110,
+      "y": 990
+    }
+  },
+  "maia": {
+    "label": "maia",
+    "edges": [
+      "e34",
+      "e42",
+      "e61",
+      "e112"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Maia",
+      "id": "maia",
+      "planets": [],
+      
+      "resources": [],
+      "fleets": [],
+      "x": 880,
+      "y": 630
+    }
+  },
+  "taygeta": {
+    "label": "taygeta",
+    "edges": [
+      "e35",
+      "e37",
+      "e49",
+      "e70"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Taygeta",
+      "id": "taygeta",
+      "planets": [],
+      
+      "resources": [],
+      "fleets": [],
+      "x": 120,
+      "y": 700
+    }
+  },
+  "electra": {
+    "label": "electra",
+    "edges": [
+      "e36",
+      "e40",
+      "e41",
+      "e77",
+      "e87"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Electra",
+      "id": "electra",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Energy",
+          "id": "energy",
+          "amount": 4
+        }
+      ],
+      "fleets": [],
+      "x": 570,
+      "y": 210
+    }
+  },
+  "celaeno": {
+    "label": "celaeno",
+    "edges": [
+      "e37"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Celaeno",
+      "id": "celaeno",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Metals",
+          "id": "metals",
+          "amount": 8
+        }
+      ],
+      "fleets": [],
+      "x": 10,
+      "y": 560
+    }
+  },
+  "merope": {
+    "label": "merope",
+    "edges": [
+      "e38",
+      "e47",
+      "e48",
+      "e90"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Merope",
+      "id": "merope",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Metals",
+          "id": "metals",
+          "amount": 5
+        }
+      ],
+      "fleets": [],
+      "x": 320,
+      "y": 270
+    }
+  },
+  "sterope": {
+    "label": "sterope",
+    "edges": [
+      "e39",
+      "e68"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Sterope",
+      "id": "sterope",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Metals",
+          "id": "metals",
+          "amount": 5
+        }
+      ],
+      "fleets": [],
+      "x": 840,
+      "y": 720
+    }
+  },
+  "atlas": {
+    "label": "atlas",
+    "edges": [
+      "e40",
+      "e83",
+      "e103"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Atlas",
+      "id": "atlas",
+      "planets": [],
+      
+      "resources": [],
+      "fleets": [],
+      "x": 490,
+      "y": 110
+    }
+  },
+  "pleione": {
+    "label": "pleione",
+    "edges": [
+      "e41",
+      "e104"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Pleione",
+      "id": "pleione",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Energy",
+          "id": "energy",
+          "amount": 4
+        },
+        {
+          "name": "Metals",
+          "id": "metals",
+          "amount": 1
+        }
+      ],
+      "fleets": [],
+      "x": 480,
+      "y": 220
+    }
+  },
+  "alcyone": {
+    "label": "alcyone",
+    "edges": [
+      "e42",
+      "e105",
+      "e106"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Alcyone",
+      "id": "alcyone",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Energy",
+          "id": "energy",
+          "amount": 7
+        }
+      ],
+      "fleets": [],
+      "x": 1030,
+      "y": 610
+    }
+  },
+  "enif": {
+    "label": "enif",
+    "edges": [
+      "e43"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Enif",
+      "id": "enif",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Energy",
+          "id": "energy",
+          "amount": 8
+        }
+      ],
+      "fleets": [],
+      "x": 950,
+      "y": 80
+    }
+  },
+  "markab": {
+    "label": "markab",
+    "edges": [
+      "e44",
+      "e59"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Markab",
+      "id": "markab",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Metals",
+          "id": "metals",
+          "amount": 5
+        }
+      ],
+      "fleets": [],
+      "x": 680,
+      "y": 500
+    }
+  },
+  "scheat": {
+    "label": "scheat",
+    "edges": [
+      "e45",
+      "e50",
+      "e74"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Scheat",
+      "id": "scheat",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Metals",
+          "id": "metals",
+          "amount": 7
+        }
+      ],
+      "fleets": [],
+      "x": 1130,
+      "y": 710
+    }
+  },
+  "algenib": {
+    "label": "algenib",
+    "edges": [
+      "e46"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Algenib",
+      "id": "algenib",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Metals",
+          "id": "metals",
+          "amount": 3
+        }
+      ],
+      "fleets": [],
+      "x": 1190,
+      "y": 400
+    }
+  },
+  "sadr": {
+    "label": "sadr",
+    "edges": [
+      "e47",
+      "e100"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Sadr",
+      "id": "sadr",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Metals",
+          "id": "metals",
+          "amount": 7
+        }
+      ],
+      "fleets": [],
+      "x": 390,
+      "y": 240
+    }
+  },
+  "peacock": {
+    "label": "peacock",
+    "edges": [
+      "e48",
+      "e51",
+      "e88"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Peacock",
+      "id": "peacock",
+      "planets": [],
+      
+      "resources": [],
+      "fleets": [],
+      "x": 120,
+      "y": 220
+    }
+  },
+  "kaus": {
+    "label": "kaus",
+    "edges": [
+      "e49",
+      "e102"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Kaus",
+      "id": "kaus",
+      "planets": [],
+      
+      "resources": [],
+      "fleets": [],
+      "x": 150,
+      "y": 700
+    }
+  },
+  "nunki": {
+    "label": "nunki",
+    "edges": [
+      "e50",
+      "e106"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Nunki",
+      "id": "nunki",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Metals",
+          "id": "metals",
+          "amount": 3
+        }
+      ],
+      "fleets": [],
+      "x": 1060,
+      "y": 740
+    }
+  },
+  "aspidiske": {
+    "label": "aspidiske",
+    "edges": [
+      "e51",
+      "e107"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Aspidiske",
+      "id": "aspidiske",
+      "planets": [],
+      
+      "resources": [],
+      "fleets": [],
+      "x": 40,
+      "y": 0
+    }
+  },
+  "avior": {
+    "label": "avior",
+    "edges": [
+      "e52"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Avior",
+      "id": "avior",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Energy",
+          "id": "energy",
+          "amount": 1
+        }
+      ],
+      "fleets": [],
+      "x": 600,
+      "y": 750
+    }
+  },
+  "gacrux": {
+    "label": "gacrux",
+    "edges": [
+      "e53",
+      "e84"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Gacrux",
+      "id": "gacrux",
+      "planets": [],
+      
+      "resources": [],
+      "fleets": [],
+      "x": 1120,
+      "y": 330
+    }
+  },
+  "acrux": {
+    "label": "acrux",
+    "edges": [
+      "e54",
+      "e97",
+      "e108"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Acrux",
+      "id": "acrux",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Metals",
+          "id": "metals",
+          "amount": 9
+        }
+      ],
+      "fleets": [],
+      "x": 820,
+      "y": 340
+    }
+  },
+  "alnair": {
+    "label": "alnair",
+    "edges": [
+      "e55",
+      "e99"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Alnair",
+      "id": "alnair",
+      "planets": [],
+      
+      "resources": [],
+      "fleets": [],
+      "x": 1050,
+      "y": 10
+    }
+  },
+  "suhail": {
+    "label": "suhail",
+    "edges": [
+      "e56",
+      "e60",
+      "e109"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Suhail",
+      "id": "suhail",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Energy",
+          "id": "energy",
+          "amount": 3
+        }
+      ],
+      "fleets": [],
+      "x": 210,
+      "y": 890
+    }
+  },
+  "wezen": {
+    "label": "wezen",
+    "edges": [
+      "e57",
+      "e109"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Wezen",
+      "id": "wezen",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Metals",
+          "id": "metals",
+          "amount": 4
+        }
+      ],
+      "fleets": [],
+      "x": 150,
+      "y": 1020
+    }
+  },
+  "adhara": {
+    "label": "adhara",
+    "edges": [
+      "e58"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Adhara",
+      "id": "adhara",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Energy",
+          "id": "energy",
+          "amount": 4
+        }
+      ],
+      "fleets": [],
+      "x": 1150,
+      "y": 820
+    }
+  },
+  "caph": {
+    "label": "caph",
+    "edges": [
+      "e59",
+      "e85"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Caph",
+      "id": "caph",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Metals",
+          "id": "metals",
+          "amount": 2
+        }
+      ],
+      "fleets": [],
+      "x": 630,
+      "y": 490
+    }
+  },
+  "ankaa": {
+    "label": "ankaa",
+    "edges": [
+      "e60"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Ankaa",
+      "id": "ankaa",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Metals",
+          "id": "metals",
+          "amount": 7
+        }
+      ],
+      "fleets": [],
+      "x": 150,
+      "y": 830
+    }
+  },
+  "ruchbah": {
+    "label": "ruchbah",
+    "edges": [
+      "e61",
+      "e69"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Ruchbah",
+      "id": "ruchbah",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Metals",
+          "id": "metals",
+          "amount": 1
+        }
+      ],
+      "fleets": [],
+      "x": 840,
+      "y": 630
+    }
+  },
+  "segin": {
+    "label": "segin",
+    "edges": [
+      "e62",
+      "e105"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Segin",
+      "id": "segin",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Metals",
+          "id": "metals",
+          "amount": 5
+        },
+        {
+          "name": "Energy",
+          "id": "energy",
+          "amount": 8
+        }
+      ],
+      "fleets": [],
+      "x": 1040,
+      "y": 510
+    }
+  },
+  "izar": {
+    "label": "izar",
+    "edges": [
+      "e63"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Izar",
+      "id": "izar",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Energy",
+          "id": "energy",
+          "amount": 4
+        },
+        {
+          "name": "Metals",
+          "id": "metals",
+          "amount": 9
+        }
+      ],
+      "fleets": [],
+      "x": 540,
+      "y": 510
+    }
+  },
+  "merak": {
+    "label": "merak",
+    "edges": [
+      "e64",
+      "e73",
+      "e110"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Merak",
+      "id": "merak",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Metals",
+          "id": "metals",
+          "amount": 5
+        }
+      ],
+      "fleets": [],
+      "x": 560,
+      "y": 430
+    }
+  },
+  "dubhe": {
+    "label": "dubhe",
+    "edges": [
+      "e65",
+      "e111"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Dubhe",
+      "id": "dubhe",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Energy",
+          "id": "energy",
+          "amount": 6
+        }
+      ],
+      "fleets": [],
+      "x": 750,
+      "y": 860
+    }
+  },
+  "phecda": {
+    "label": "phecda",
+    "edges": [
+      "e66",
+      "e101",
+      "e111",
+      "e115"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Phecda",
+      "id": "phecda",
+      "planets": [],
+      
+      "resources": [],
+      "fleets": [],
+      "x": 810,
+      "y": 800
+    }
+  },
+  "megrez": {
+    "label": "megrez",
+    "edges": [
+      "e67",
+      "e96"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Megrez",
+      "id": "megrez",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Energy",
+          "id": "energy",
+          "amount": 7
+        }
+      ],
+      "fleets": [],
+      "x": 700,
+      "y": 450
+    }
+  },
+  "alioth": {
+    "label": "alioth",
+    "edges": [
+      "e68",
+      "e112"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Alioth",
+      "id": "alioth",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Energy",
+          "id": "energy",
+          "amount": 9
+        }
+      ],
+      "fleets": [],
+      "x": 860,
+      "y": 690
+    }
+  },
+  "mizar": {
+    "label": "mizar",
+    "edges": [
+      "e69",
+      "e113"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Mizar",
+      "id": "mizar",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Metals",
+          "id": "metals",
+          "amount": 3
+        }
+      ],
+      "fleets": [],
+      "x": 770,
+      "y": 640
+    }
+  },
+  "alkaid": {
+    "label": "alkaid",
+    "edges": [
+      "e70"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Alkaid",
+      "id": "alkaid",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Energy",
+          "id": "energy",
+          "amount": 6
+        }
+      ],
+      "fleets": [],
+      "x": 60,
+      "y": 780
+    }
+  },
+  "kochab": {
+    "label": "kochab",
+    "edges": [
+      "e71"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Kochab",
+      "id": "kochab",
+      "planets": [],
+      
+      "resources": [],
+      "fleets": [],
+      "x": 1030,
+      "y": 60
+    }
+  },
+  "pherkad": {
+    "label": "pherkad",
+    "edges": [
+      "e72",
+      "e81"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Pherkad",
+      "id": "pherkad",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Energy",
+          "id": "energy",
+          "amount": 1
+        }
+      ],
+      "fleets": [],
+      "x": 1130,
+      "y": 1050
+    }
+  },
+  "thuban": {
+    "label": "thuban",
+    "edges": [
+      "e73"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Thuban",
+      "id": "thuban",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Energy",
+          "id": "energy",
+          "amount": 6
+        }
+      ],
+      "fleets": [],
+      "x": 470,
+      "y": 360
+    }
+  },
+  "eltanin": {
+    "label": "eltanin",
+    "edges": [
+      "e74"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Eltanin",
+      "id": "eltanin",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Metals",
+          "id": "metals",
+          "amount": 6
+        }
+      ],
+      "fleets": [],
+      "x": 1150,
+      "y": 740
+    }
+  },
+  "rastaban": {
+    "label": "rastaban",
+    "edges": [
+      "e75",
+      "e82"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Rastaban",
+      "id": "rastaban",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Energy",
+          "id": "energy",
+          "amount": 1
+        }
+      ],
+      "fleets": [],
+      "x": 1060,
+      "y": 1200
+    }
+  },
+  "denebola": {
+    "label": "denebola",
+    "edges": [
+      "e76",
+      "e80"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Denebola",
+      "id": "denebola",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Energy",
+          "id": "energy",
+          "amount": 2
+        }
+      ],
+      "fleets": [],
+      "x": 650,
+      "y": 890
+    }
+  },
+  "vindemiatrix": {
+    "label": "vindemiatrix",
+    "edges": [
+      "e77",
+      "e103",
+      "e104",
+      "e114",
+      "e117"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Vindemiatrix",
+      "id": "vindemiatrix",
+      "planets": [],
+      
+      "resources": [],
+      "fleets": [],
+      "x": 550,
+      "y": 190
+    }
+  },
+  "zubenelgenubi": {
+    "label": "zubenelgenubi",
+    "edges": [
+      "e78",
+      "e108"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Zubenelgenubi",
+      "id": "zubenelgenubi",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Energy",
+          "id": "energy",
+          "amount": 7
+        }
+      ],
+      "fleets": [],
+      "x": 860,
+      "y": 360
+    }
+  },
+  "zubeneschamali": {
+    "label": "zubeneschamali",
+    "edges": [
+      "e79",
+      "e115"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Zubeneschamali",
+      "id": "zubeneschamali",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Energy",
+          "id": "energy",
+          "amount": 3
+        }
+      ],
+      "fleets": [],
+      "x": 900,
+      "y": 840
+    }
+  },
+  "sabik": {
+    "label": "sabik",
+    "edges": [
+      "e80",
+      "e86",
+      "e95"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Sabik",
+      "id": "sabik",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Energy",
+          "id": "energy",
+          "amount": 5
+        }
+      ],
+      "fleets": [],
+      "x": 620,
+      "y": 870
+    }
+  },
+  "cebalrai": {
+    "label": "cebalrai",
+    "edges": [
+      "e81",
+      "e116"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Cebalrai",
+      "id": "cebalrai",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Metals",
+          "id": "metals",
+          "amount": 4
+        }
+      ],
+      "fleets": [],
+      "x": 1160,
+      "y": 1150
+    }
+  },
+  "tarazed": {
+    "label": "tarazed",
+    "edges": [
+      "e82",
+      "e116"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Tarazed",
+      "id": "tarazed",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Energy",
+          "id": "energy",
+          "amount": 1
+        }
+      ],
+      "fleets": [],
+      "x": 1060,
+      "y": 1170
+    }
+  },
+  "albireo": {
+    "label": "albireo",
+    "edges": [
+      "e83",
+      "e117"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Albireo",
+      "id": "albireo",
+      "planets": [],
+      
+      "resources": [],
+      "fleets": [],
+      "x": 500,
+      "y": 10
+    }
+  },
+  "rotanev": {
+    "label": "rotanev",
+    "edges": [
+      "e84"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Rotanev",
+      "id": "rotanev",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Metals",
+          "id": "metals",
+          "amount": 9
+        }
+      ],
+      "fleets": [],
+      "x": 1100,
+      "y": 350
+    }
+  },
+  "sualocin": {
+    "label": "sualocin",
+    "edges": [
+      "e85",
+      "e110"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Sualocin",
+      "id": "sualocin",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Energy",
+          "id": "energy",
+          "amount": 1
+        }
+      ],
+      "fleets": [],
+      "x": 620,
+      "y": 450
+    }
+  },
+  "aludra": {
+    "label": "aludra",
+    "edges": [
+      "e86",
+      "e118"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Aludra",
+      "id": "aludra",
+      "planets": [],
+      
+      "resources": [],
+      "fleets": [],
+      "x": 660,
+      "y": 810
+    }
+  },
+  "maasym": {
+    "label": "maasym",
+    "edges": [
+      "e87",
+      "e114"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Maasym",
+      "id": "maasym",
+      "planets": [],
+      
+      "resources": [],
+      "fleets": [],
+      "x": 610,
+      "y": 200
+    }
+  },
+  "kitalpha": {
+    "label": "kitalpha",
+    "edges": [
+      "e88"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Kitalpha",
+      "id": "kitalpha",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Energy",
+          "id": "energy",
+          "amount": 1
+        }
+      ],
+      "fleets": [],
+      "x": 170,
+      "y": 410
+    }
+  },
+  "nashira": {
+    "label": "nashira",
+    "edges": [
+      "e89"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Nashira",
+      "id": "nashira",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Metals",
+          "id": "metals",
+          "amount": 7
+        }
+      ],
+      "fleets": [],
+      "x": 100,
+      "y": 1170
+    }
+  },
+  "sadalmelik": {
+    "label": "sadalmelik",
+    "edges": [
+      "e90"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Sadalmelik",
+      "id": "sadalmelik",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Energy",
+          "id": "energy",
+          "amount": 7
+        }
+      ],
+      "fleets": [],
+      "x": 360,
+      "y": 340
+    }
+  },
+  "sadalsuud": {
+    "label": "sadalsuud",
+    "edges": [
+      "e91",
+      "e119"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Sadalsuud",
+      "id": "sadalsuud",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Energy",
+          "id": "energy",
+          "amount": 7
+        },
+        {
+          "name": "Metals",
+          "id": "metals",
+          "amount": 7
+        }
+      ],
+      "fleets": [],
+      "x": 380,
+      "y": 540
+    }
+  },
+  "skat": {
+    "label": "skat",
+    "edges": [
+      "e92"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Skat",
+      "id": "skat",
+      "planets": [],
+      
+      "resources": [],
+      "fleets": [],
+      "x": 200,
+      "y": 1150
+    }
+  },
+  "markeb": {
+    "label": "markeb",
+    "edges": [
+      "e93",
+      "e118"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Markeb",
+      "id": "markeb",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Energy",
+          "id": "energy",
+          "amount": 2
+        }
+      ],
+      "fleets": [],
+      "x": 710,
+      "y": 750
+    }
+  },
+  "alhena": {
+    "label": "alhena",
+    "edges": [
+      "e94"
+    ],
+    "distance": 0,
+    "closed": false,
+    "data": {
+      "name": "Alhena",
+      "id": "alhena",
+      "planets": [],
+      
+      "resources": [
+        {
+          "name": "Energy",
+          "id": "energy",
+          "amount": 7
+        }
+      ],
+      "fleets": [],
+      "x": 560,
+      "y": 720
+    }
+  }
+},
+    "edges": {
+  "e1": {
+    "label": "e1",
+    "tail": "sirius",
+    "head": "sol",
+    "directed": false,
+    "weight": 7
+  },
+  "e2": {
+    "label": "e2",
+    "tail": "vega",
+    "head": "sirius",
+    "directed": false,
+    "weight": 5
+  },
+  "e3": {
+    "label": "e3",
+    "tail": "altair",
+    "head": "vega",
+    "directed": false,
+    "weight": 5
+  },
+  "e4": {
+    "label": "e4",
+    "tail": "rigel",
+    "head": "sirius",
+    "directed": false,
+    "weight": 8
+  },
+  "e5": {
+    "label": "e5",
+    "tail": "deneb",
+    "head": "sol",
+    "directed": false,
+    "weight": 12
+  },
+  "e6": {
+    "label": "e6",
+    "tail": "arcturus",
+    "head": "rigel",
+    "directed": false,
+    "weight": 7
+  },
+  "e7": {
+    "label": "e7",
+    "tail": "capella",
+    "head": "rigel",
+    "directed": false,
+    "weight": 7
+  },
+  "e8": {
+    "label": "e8",
+    "tail": "procyon",
+    "head": "sirius",
+    "directed": false,
+    "weight": 5
+  },
+  "e9": {
+    "label": "e9",
+    "tail": "spica",
+    "head": "vega",
+    "directed": false,
+    "weight": 3
+  },
+  "e10": {
+    "label": "e10",
+    "tail": "antares",
+    "head": "altair",
+    "directed": false,
+    "weight": 6
+  },
+  "e11": {
+    "label": "e11",
+    "tail": "aldebaran",
+    "head": "antares",
+    "directed": false,
+    "weight": 1
+  },
+  "e12": {
+    "label": "e12",
+    "tail": "betelgeuse",
+    "head": "antares",
+    "directed": false,
+    "weight": 6
+  },
+  "e13": {
+    "label": "e13",
+    "tail": "bellatrix",
+    "head": "altair",
+    "directed": false,
+    "weight": 2
+  },
+  "e14": {
+    "label": "e14",
+    "tail": "alnitak",
+    "head": "deneb",
+    "directed": false,
+    "weight": 2
+  },
+  "e15": {
+    "label": "e15",
+    "tail": "alnilam",
+    "head": "rigel",
+    "directed": false,
+    "weight": 6
+  },
+  "e16": {
+    "label": "e16",
+    "tail": "mintaka",
+    "head": "aldebaran",
+    "directed": false,
+    "weight": 5
+  },
+  "e17": {
+    "label": "e17",
+    "tail": "polaris",
+    "head": "capella",
+    "directed": false,
+    "weight": 2
+  },
+  "e18": {
+    "label": "e18",
+    "tail": "regulus",
+    "head": "procyon",
+    "directed": false,
+    "weight": 3
+  },
+  "e19": {
+    "label": "e19",
+    "tail": "fomalhaut",
+    "head": "sol",
+    "directed": false,
+    "weight": 3
+  },
+  "e20": {
+    "label": "e20",
+    "tail": "castor",
+    "head": "sirius",
+    "directed": false,
+    "weight": 9
+  },
+  "e21": {
+    "label": "e21",
+    "tail": "pollux",
+    "head": "capella",
+    "directed": false,
+    "weight": 4
+  },
+  "e22": {
+    "label": "e22",
+    "tail": "mimosa",
+    "head": "antares",
+    "directed": false,
+    "weight": 1
+  },
+  "e23": {
+    "label": "e23",
+    "tail": "canopus",
+    "head": "fomalhaut",
+    "directed": false,
+    "weight": 1
+  },
+  "e24": {
+    "label": "e24",
+    "tail": "achernar",
+    "head": "alnitak",
+    "directed": false,
+    "weight": 1
+  },
+  "e25": {
+    "label": "e25",
+    "tail": "hadar",
+    "head": "alnilam",
+    "directed": false,
+    "weight": 4
+  },
+  "e26": {
+    "label": "e26",
+    "tail": "shaula",
+    "head": "fomalhaut",
+    "directed": false,
+    "weight": 4
+  },
+  "e27": {
+    "label": "e27",
+    "tail": "rasalhague",
+    "head": "mintaka",
+    "directed": false,
+    "weight": 4
+  },
+  "e28": {
+    "label": "e28",
+    "tail": "mirfak",
+    "head": "fomalhaut",
+    "directed": false,
+    "weight": 1
+  },
+  "e29": {
+    "label": "e29",
+    "tail": "alphard",
+    "head": "fomalhaut",
+    "directed": false,
+    "weight": 4
+  },
+  "e30": {
+    "label": "e30",
+    "tail": "hamal",
+    "head": "betelgeuse",
+    "directed": false,
+    "weight": 5
+  },
+  "e31": {
+    "label": "e31",
+    "tail": "menkar",
+    "head": "shaula",
+    "directed": false,
+    "weight": 3
+  },
+  "e32": {
+    "label": "e32",
+    "tail": "diphda",
+    "head": "spica",
+    "directed": false,
+    "weight": 3
+  },
+  "e33": {
+    "label": "e33",
+    "tail": "algol",
+    "head": "hadar",
+    "directed": false,
+    "weight": 1
+  },
+  "e34": {
+    "label": "e34",
+    "tail": "maia",
+    "head": "capella",
+    "directed": false,
+    "weight": 5
+  },
+  "e35": {
+    "label": "e35",
+    "tail": "taygeta",
+    "head": "alphard",
+    "directed": false,
+    "weight": 1
+  },
+  "e36": {
+    "label": "e36",
+    "tail": "electra",
+    "head": "hamal",
+    "directed": false,
+    "weight": 2
+  },
+  "e37": {
+    "label": "e37",
+    "tail": "celaeno",
+    "head": "taygeta",
+    "directed": false,
+    "weight": 6
+  },
+  "e38": {
+    "label": "e38",
+    "tail": "merope",
+    "head": "castor",
+    "directed": false,
+    "weight": 2
+  },
+  "e39": {
+    "label": "e39",
+    "tail": "sterope",
+    "head": "capella",
+    "directed": false,
+    "weight": 3
+  },
+  "e40": {
+    "label": "e40",
+    "tail": "atlas",
+    "head": "electra",
+    "directed": false,
+    "weight": 3
+  },
+  "e41": {
+    "label": "e41",
+    "tail": "pleione",
+    "head": "electra",
+    "directed": false,
+    "weight": 3
+  },
+  "e42": {
+    "label": "e42",
+    "tail": "alcyone",
+    "head": "maia",
+    "directed": false,
+    "weight": 1
+  },
+  "e43": {
+    "label": "e43",
+    "tail": "enif",
+    "head": "betelgeuse",
+    "directed": false,
+    "weight": 1
+  },
+  "e44": {
+    "label": "e44",
+    "tail": "markab",
+    "head": "procyon",
+    "directed": false,
+    "weight": 1
+  },
+  "e45": {
+    "label": "e45",
+    "tail": "scheat",
+    "head": "polaris",
+    "directed": false,
+    "weight": 5
+  },
+  "e46": {
+    "label": "e46",
+    "tail": "algenib",
+    "head": "bellatrix",
+    "directed": false,
+    "weight": 1
+  },
+  "e47": {
+    "label": "e47",
+    "tail": "sadr",
+    "head": "merope",
+    "directed": false,
+    "weight": 4
+  },
+  "e48": {
+    "label": "e48",
+    "tail": "peacock",
+    "head": "merope",
+    "directed": false,
+    "weight": 4
+  },
+  "e49": {
+    "label": "e49",
+    "tail": "kaus",
+    "head": "taygeta",
+    "directed": false,
+    "weight": 1
+  },
+  "e50": {
+    "label": "e50",
+    "tail": "nunki",
+    "head": "scheat",
+    "directed": false,
+    "weight": 1
+  },
+  "e51": {
+    "label": "e51",
+    "tail": "aspidiske",
+    "head": "peacock",
+    "directed": false,
+    "weight": 7
+  },
+  "e52": {
+    "label": "e52",
+    "tail": "avior",
+    "head": "shaula",
+    "directed": false,
+    "weight": 2
+  },
+  "e53": {
+    "label": "e53",
+    "tail": "gacrux",
+    "head": "mimosa",
+    "directed": false,
+    "weight": 1
+  },
+  "e54": {
+    "label": "e54",
+    "tail": "acrux",
+    "head": "diphda",
+    "directed": false,
+    "weight": 1
+  },
+  "e55": {
+    "label": "e55",
+    "tail": "alnair",
+    "head": "rasalhague",
+    "directed": false,
+    "weight": 1
+  },
+  "e56": {
+    "label": "e56",
+    "tail": "suhail",
+    "head": "achernar",
+    "directed": false,
+    "weight": 2
+  },
+  "e57": {
+    "label": "e57",
+    "tail": "wezen",
+    "head": "achernar",
+    "directed": false,
+    "weight": 1
+  },
+  "e58": {
+    "label": "e58",
+    "tail": "adhara",
+    "head": "polaris",
+    "directed": false,
+    "weight": 1
+  },
+  "e59": {
+    "label": "e59",
+    "tail": "caph",
+    "head": "markab",
+    "directed": false,
+    "weight": 2
+  },
+  "e60": {
+    "label": "e60",
+    "tail": "ankaa",
+    "head": "suhail",
+    "directed": false,
+    "weight": 2
+  },
+  "e61": {
+    "label": "e61",
+    "tail": "ruchbah",
+    "head": "maia",
+    "directed": false,
+    "weight": 1
+  },
+  "e62": {
+    "label": "e62",
+    "tail": "segin",
+    "head": "altair",
+    "directed": false,
+    "weight": 3
+  },
+  "e63": {
+    "label": "e63",
+    "tail": "izar",
+    "head": "sirius",
+    "directed": false,
+    "weight": 2
+  },
+  "e64": {
+    "label": "e64",
+    "tail": "merak",
+    "head": "sirius",
+    "directed": false,
+    "weight": 2
+  },
+  "e65": {
+    "label": "e65",
+    "tail": "dubhe",
+    "head": "pollux",
+    "directed": false,
+    "weight": 2
+  },
+  "e66": {
+    "label": "e66",
+    "tail": "phecda",
+    "head": "capella",
+    "directed": false,
+    "weight": 2
+  },
+  "e67": {
+    "label": "e67",
+    "tail": "megrez",
+    "head": "regulus",
+    "directed": false,
+    "weight": 1
+  },
+  "e68": {
+    "label": "e68",
+    "tail": "alioth",
+    "head": "sterope",
+    "directed": false,
+    "weight": 3
+  },
+  "e69": {
+    "label": "e69",
+    "tail": "mizar",
+    "head": "ruchbah",
+    "directed": false,
+    "weight": 1
+  },
+  "e70": {
+    "label": "e70",
+    "tail": "alkaid",
+    "head": "taygeta",
+    "directed": false,
+    "weight": 1
+  },
+  "e71": {
+    "label": "e71",
+    "tail": "kochab",
+    "head": "rasalhague",
+    "directed": false,
+    "weight": 2
+  },
+  "e72": {
+    "label": "e72",
+    "tail": "pherkad",
+    "head": "algol",
+    "directed": false,
+    "weight": 1
+  },
+  "e73": {
+    "label": "e73",
+    "tail": "thuban",
+    "head": "merak",
+    "directed": false,
+    "weight": 3
+  },
+  "e74": {
+    "label": "e74",
+    "tail": "eltanin",
+    "head": "scheat",
+    "directed": false,
+    "weight": 1
+  },
+  "e75": {
+    "label": "e75",
+    "tail": "rastaban",
+    "head": "alnilam",
+    "directed": false,
+    "weight": 1
+  },
+  "e76": {
+    "label": "e76",
+    "tail": "denebola",
+    "head": "rigel",
+    "directed": false,
+    "weight": 3
+  },
+  "e77": {
+    "label": "e77",
+    "tail": "vindemiatrix",
+    "head": "electra",
+    "directed": false,
+    "weight": 1
+  },
+  "e78": {
+    "label": "e78",
+    "tail": "zubenelgenubi",
+    "head": "diphda",
+    "directed": false,
+    "weight": 1
+  },
+  "e79": {
+    "label": "e79",
+    "tail": "zubeneschamali",
+    "head": "capella",
+    "directed": false,
+    "weight": 2
+  },
+  "e80": {
+    "label": "e80",
+    "tail": "sabik",
+    "head": "denebola",
+    "directed": false,
+    "weight": 1
+  },
+  "e81": {
+    "label": "e81",
+    "tail": "cebalrai",
+    "head": "pherkad",
+    "directed": false,
+    "weight": 2
+  },
+  "e82": {
+    "label": "e82",
+    "tail": "tarazed",
+    "head": "rastaban",
+    "directed": false,
+    "weight": 1
+  },
+  "e83": {
+    "label": "e83",
+    "tail": "albireo",
+    "head": "atlas",
+    "directed": false,
+    "weight": 1
+  },
+  "e84": {
+    "label": "e84",
+    "tail": "rotanev",
+    "head": "gacrux",
+    "directed": false,
+    "weight": 1
+  },
+  "e85": {
+    "label": "e85",
+    "tail": "sualocin",
+    "head": "caph",
+    "directed": false,
+    "weight": 1
+  },
+  "e86": {
+    "label": "e86",
+    "tail": "aludra",
+    "head": "sabik",
+    "directed": false,
+    "weight": 2
+  },
+  "e87": {
+    "label": "e87",
+    "tail": "maasym",
+    "head": "electra",
+    "directed": false,
+    "weight": 1
+  },
+  "e88": {
+    "label": "e88",
+    "tail": "kitalpha",
+    "head": "peacock",
+    "directed": false,
+    "weight": 3
+  },
+  "e89": {
+    "label": "e89",
+    "tail": "nashira",
+    "head": "deneb",
+    "directed": false,
+    "weight": 1
+  },
+  "e90": {
+    "label": "e90",
+    "tail": "sadalmelik",
+    "head": "merope",
+    "directed": false,
+    "weight": 3
+  },
+  "e91": {
+    "label": "e91",
+    "tail": "sadalsuud",
+    "head": "sol",
+    "directed": false,
+    "weight": 3
+  },
+  "e92": {
+    "label": "e92",
+    "tail": "skat",
+    "head": "alnitak",
+    "directed": false,
+    "weight": 1
+  },
+  "e93": {
+    "label": "e93",
+    "tail": "markeb",
+    "head": "menkar",
+    "directed": false,
+    "weight": 1
+  },
+  "e94": {
+    "label": "e94",
+    "tail": "alhena",
+    "head": "shaula",
+    "directed": false,
+    "weight": 1
+  },
+  "e95": {
+    "label": "e95",
+    "tail": "rigel",
+    "head": "sabik",
+    "directed": false,
+    "weight": 1
+  },
+  "e96": {
+    "label": "e96",
+    "tail": "procyon",
+    "head": "megrez",
+    "directed": false,
+    "weight": 1
+  },
+  "e97": {
+    "label": "e97",
+    "tail": "spica",
+    "head": "acrux",
+    "directed": false,
+    "weight": 1
+  },
+  "e98": {
+    "label": "e98",
+    "tail": "aldebaran",
+    "head": "mimosa",
+    "directed": false,
+    "weight": 5
+  },
+  "e99": {
+    "label": "e99",
+    "tail": "mintaka",
+    "head": "alnair",
+    "directed": false,
+    "weight": 3
+  },
+  "e100": {
+    "label": "e100",
+    "tail": "castor",
+    "head": "sadr",
+    "directed": false,
+    "weight": 4
+  },
+  "e101": {
+    "label": "e101",
+    "tail": "pollux",
+    "head": "phecda",
+    "directed": false,
+    "weight": 1
+  },
+  "e102": {
+    "label": "e102",
+    "tail": "alphard",
+    "head": "kaus",
+    "directed": false,
+    "weight": 1
+  },
+  "e103": {
+    "label": "e103",
+    "tail": "atlas",
+    "head": "vindemiatrix",
+    "directed": false,
+    "weight": 1
+  },
+  "e104": {
+    "label": "e104",
+    "tail": "pleione",
+    "head": "vindemiatrix",
+    "directed": false,
+    "weight": 4
+  },
+  "e105": {
+    "label": "e105",
+    "tail": "alcyone",
+    "head": "segin",
+    "directed": false,
+    "weight": 1
+  },
+  "e106": {
+    "label": "e106",
+    "tail": "alcyone",
+    "head": "nunki",
+    "directed": false,
+    "weight": 1
+  },
+  "e107": {
+    "label": "e107",
+    "tail": "aspidiske",
+    "head": "castor",
+    "directed": false,
+    "weight": 6
+  },
+  "e108": {
+    "label": "e108",
+    "tail": "acrux",
+    "head": "zubenelgenubi",
+    "directed": false,
+    "weight": 1
+  },
+  "e109": {
+    "label": "e109",
+    "tail": "suhail",
+    "head": "wezen",
+    "directed": false,
+    "weight": 4
+  },
+  "e110": {
+    "label": "e110",
+    "tail": "merak",
+    "head": "sualocin",
+    "directed": false,
+    "weight": 3
+  },
+  "e111": {
+    "label": "e111",
+    "tail": "dubhe",
+    "head": "phecda",
+    "directed": false,
+    "weight": 3
+  },
+  "e112": {
+    "label": "e112",
+    "tail": "alioth",
+    "head": "maia",
+    "directed": false,
+    "weight": 1
+  },
+  "e113": {
+    "label": "e113",
+    "tail": "mizar",
+    "head": "menkar",
+    "directed": false,
+    "weight": 4
+  },
+  "e114": {
+    "label": "e114",
+    "tail": "vindemiatrix",
+    "head": "maasym",
+    "directed": false,
+    "weight": 1
+  },
+  "e115": {
+    "label": "e115",
+    "tail": "zubeneschamali",
+    "head": "phecda",
+    "directed": false,
+    "weight": 1
+  },
+  "e116": {
+    "label": "e116",
+    "tail": "cebalrai",
+    "head": "tarazed",
+    "directed": false,
+    "weight": 1
+  },
+  "e117": {
+    "label": "e117",
+    "tail": "albireo",
+    "head": "vindemiatrix",
+    "directed": false,
+    "weight": 4
+  },
+  "e118": {
+    "label": "e118",
+    "tail": "aludra",
+    "head": "markeb",
+    "directed": false,
+    "weight": 3
+  },
+  "e119": {
+    "label": "e119",
+    "tail": "sadalsuud",
+    "head": "canopus",
+    "directed": false,
+    "weight": 2
+  }
+}
+  },
+  "players": {
+    "1": {
+      "id": "1",
+      "color": {
+        "red": 20,
+        "green": 50,
+        "blue": 110,
+        "alpha": 255
+      },
+      "resources": [
+        {
+          "name": "Metals",
+          "id": "metals",
+          "amount": 0
+        },
+        {
+          "name": "Energy",
+          "id": "energy",
+          "amount": 0
+        }
+      ]
+    }
+  },
+  "tick": 0
+}

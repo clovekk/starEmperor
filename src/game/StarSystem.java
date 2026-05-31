@@ -45,6 +45,17 @@ public class StarSystem {
         this.y = 0;
     }
 
+    public StarSystem(String name, int x, int y) {
+        this.name = name;
+        this.id = this.name.toLowerCase();
+        this.planets = new ArrayList<>();
+        this.ownerID = null;
+        this.resources = new ArrayList<>();
+        this.fleets = new ArrayList<>();
+        this.x = x;
+        this.y = y;
+    }
+
     public StarSystem() {
         this.name = "undef";
         this.id = this.name.toLowerCase();

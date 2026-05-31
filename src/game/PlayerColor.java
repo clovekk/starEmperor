@@ -19,7 +19,7 @@ public class PlayerColor {
         this.red = red;
         this.green = green;
         this.blue = blue;
-        this.alpha = 1;
+        this.alpha = 255;
     }
 
     public PlayerColor(Color color) {

@@ -79,6 +79,24 @@ public class GameLauncher {
         exitGameButton.setSize(300,75);
         exitGameButton.setLocation(100, 350);
 
+        newGameButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                WorldLoader worldLoader = new WorldLoader();
+                World world = worldLoader.createNewWorld();
+
+                WorldManager worldManager = new WorldManager(world, false, 100);
+                Game game = new Game(worldManager, new GraphicsUserInterface(worldManager, worldManager.getWorld().getPlayers().get("1"), 100), false);
+
+                game.startGame();
+                game.startDisplay();
+
+                worldManager.pauseGame();
+
+                frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+            }
+        });
+
         loadGameButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -87,30 +105,9 @@ public class GameLauncher {
 
                 WorldManager worldManager = new WorldManager(world, false, 100);
                 Game game = new Game(worldManager, new GraphicsUserInterface(worldManager, worldManager.getWorld().getPlayers().get("1"), 100), false);
-                /*Game game = new Game(worldManager, new ConsoleUserInterface(worldManager, new AtomicBoolean(false)), false);
-                ArrayList<Resource> rs = new ArrayList<>();
-                rs.add(new Resource("Metals"));
-                rs.add(new Resource("Energy"));
-                worldManager.getWorld().getPlayers().put("1", new Player("1", new PlayerColor(0, 0, 0), rs));*/
 
                 game.startGame();
                 game.startDisplay();
-
-                //test of gui with fleet movement
-                /*Thread t = new Thread() {
-                    @Override
-                    public void run() {
-                        super.run();
-                        try {
-                            Thread.sleep(5000);
-                        } catch (InterruptedException ex) {
-                            throw new RuntimeException(ex);
-                        }
-                        worldManager.getWorld().getStarSystems().get("one").getFleets().add(worldManager.getWorld().getStarSystems().get("five").getFleets().get(0));
-                        worldManager.getWorld().getStarSystems().get("five").getFleets().remove(worldManager.getWorld().getStarSystems().get("five").getFleets().get(0));
-                    }
-                };
-                t.start();*/
 
                 worldManager.pauseGame();
 

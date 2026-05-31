@@ -76,4 +76,18 @@ public class GameData {
             throw new RuntimeException("Error with json saving: " + e.getMessage());
         }
     }
+
+    public static GameData loadNewGameData(String filepath) {
+        Gson gson = new Gson();
+
+        try(InputStream is = GameData.class.getResourceAsStream(filepath)) {
+            if (is == null) {
+                throw new IllegalStateException("Nenalezen resource: " + filepath +
+                        " (zkontrolujte, že soubor je v src/main/resources).");
+            }
+            return gson.fromJson(new InputStreamReader(is, StandardCharsets.UTF_8), GameData.class);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

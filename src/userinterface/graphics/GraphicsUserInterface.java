@@ -71,7 +71,7 @@ public class GraphicsUserInterface extends Thread implements UserInterface {
 
         frame.add(layeredPane);
 
-        MapPanel mapPanel = new MapPanel(worldManager, this.player, 3);
+        MapPanel mapPanel = new MapPanel(worldManager, this.player, 2);
         mapPanel.setLocation(0, 0);
 
         InfoBarPanel infoBarPanel = new InfoBarPanel(end, worldManager, player);
