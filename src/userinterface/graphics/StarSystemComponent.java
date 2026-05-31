@@ -41,7 +41,7 @@ public class StarSystemComponent extends JComponent {
                 super.mousePressed(e);
                 //check if its left mouse button
                 if (SwingUtilities.isLeftMouseButton(e)) {
-                    System.out.println("clicked: " + getStarSystem());
+                    //System.out.println("clicked: " + getStarSystem()); //temp
                     //current selected system is already this system
                     if (selectedSystem == getStarSystem()) {
                         selectedSystem = null;

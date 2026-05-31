@@ -29,7 +29,7 @@ public class FleetComponent extends JComponent {
                 //check for left mouse button
                 if (SwingUtilities.isLeftMouseButton(e)) {
                     //(de)select fleet
-                    System.out.println("clicked: " + getFleet());
+                    //System.out.println("clicked: " + getFleet()); //temp
                     if (selectedFleet == getFleet()) {
                         selectedFleet = null;
                     } else {
