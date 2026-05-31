@@ -4,6 +4,10 @@ import javax.management.openmbean.KeyAlreadyExistsException;
 import java.security.InvalidParameterException;
 import java.util.*;
 
+/**
+ * Class that contains a HashMap of vertices and a HashMap of edges, that make up a graph
+ * @param <E> The data contained in the vertices
+ */
 public class Graph<E> {
     private String name;
     private HashMap<String, Vertex<E>> vertices;
@@ -187,10 +191,22 @@ public class Graph<E> {
         }
     }
 
+    /**
+     * Finds the shortest path between the vertices with these labels.
+     * @param start Label of the start vertex
+     * @param end Label of the end vertex
+     * @return ArrayList of vertices between the start and the end vertex
+     */
     public ArrayList<Vertex<E>> findShortestVertexPath(String start, String end) {
         return findShortestVertexPath(this.vertices.get(start), this.vertices.get(end));
     }
 
+    /**
+     * Finds the shortest path between the vertices.
+     * @param start Start vertex
+     * @param end End vertex
+     * @return ArrayList of vertices between the start and the end vertex
+     */
     public ArrayList<Vertex<E>> findShortestVertexPath(Vertex<E> start, Vertex<E> end) {
         ArrayList<Vertex<E>> path = new ArrayList<>();
         path.add(start);
@@ -203,10 +219,22 @@ public class Graph<E> {
         return path;
     }
 
+    /**
+     * Finds the shortest path between the vertices with these labels.
+     * @param start Label of the start vertex
+     * @param end Label of the end vertex
+     * @return ArrayList of edges between the start and the end vertex
+     */
     public ArrayList<Edge<E>> findShortestEdgePath(String start, String end) {
         return findShortestEdgePath(this.vertices.get(start), this.vertices.get(end));
     }
 
+    /**
+     * Finds the shortest path between the vertices.
+     * @param start Start vertex
+     * @param end End vertex
+     * @return ArrayList of edges between the start and the end vertex
+     */
     public ArrayList<Edge<E>> findShortestEdgePath(Vertex<E> start, Vertex<E> end) {
         ArrayList<Edge<E>> shortestPath = new ArrayList<>();
 
@@ -233,6 +261,10 @@ public class Graph<E> {
         return shortestPath;
     }
 
+    /**
+     * Sets all distances of the vertices neighboring this vertex to the total distance from this vertex if their current distances are higher
+     * @param start The start vertex
+     */
     private void setAllDistances(Vertex<E> start) {
         if (start.isClosed()) {
             return;
@@ -255,6 +287,10 @@ public class Graph<E> {
         setAllDistances(getClosestUnclosedVertex());
     }
 
+    /**
+     * Returns the vertex with the lowest distance parameter that is not closed
+     * @return the vertex with the lowest distance parameter that is not closed
+     */
     private Vertex<E> getClosestUnclosedVertex() {
         Vertex<E> closest = new Vertex<>(Integer.MAX_VALUE, true);
         for (Vertex<E> v : vertices.values()) {
@@ -265,6 +301,11 @@ public class Graph<E> {
         return closest;
     }
 
+    /**
+     * Returns the neighboring vertices of this vertex
+     * @param vertex The vertex of which the neighbors are returned
+     * @return the neighboring vertices of the specified vertex
+     */
     public HashMap<String, Vertex<E>> getAdjacentVertices(Vertex<E> vertex) {
         HashMap<String, Vertex<E>> adjacentVertices = new HashMap<>();
         for (Edge<E> e : this.getVertexEdges(vertex)) {
@@ -274,6 +315,11 @@ public class Graph<E> {
         return adjacentVertices;
     }
 
+    /**
+     * Returns the closest neighbor of this vertex
+     * @param vertex The specified vertex of which we need the closest neighbor
+     * @return the closest neighbor of the specified vertex
+     */
     public Vertex<E> getClosestNeighbor(Vertex<E> vertex) {
         Vertex<E> closest = null;
         for (Vertex<E> v : this.getAdjacentVertices(vertex).values()) {
@@ -284,6 +330,12 @@ public class Graph<E> {
         return closest;
     }
 
+    /**
+     * Checks if the two vertices are connected by a single edge
+     * @param v1 First vertex
+     * @param v2 second vertex
+     * @return True if the vertices are neighbors, false otherwise
+     */
     public boolean isConnectedTo(Vertex<E> v1, Vertex<E> v2) {
         for (Edge<E> e : this.getVertexEdges(v1)) {
             if (this.getOtherEndpoint(e, v1).equals(v2)) {
@@ -293,6 +345,12 @@ public class Graph<E> {
         return false;
     }
 
+    /**
+     * Returns the vertex at the other end of the specified edge than is the specified vertex.
+     * @param edge The specified edge
+     * @param vertex The specified vertex
+     * @return The vertex at the other end of the edge assuming the specified vertex is on the edge already
+     */
     public Vertex<E> getOtherEndpoint(Edge<E> edge, Vertex<E> vertex) {
         if (vertex.equals(this.vertices.get(edge.getTail()))) {
             return this.vertices.get(edge.getHead());
@@ -303,18 +361,41 @@ public class Graph<E> {
         return null;
     }
 
+    /**
+     * Returns the vertex at the other end of the specified edge than is the specified vertex.
+     * @param edge The specified edge
+     * @param vertex The label of the specified vertex
+     * @return The vertex at the other end of the edge assuming the specified vertex is on the edge already
+     */
     public Vertex<E> getOtherEndpoint(Edge<E> edge, String vertex) {
         return this.getOtherEndpoint(edge, this.vertices.get(vertex));
     }
 
+    /**
+     * Returns the vertex at the other end of the specified edge than is the specified vertex.
+     * @param edge The label specified edge
+     * @param vertex The specified vertex
+     * @return The vertex at the other end of the edge assuming the specified vertex is on the edge already
+     */
     public Vertex<E> getOtherEndpoint(String edge, Vertex<E> vertex) {
         return this.getOtherEndpoint(this.edges.get(edge), vertex);
     }
 
+    /**
+     * Returns the vertex at the other end of the specified edge than is the specified vertex.
+     * @param edge The label specified edge
+     * @param vertex The label of the specified vertex
+     * @return The vertex at the other end of the edge assuming the specified vertex is on the edge already
+     */
     public Vertex<E> getOtherEndpoint(String edge, String vertex) {
         return this.getOtherEndpoint(this.edges.get(edge), this.vertices.get(vertex));
     }
 
+    /**
+     * Returns all the edges connected to this vertex
+     * @param vertex The specified vertex
+     * @return ArrayList of all the edges connected to this vertex
+     */
     public ArrayList<Edge<E>> getVertexEdges(Vertex<E> vertex) {
         ArrayList<Edge<E>> vertexEdges = new ArrayList<>();
         for (String e : vertex.getEdges()) {

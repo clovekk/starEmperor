@@ -2,6 +2,9 @@ package game;
 
 import java.awt.*;
 
+/**
+ * Serializable class used for storing player colors
+ */
 public class PlayerColor {
     private int red;
     private int green;
@@ -55,6 +58,10 @@ public class PlayerColor {
         this.alpha = alpha;
     }
 
+    /**
+     * Returns a java.awt.Color object with the values of this PlayerColor instance
+     * @return a java.awt.Color object with the values of this PlayerColor instance
+     */
     public Color toColor() {
         return new Color(this.red, this.green, this.blue, this.alpha);
     }

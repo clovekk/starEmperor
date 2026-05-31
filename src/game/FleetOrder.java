@@ -1,5 +1,8 @@
 package game;
 
+/**
+ * This abstract class is used to extend all fleet oreders
+ */
 public abstract class FleetOrder {
     protected String id;
 

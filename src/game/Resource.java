@@ -3,6 +3,9 @@ package game;
 import java.security.InvalidParameterException;
 import java.util.Collection;
 
+/**
+ * This class represents the resources in-game
+ */
 public class Resource implements Comparable<Resource> {
     private String name;
     private String id;
@@ -49,6 +52,10 @@ public class Resource implements Comparable<Resource> {
         this.amount = amount;
     }
 
+    /**
+     * Adds the specified resource together with this resource, they have to have matching IDs
+     * @param resource the specified resource
+     */
     public void addResources(Resource resource) {
         if (this.id.equals(resource.id)) {
             this.amount += resource.amount;
@@ -57,10 +64,19 @@ public class Resource implements Comparable<Resource> {
         }
     }
 
+    /**
+     * Returns a good-looking string of this resource and amount
+     * @return a good-looking string of this resource and amount
+     */
     public String toPrettyString() {
         return this.getName() + ": " + this.getAmount();
     }
 
+    /**
+     * Returns a good-looking string of all resources in the collection.
+     * @param resources The specified collection of resources
+     * @return a good-looking string of all resources in the collection.
+     */
     public static String toPrettyString(Collection<Resource> resources) {
         StringBuilder resourceList = new StringBuilder();
         for (Resource resource : resources) {
@@ -69,6 +85,11 @@ public class Resource implements Comparable<Resource> {
         return resourceList.toString();
     }
 
+    /**
+     * Returns a good-looking string of all resources in the collection with every resource on new line using HTML, intended usage is for JLabels
+     * @param resources The specified collection of resources
+     * @return a good-looking string of all resources in the collection with every resource on new line using HTML
+     */
     public static String toPrettyHTMLString(Collection<Resource> resources) {
         StringBuilder resourceList = new StringBuilder("<html>");
         for (Resource resource : resources) {

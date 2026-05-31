@@ -1,5 +1,9 @@
 package graph;
 
+/**
+ * This class serves as the edge for the main Graph data structure
+ * @param <E> The data contained in the vertices
+ */
 public class Edge<E> implements Comparable<Edge<E>> {
     private String label;
     private String tail;
@@ -55,6 +59,11 @@ public class Edge<E> implements Comparable<Edge<E>> {
         this.weight = weight;
     }
 
+    /**
+     * Returns the label of the other endpoint of this edge than the specified vertex.
+     * @param vertex The label of the specified vertex
+     * @return the label of the other endpoint of this edge than the specified vertex
+     */
     public String getOtherEndpoint(String vertex) {
         if (vertex.equals(tail)) {
             return head;
@@ -65,6 +74,11 @@ public class Edge<E> implements Comparable<Edge<E>> {
         return null;
     }
 
+    /**
+     * Returns the label of the other endpoint of this edge than the specified vertex.
+     * @param vertex The specified vertex
+     * @return the label of the other endpoint of this edge than the specified vertex
+     */
     public String getOtherEndpoint(Vertex<E> vertex) {
         if (vertex.getLabel().equals(tail)) {
             return head;

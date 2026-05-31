@@ -3,6 +3,9 @@ package game;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * This class represents the in-game fleets
+ */
 public class Fleet {
     private String name;
     private String id;
@@ -78,6 +81,11 @@ public class Fleet {
         this.order = order;
     }
 
+    /**
+     * returns the amount of this resource the fleet consumes
+     * @param resourceID ID of the specified resource
+     * @return the amount of this resource the fleet consumes
+     */
     public int getUpkeepAmount(String resourceID) {
         for (Resource resource : this.upkeep) {
             if (resourceID.equals(resource.getId())) {
@@ -87,6 +95,11 @@ public class Fleet {
         return 0;
     }
 
+    /**
+     * returns the amount of this resource the fleet consumes
+     * @param resource The specified resource
+     * @return the amount of this resource the fleet consumes
+     */
     public int getUpkeepAmount(Resource resource) {
         return getUpkeepAmount(resource.getId());
     }

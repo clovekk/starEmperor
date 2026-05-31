@@ -11,6 +11,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashMap;
 
+/**
+ * This class handles the loading of the world files
+ */
 public class GameData {
     private String gameVersion;
     private Graph<StarSystem> starSystems;
@@ -57,6 +60,11 @@ public class GameData {
         this.tick = tick;
     }
 
+    /**
+     * loads saved game file
+     * @param filepath path of the file
+     * @return the saved gam file
+     */
     public static GameData loadGameData(Path filepath) {
         Gson gson = new Gson();
 
@@ -67,6 +75,10 @@ public class GameData {
         }
     }
 
+    /**
+     * saves to the sav game file
+     * @param filepath path of the file
+     */
     public void saveGameData(Path filepath) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
@@ -77,6 +89,11 @@ public class GameData {
         }
     }
 
+    /**
+     * loads a new world from resources
+     * @param filepath path of the file in resources
+     * @return a new world from resources
+     */
     public static GameData loadNewGameData(String filepath) {
         Gson gson = new Gson();
 

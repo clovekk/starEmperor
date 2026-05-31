@@ -2,6 +2,9 @@ package game;
 
 import java.util.ArrayList;
 
+/**
+ * This class represents the order of a fleet to move a certain path
+ */
 public class FleetMoveOrder extends FleetOrder {
     private int ticksLeftToNext;
     private ArrayList<String> pathSystemsID;
@@ -13,9 +16,6 @@ public class FleetMoveOrder extends FleetOrder {
 
     }
 
-    //public String getTargetSystemID() {
-    //    return targetSystemID;
-    //}
     public int getTicksLeftToNext() {
         return ticksLeftToNext;
     }
@@ -23,9 +23,6 @@ public class FleetMoveOrder extends FleetOrder {
         return pathSystemsID;
     }
 
-    //public void setTargetSystemID(String targetSystemID) {
-    //    this.targetSystemID = targetSystemID;
-    //}
     public void setTicksLeftToNext(int ticksLeftToNext) {
         this.ticksLeftToNext = ticksLeftToNext;
     }

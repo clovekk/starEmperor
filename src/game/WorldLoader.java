@@ -11,18 +11,36 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Objects;
 
+/**
+ * tThis class is responsible for the loading/saving of worlds
+ */
 public class WorldLoader {
     public WorldLoader() {
 
     }
 
+    /**
+     * Loads the saved world from the appdata location
+     * @return the saved world from the appdata location
+     */
     public World loadWorld() {
         Path path = Paths.get(System.getenv("APPDATA") + "/StarEmperor/saves/gamedata.json");
-        GameData gameData = GameData.loadGameData(path);
 
-        return new World(gameData);
+        World world = null;
+        try {
+            GameData gameData = GameData.loadGameData(path);
+            world = new World(gameData);
+        } catch (RuntimeException e) {
+            world = createNewWorld();
+        }
+
+        return world;
     }
 
+    /**
+     * Saves the inputted world into the appdata location
+     * @param world the world to be saved
+     */
     public void saveWorld(World world) {
         Path folderPath = Paths.get(System.getenv("APPDATA") + "/StarEmperor/saves");
         Path path = Paths.get(folderPath + "/gamedata.json");
@@ -36,6 +54,10 @@ public class WorldLoader {
         gameData.saveGameData(path);
     }
 
+    /**
+     * Loads the new world file from resources
+     * @return the new world file from resources converted to World class
+     */
     public World createNewWorld() {
         String path  = "/gamedata_newgame_clustered.json";
         GameData gameData = GameData.loadNewGameData(path);

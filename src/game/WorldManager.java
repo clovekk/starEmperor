@@ -1,9 +1,8 @@
 package game;
 
-import userinterface.UserInterface;
-
-import java.time.Duration;
-
+/**
+ * This class is responsible for the control of the in-game world and the game loop
+ */
 public class WorldManager extends Thread {
     private volatile boolean paused;
     private volatile World world;
@@ -64,6 +63,9 @@ public class WorldManager extends Thread {
         }
     }
 
+    /**
+     * This method overrides the Thread.run() method and starts the main game loop of the game
+     */
     @Override
     public void run() {
         super.run();
@@ -102,12 +104,7 @@ public class WorldManager extends Thread {
 
             //daily updates
             if (world.getTick() % 10 == 0) {
-                //System.out.println("Day: " + world.getTick() / 10 + " Tick: " + world.getTick());
             }
-
-
-
-            //TODO complete game loop
 
             //end of game loop -----------------------------------------------------------------------------------------
 
@@ -126,10 +123,16 @@ public class WorldManager extends Thread {
         System.out.println("avg tick time: " + totalTime / totalTicks + " ns");
     }
 
+    /**
+     * This method pauses this thread
+     */
     public synchronized void pauseGame() {
         this.paused = true;
     }
 
+    /**
+     * This method notifies and unpauses this thread
+     */
     public synchronized void unpauseGame() {
         this.notify();
         this.paused = false;

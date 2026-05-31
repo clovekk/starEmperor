@@ -5,6 +5,9 @@ import userinterface.UserInterface;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
+/**
+ * This is the main class that contains the gui and world manager
+ */
 public class Game {
     private volatile WorldManager worldManager;
     private UserInterface ui;
@@ -42,31 +45,53 @@ public class Game {
         this.displayEnd = displayEnd;
     }
 
+    /**
+     * This method starts the game WorldManager thread
+     */
     public void startGame() {
         this.worldManager.startGame();
     }
 
+    /**
+     * This method starts the game GraphicsUserInterface thread
+     * @param ui the UserInterface supposed to display the game
+     */
     public void startDisplay(UserInterface ui) {
         this.ui = ui;
         this.ui.startDisplaying();
     }
 
+    /**
+     * This method starts the game GraphicsUserInterface thread
+     */
     public void startDisplay() {
         this.startDisplay(this.ui);
     }
 
+    /**
+     * This method pauses the game WorldManager thread
+     */
     public synchronized void pauseGame() {
         this.worldManager.pauseGame();
     }
 
+    /**
+     * This method unpauses the game WorldManager thread
+     */
     public synchronized void unpauseGame() {
         this.worldManager.unpauseGame();
     }
 
+    /**
+     * This method stops the game WorldManager thread
+     */
     public void stopGame() {
         this.worldManager.setEnd(true);
     }
 
+    /**
+     * This method stops the game GraphicsUserInterface thread
+     */
     public void stopDisplay() {
         this.displayEnd.set(true);
         System.out.println("User interface end flag updated to: " + this.getDisplayEnd().toString());

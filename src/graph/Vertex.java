@@ -2,6 +2,10 @@ package graph;
 
 import java.util.ArrayList;
 
+/**
+ * This class serves as the vertex for the main Graph data structure
+ * @param <E> The data contained in the vertices
+ */
 public class Vertex<E> {
     private String label;
     private ArrayList<String> edges;

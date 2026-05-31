@@ -2,6 +2,9 @@ package game;
 
 import java.util.ArrayList;
 
+/**
+ * This class represents the star systems in the game
+ */
 public class StarSystem {
     private String name;
     private String id;
@@ -92,10 +95,20 @@ public class StarSystem {
         return y;
     }
 
+    /**
+     * Returns the amount of this resource in the system
+     * @param resource The specified resource
+     * @return the amount of this resource in the system
+     */
     public int getResourceAmount(Resource resource) {
         return getResourceAmount(resource.getId());
     }
 
+    /**
+     * Returns the amount of this resource in the system
+     * @param resourceID The label of the specified resource
+     * @return the amount of this resource in the system
+     */
     public int getResourceAmount(String resourceID) {
         for (Resource r : this.resources) {
             if (resourceID.equals(r.getId())) {
@@ -135,10 +148,19 @@ public class StarSystem {
         this.setY(y);
     }
 
+    /**
+     * Adds a new resource with these parameters to the system.
+     * @param resourceName The name of the resource
+     * @param amount Amount of the resource
+     */
     public void addResource(String resourceName, int amount) {
         this.resources.add(new Resource(resourceName, amount));
     }
 
+    /**
+     * Adds this fleet to the system.
+     * @param fleet The specified fleet to the system
+     */
     public void addFleet(Fleet fleet) {
         this.getFleets().add(fleet);
     }
