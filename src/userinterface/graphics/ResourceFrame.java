@@ -3,6 +3,9 @@ package userinterface.graphics;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * The JFrame that contains the resource panel
+ */
 public class ResourceFrame extends JFrame {
     private volatile ResourcePanel resourcePanel;
 
@@ -22,6 +25,9 @@ public class ResourceFrame extends JFrame {
         this.add(resourcePanel);
     }
 
+    /**
+     * updates the fleet resource values
+     */
     public void update() {
         resourcePanel.updateSystemResources();
     }

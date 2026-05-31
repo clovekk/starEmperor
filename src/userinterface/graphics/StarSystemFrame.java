@@ -3,6 +3,9 @@ package userinterface.graphics;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * The JFrame that contains the star system panel
+ */
 public class StarSystemFrame extends JFrame {
     private volatile StarSystemPanel starSystemPanel;
 
@@ -21,6 +24,9 @@ public class StarSystemFrame extends JFrame {
         this.add(starSystemPanel);
     }
 
+    /**
+     * update the star system panel values
+     */
     public void update() {
         starSystemPanel.update();
     }

@@ -7,6 +7,9 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+/**
+ * represents the fleet instance
+ */
 public class FleetComponent extends JComponent {
     private volatile Fleet fleet;
     private static volatile Fleet selectedFleet = null;
@@ -14,6 +17,7 @@ public class FleetComponent extends JComponent {
     public FleetComponent(Fleet fleet, int x, int y) {
         this.fleet = fleet;
 
+        //set up component
         this.setLayout(null);
         this.setSize(30, 40);
         this.setLocation(x, y);
@@ -22,14 +26,15 @@ public class FleetComponent extends JComponent {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
+                //check for left mouse button
                 if (SwingUtilities.isLeftMouseButton(e)) {
+                    //(de)select fleet
                     System.out.println("clicked: " + getFleet());
                     if (selectedFleet == getFleet()) {
                         selectedFleet = null;
                     } else {
                         selectedFleet = getFleet();
                     }
-                    //getParent().getParent().repaint();
                 }
             }
         });
@@ -45,6 +50,7 @@ public class FleetComponent extends JComponent {
     public void setFleet(Fleet fleet) {
         this.fleet = fleet;
         if (fleet != null) {
+            //set the tooltip as fleet name
             this.setToolTipText(fleet.getName());
         } else {
             this.setToolTipText(null);

@@ -11,6 +11,9 @@ import java.awt.event.WindowEvent;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+/**
+ * The main GUI of the game
+ */
 public class GraphicsUserInterface extends Thread implements UserInterface {
     private volatile WorldManager worldManager;
     private volatile Player player;
@@ -39,6 +42,9 @@ public class GraphicsUserInterface extends Thread implements UserInterface {
         this.start();
     }
 
+    /**
+     * Overrides the Thread.run() method, contains the whole GUI drawing loop
+     */
     @Override
     public void run() {
         super.run();
@@ -59,10 +65,12 @@ public class GraphicsUserInterface extends Thread implements UserInterface {
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
 
+        //get the icon of the window
         ImageIcon menuIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/game_icon.png")));
         menuIcon = new ImageIcon(menuIcon.getImage().getScaledInstance(32, 32, Image.SCALE_DEFAULT));
         frame.setIconImage(menuIcon.getImage());
 
+        //set up a layered pane to make adjusting layers easy and do it properly
         JLayeredPane layeredPane = new JLayeredPane();
         layeredPane.setLayout(null);
         layeredPane.setSize(frame.getContentPane().getSize());
@@ -71,19 +79,20 @@ public class GraphicsUserInterface extends Thread implements UserInterface {
 
         frame.add(layeredPane);
 
+        //create the map panel
         MapPanel mapPanel = new MapPanel(worldManager, this.player, 2);
         mapPanel.setLocation(0, 0);
 
+        //create the info bar
         InfoBarPanel infoBarPanel = new InfoBarPanel(end, worldManager, player);
         infoBarPanel.setLocation(0, 0);
-
-        //frame.add(infoBarPanel);
-        //frame.add(mapPanel);
 
         layeredPane.add(infoBarPanel, 0);
         layeredPane.add(mapPanel, 1);
 
         frame.setVisible(true);
+
+        //start the drawing loop
 
         while(!end.get()) {
             long frameStartTime = System.nanoTime();
@@ -107,6 +116,7 @@ public class GraphicsUserInterface extends Thread implements UserInterface {
             }
         }
 
+        //close the window
         frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
     }
 }

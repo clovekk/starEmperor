@@ -12,8 +12,10 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import java.util.ArrayList;
-import java.util.Collection;
 
+/**
+ * Contains the main map
+ */
 public class MapPanel extends JPanel {
     private volatile WorldManager worldManager;
     private volatile Player player;
@@ -29,8 +31,10 @@ public class MapPanel extends JPanel {
         this.zoomCoefficient = zoomCoefficient;
         this.starSystemComponents = new ArrayList<>();
 
+        //map setup
         createMap();
 
+        //panel setup
         this.setLayout(null);
         this.setSize(2000 * zoomCoefficient, 2000 * zoomCoefficient);
         this.setBackground(new Color(5, 2, 38));
@@ -89,6 +93,9 @@ public class MapPanel extends JPanel {
         this.worldManager = worldManager;
     }
 
+    /**
+     * Updates the values of all the components
+     */
     public void update() {
         for (Component c : this.getComponents()) {
             if (c.getClass().equals(StarSystemComponent.class)) {
@@ -97,6 +104,9 @@ public class MapPanel extends JPanel {
         }
     }
 
+    /**
+     * creates the star system map in the panel
+     */
     public void createMap() {
         for (StarSystem starSystem : worldManager.getWorld().getStarSystems().getAll()) {
             StarSystemComponent starSystemComponent = new StarSystemComponent(starSystem, worldManager, this.player, (50 + starSystem.getX()) * zoomCoefficient + 100 / 2, (50 + starSystem.getY()) * zoomCoefficient + 100 / 2);
@@ -105,6 +115,10 @@ public class MapPanel extends JPanel {
         }
     }
 
+    /**
+     * paints all the edges in the map
+     * @param g the graphics to be used
+     */
     public void paintConnections(Graphics g) {
         Graphics2D graphics = (Graphics2D) g.create();
 

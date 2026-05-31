@@ -2,7 +2,6 @@ package launcher;
 
 import com.formdev.flatlaf.FlatLightLaf;
 import game.*;
-import userinterface.console.ConsoleUserInterface;
 import userinterface.graphics.GraphicsUserInterface;
 
 import javax.imageio.ImageIO;
@@ -12,14 +11,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Objects;
-import java.util.concurrent.atomic.AtomicBoolean;
 
+/**
+ * This class represents the game launcher
+ */
 public class GameLauncher {
     public GameLauncher() {
     }
 
+    /**
+     * opens the launcher window
+     */
     public void launch() {
         //setup flatlaf so the window doesn't look like it came straight out of Windows 95
         FlatLightLaf.setup();
@@ -35,6 +38,7 @@ public class GameLauncher {
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
 
+        //get the menu background image
         Image menuTheme;
         try {
             menuTheme = ImageIO.read(Objects.requireNonNull(getClass().getResource("/menu_theme.png"))).getScaledInstance(frame.getContentPane().getWidth(), frame.getContentPane().getHeight(), Image.SCALE_DEFAULT);
@@ -42,6 +46,7 @@ public class GameLauncher {
             throw new RuntimeException(e);
         }
 
+        //get the icon from resources
         ImageIcon menuIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/menu_icon.png")));
         menuIcon = new ImageIcon(menuIcon.getImage().getScaledInstance(32, 32, Image.SCALE_DEFAULT));
         frame.setIconImage(menuIcon.getImage());

@@ -3,6 +3,9 @@ package launcher;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * the panel in the launcher window
+ */
 public class MenuPanel extends JPanel {
     private Image backgroundImage;
 

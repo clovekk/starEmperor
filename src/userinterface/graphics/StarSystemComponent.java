@@ -10,6 +10,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowEvent;
 
+/**
+ * Represents the star system as a drawable object
+ */
 public class StarSystemComponent extends JComponent {
     private volatile StarSystem starSystem;
     private static volatile StarSystem selectedSystem = null;
@@ -23,11 +26,13 @@ public class StarSystemComponent extends JComponent {
         this.worldManager = worldManager;
         this.player = player;
 
+        //set up the panel
         this.setLayout(null);
         this.setSize(100, 100);
         this.setLocation(x - getWidth(), y - getHeight());
         this.setToolTipText(starSystem.getName());
 
+        //the fleet component representing fleets in the system
         this.fleetComponent = new FleetComponent(null, getWidth() / 2 + 10, getHeight() / 2 + 10);
 
         this.addMouseListener(new MouseAdapter() {
@@ -77,13 +82,19 @@ public class StarSystemComponent extends JComponent {
         this.starSystem = starSystem;
     }
 
+    /**
+     * updates the values of this component and its components
+     */
     public void update() {
+        //fleet present?
         if (!starSystem.getFleets().isEmpty()) {
+            //yes, draw fleets
             if (this.fleetComponent.getFleet() != starSystem.getFleets().getFirst()) {
                 this.fleetComponent.setFleet(starSystem.getFleets().getFirst());
             }
             this.fleetComponent.setVisible(true);
         } else {
+            //no dont draw fleets
             if (this.fleetComponent.getFleet() != null) {
                 this.fleetComponent.setFleet(null);
             }
@@ -100,6 +111,7 @@ public class StarSystemComponent extends JComponent {
         super.paintComponent(g);
         Graphics2D graphics = (Graphics2D) g.create();
 
+        //temp for debug
         /*graphics.setColor(Color.MAGENTA);
         graphics.fillRect(0, 0, 4, 4);
 
@@ -108,15 +120,18 @@ public class StarSystemComponent extends JComponent {
 
         int sysSize = 15;
 
+        //system is owned by player
         if (starSystem.getOwnerID() != null) {
             graphics.setColor(worldManager.getWorld().getPlayers().get(starSystem.getOwnerID()).getColor().toColor());
             graphics.fillOval(getWidth() / 2 - 5 * sysSize / 2, getHeight() / 2 - 5 * sysSize / 2, sysSize * 5, sysSize * 5);
         }
 
+        //main system body
         graphics.setStroke(new BasicStroke(1));
         graphics.setColor(Color.WHITE);
         graphics.fillOval(getWidth() / 2 - sysSize / 2, getHeight() / 2 - sysSize / 2, sysSize, sysSize);
 
+        //this system is selected
         if (selectedSystem == this.starSystem) {
             graphics.setStroke(new BasicStroke(3));
             graphics.setColor(new Color(236, 121, 2));

@@ -1,9 +1,8 @@
 package userinterface;
 
-import game.WorldManager;
-
-import java.util.concurrent.atomic.AtomicBoolean;
-
+/**
+ * this interface just serves as an interface to all ui classes
+ */
 public interface UserInterface {
     public void startDisplaying();
 }

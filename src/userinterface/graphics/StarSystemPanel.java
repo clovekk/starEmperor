@@ -12,6 +12,9 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * The panel that is opened when system is selected, it contains info about the system
+ */
 public class StarSystemPanel extends JPanel {
     private volatile StarSystem starSystem;
     private volatile WorldManager worldManager;
@@ -33,6 +36,7 @@ public class StarSystemPanel extends JPanel {
         this.setPreferredSize(new Dimension(300, 250));
         this.setBackground(Color.BLUE);
 
+        //travel button
         travelButton.setBackground(Color.GRAY);
         travelButton.setForeground(Color.WHITE);
         travelButton.setSize(200,50);
@@ -40,6 +44,7 @@ public class StarSystemPanel extends JPanel {
         travelButton.setEnabled(false);
         travelButton.setToolTipText("You need to select a fleet to send to this system.");
 
+        //claim button
         claimSystemButton.setBackground(Color.GRAY);
         claimSystemButton.setForeground(Color.WHITE);
         claimSystemButton.setSize(200, 50);
@@ -47,6 +52,7 @@ public class StarSystemPanel extends JPanel {
         claimSystemButton.setEnabled(false);
         claimSystemButton.setToolTipText("You need a fleet in this system and 10 metals and 5 energy in your stockpile in-oder to take control over this system.");
 
+        //resource label
         resourcesLabel.setForeground(Color.WHITE);
         resourcesLabel.setSize(200, 50);
         resourcesLabel.setLocation(0, 100);
@@ -55,6 +61,7 @@ public class StarSystemPanel extends JPanel {
         travelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                //move selected fleet here
                 worldManager.getWorld().moveFleetToSystem(FleetComponent.getSelectedFleet(), starSystem);
             }
         });
@@ -62,6 +69,7 @@ public class StarSystemPanel extends JPanel {
         claimSystemButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                //claim system if enough resources
                 if (player.getResourceAmount("metals") >= 10 && player.getResourceAmount("energy") >= 5) {
                     ArrayList<Resource> cost = new ArrayList<>(Arrays.asList(new Resource("metals", 10), new Resource("energy", 5)));
 
@@ -76,17 +84,22 @@ public class StarSystemPanel extends JPanel {
         this.add(resourcesLabel);
     }
 
+    /**
+     * updates the panels values
+     */
     public void update() {
         if (FleetComponent.getSelectedFleet() != null) {
             travelButton.setEnabled(true);
         } else {
             travelButton.setEnabled(false);
         }
+
         if (!starSystem.getFleets().isEmpty() && !player.getId().equals(starSystem.getOwnerID()) && player.getResourceAmount("metals") >= 10 && player.getResourceAmount("energy") >= 5) {
             claimSystemButton.setEnabled(true);
         } else {
             claimSystemButton.setEnabled(false);
         }
+
         resourcesLabel.setText(Resource.toPrettyHTMLString(starSystem.getResources()));
     }
 

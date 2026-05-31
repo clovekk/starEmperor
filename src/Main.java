@@ -8,8 +8,15 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Main class of the project
+ */
 public class Main {
     public static void main(String[] args) {
+        //start launcher
+        GameLauncher gl = new GameLauncher();
+        gl.launch();
+
         /*//temporary1 - test to see if the reworked graph still works
         Graph<String> g1 = new Graph<>("g1");
 
@@ -226,10 +233,5 @@ public class Main {
         //game.stopDisplay();
 
         //temporary5 - end
-
-        //temporary6 - window testing
-        GameLauncher gl = new GameLauncher();
-        gl.launch();
-        //temporary6 - end
     }
 }

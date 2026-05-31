@@ -2,10 +2,10 @@ package userinterface.graphics;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
 
+/**
+ * creates a new text input window
+ */
 public class TextInputFrame extends JFrame {
     private JTextField inputField;
     private JButton confirmButton;
@@ -15,6 +15,7 @@ public class TextInputFrame extends JFrame {
         this.inputField = new JTextField(15);
         this.confirmButton = new JButton("Confirm");
 
+        //set up frame and buttons
         this.setName("InputFrame");
         this.setLayout(new FlowLayout());
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

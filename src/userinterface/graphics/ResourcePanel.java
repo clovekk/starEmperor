@@ -6,6 +6,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
+/**
+ * the panel that opens when resource amount is clicked, contains info about production/consumption
+ */
 public class ResourcePanel extends JPanel {
     private volatile WorldManager worldManager;
     private volatile Player player;
@@ -18,13 +21,16 @@ public class ResourcePanel extends JPanel {
         this.resource = resource;
         this.listModel = new DefaultListModel<>();
 
+        //set up panel
         this.setLayout(null);
         this.setSize(200, 400);
         this.setPreferredSize(new Dimension(200, 400));
         this.setBackground(Color.BLUE);
 
+        //set values
         updateSystemResources();
 
+        //setup jlist
         JList<String> starSystemList = new JList<>(listModel);
         starSystemList.setLocation(0, 0);
         starSystemList.setSize(200, 400);
@@ -37,6 +43,7 @@ public class ResourcePanel extends JPanel {
         Font resourceInfoFont = new Font(starSystemList.getFont().getFontName(), Font.BOLD, starSystemList.getFont().getSize() + 2);
         starSystemList.setFont(resourceInfoFont);
 
+        //setup jscrollpane
         JScrollPane starSystemScrollPane = new JScrollPane(starSystemList);
         starSystemScrollPane.setLocation(0, 0);
         starSystemScrollPane.setSize(200, 400);
@@ -45,7 +52,6 @@ public class ResourcePanel extends JPanel {
         starSystemScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
         this.add(starSystemScrollPane);
-
     }
 
     public Resource getResource() {
@@ -55,6 +61,9 @@ public class ResourcePanel extends JPanel {
         this.resource = resource;
     }
 
+    /**
+     * updates the star system production values in the resource info panel
+     */
     public void updateSystemResources() {
         if (!listModel.contains("Star Systems:")) {
             listModel.add(0, "Star Systems:");
@@ -73,6 +82,10 @@ public class ResourcePanel extends JPanel {
         updateFleetResources(systemResourceAmount);
     }
 
+    /**
+     * updates the fleet consumption values in the resource info panel
+     * @param startIndex
+     */
     public void updateFleetResources(int startIndex) {
         int currentIndex = startIndex + 1;
         if (!listModel.contains("Fleet Upkeep:")) {

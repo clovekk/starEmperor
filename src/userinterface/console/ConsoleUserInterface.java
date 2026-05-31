@@ -7,6 +7,9 @@ import userinterface.UserInterface;
 import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+/**
+ * This class acts as a testing-only console ui
+ */
 public class ConsoleUserInterface extends Thread implements UserInterface {
     private static String DEFAULT = "\u001B[0m";
     private static String REVERSE = "\u001B[7m";
