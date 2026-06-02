@@ -1,4 +1,6 @@
 ### IntelliJ IDEA ###
+.idea/artifacts/
+src/main/resources/META-INF/
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
