@@ -3,6 +3,8 @@ package game;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import com.google.gson.TypeAdapter;
+import com.google.gson.typeadapters.RuntimeTypeAdapterFactory;
 import graph.Graph;
 
 import java.io.*;
@@ -60,13 +62,20 @@ public class GameData {
         this.tick = tick;
     }
 
+    public static Gson createGson() {
+        RuntimeTypeAdapterFactory<FleetOrder> factory = RuntimeTypeAdapterFactory.of(FleetOrder.class, "type").registerSubtype(FleetMoveOrder.class, "move_order");
+        Gson gson = new GsonBuilder().registerTypeAdapterFactory(factory).setPrettyPrinting().create();
+        return gson;
+    }
+
     /**
      * loads saved game file
      * @param filepath path of the file
      * @return the saved gam file
      */
     public static GameData loadGameData(Path filepath) {
-        Gson gson = new Gson();
+        //Gson gson = new Gson();
+        Gson gson = createGson();
 
         try(Reader r = Files.newBufferedReader(filepath, StandardCharsets.UTF_8))  {
             return gson.fromJson(r, GameData.class);
@@ -80,7 +89,8 @@ public class GameData {
      * @param filepath path of the file
      */
     public void saveGameData(Path filepath) {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        //Gson gson = new GsonBuilder().registerTypeAdapterFactory(factory).setPrettyPrinting().create();
+        Gson gson = createGson();
 
         try(Writer w = Files.newBufferedWriter(filepath, StandardCharsets.UTF_8)) {
             gson.toJson(this, w);
@@ -95,7 +105,8 @@ public class GameData {
      * @return a new world from resources
      */
     public static GameData loadNewGameData(String filepath) {
-        Gson gson = new Gson();
+        //Gson gson = new Gson();
+        Gson gson = createGson();
 
         try(InputStream is = GameData.class.getResourceAsStream(filepath)) {
             if (is == null) {

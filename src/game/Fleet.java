@@ -12,9 +12,9 @@ public class Fleet {
     private String ownerID;
     private ArrayList<Resource> upkeep;
     private int strength;
-    private FleetMoveOrder order;
+    private FleetOrder order;
 
-    public Fleet(String name, String id, String ownerID, ArrayList<Resource> upkeep, int strength, FleetMoveOrder order) {
+    public Fleet(String name, String id, String ownerID, ArrayList<Resource> upkeep, int strength, FleetOrder order) {
         this.name = name;
         this.id = id;
         this.ownerID = ownerID;
@@ -77,7 +77,7 @@ public class Fleet {
     public void setStrength(int strength) {
         this.strength = strength;
     }
-    public void setOrder(FleetMoveOrder order) {
+    public void setOrder(FleetOrder order) {
         this.order = order;
     }
 
