@@ -79,7 +79,7 @@ public class InfoBarPanel extends JPanel {
         buyFleetButton.setLocation(dateLabel.getX() - buyFleetButton.getWidth() - 10, (this.getHeight() - buyFleetButton.getHeight()) / 2);
         buyFleetButton.setEnabled(false);
 
-        //setup resource button for all player resources
+        //setup resource buttons for all player resources
         for (int i = 0; i < player.getResources().size(); i++) {
             Resource resource = player.getResources().get(i);
 

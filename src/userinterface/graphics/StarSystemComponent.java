@@ -62,7 +62,6 @@ public class StarSystemComponent extends JComponent {
                     }
                     //getParent().repaint();
 
-                    //TODO make a window with star system info
                 }
             }
         });

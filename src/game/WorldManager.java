@@ -27,7 +27,6 @@ public class WorldManager extends Thread {
     }
 
     public void startGame() {
-        //this.world = new World(); //TODO world loader
         this.end = false;
         this.paused = false;
 
